@@ -16,23 +16,27 @@ func _process(delta: float) -> void:
 		if contents[i] != null:
 			contents[i].progress_ratio = get_resource_progress_ratio(i)
 
-func deposit(content, start: int, end: int) -> bool: # type hint?
+func deposit(resource, start: int, end: int) -> bool: # type hint?
 	for i in range(start, end + 1):
-		if create_resource(content, i):
+		if create_resource(resource, i):
 			return true
 	return false
 	
-func consume(content, start: int, end: int) -> bool:
-	for i in range(start, end - 1):
-		if get_resource(content, i):
+func consume(resource: Res.Type, start: int, end: int) -> bool:
+	for i in range(start, end + 1):
+		if get_resource(resource, i):
 			return true
 	return false
 
-func get_resource(content, index: int) -> bool:
+func get_resource(resource: Res.Type, index: int) -> bool:
 	var actual_index = translate_index(index)
+	if contents[actual_index].type == resource:
+		remove_child(contents[actual_index])
+		contents[actual_index] = null
+		return true
 	return false
 	
-func create_resource(content, index: int) -> bool:
+func create_resource(resource_enum: Res.Type, index: int) -> bool:
 	var actual_index = translate_index(index)
 	
 	if contents[actual_index] != null:
@@ -43,7 +47,7 @@ func create_resource(content, index: int) -> bool:
 	add_child(resource)
 	
 	# init resource script
-	resource.init(content, get_resource_progress_ratio(index), loop_seconds)
+	resource.init(resource_enum, get_resource_progress_ratio(index))
 	
 	# add to inventory
 	contents[actual_index] = resource

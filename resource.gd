@@ -1,7 +1,15 @@
 extends PathFollow2D
 
-var content = null
+class_name Res
+
+enum Type {
+	WOOD,
+	FROG,
+	FISH
+}
+
+var type: Res.Type
 #
-func init(content_, progress_ratio_: float, loop_seconds_: float):
+func init(type_: Res.Type, progress_ratio_: float):
 	progress_ratio = progress_ratio_
-	content = content_
+	type = type_
