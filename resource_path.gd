@@ -14,19 +14,24 @@ func _process(delta: float) -> void:
 	
 	for i in range(SIZE):
 		if contents[i] != null:
-			var offset = fmod(index_modifier, float(1) / SIZE)
-			var progress_ratio_: float = float(i) / SIZE + offset
-			contents[i].progress_ratio = progress_ratio_
+			contents[i].progress_ratio = get_resource_progress_ratio(i)
 
-func translate_index(index: int) -> int:
-	return int(index + floor(index_modifier * SIZE)) % SIZE
-	
 func deposit(content, start: int, end: int) -> bool: # type hint?
 	for i in range(start, end + 1):
 		if create_resource(content, i):
 			return true
 	return false
+	
+func consume(content, start: int, end: int) -> bool:
+	for i in range(start, end - 1):
+		if get_resource(content, i):
+			return true
+	return false
 
+func get_resource(content, index: int) -> bool:
+	var actual_index = translate_index(index)
+	return false
+	
 func create_resource(content, index: int) -> bool:
 	var actual_index = translate_index(index)
 	
@@ -38,10 +43,16 @@ func create_resource(content, index: int) -> bool:
 	add_child(resource)
 	
 	# init resource script
-	var offset = fmod(index_modifier, 1 / SIZE)
-	resource.init(content, float(index) / SIZE + offset, loop_seconds)
+	resource.init(content, get_resource_progress_ratio(index), loop_seconds)
 	
 	# add to inventory
 	contents[actual_index] = resource
 	
 	return true
+
+func get_resource_progress_ratio(index: int) -> float:
+	var offset = fmod(index_modifier, float(1) / SIZE)
+	return float(index) / SIZE + offset
+
+func translate_index(index: int) -> int:
+	return int(index + floor(index_modifier * SIZE)) % SIZE
