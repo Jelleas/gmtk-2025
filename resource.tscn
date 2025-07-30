@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ig8ajdvhhbd3"]
+
+[ext_resource type="Script" uid="uid://biq6im1xv6xuc" path="res://resource.gd" id="1_cpix3"]
+[ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="2_psx28"]
+
+[node name="resource" type="PathFollow2D"]
+rotation = 0.00699289
+script = ExtResource("1_cpix3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_psx28")
