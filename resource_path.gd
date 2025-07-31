@@ -20,12 +20,14 @@ func _process(delta: float) -> void:
 func deposit(resource: Res.Type, start: int, end: int) -> bool:
 	for i in range(start, end + 1):
 		if create_resource(resource, i):
+			print('prod', ', ', resource, ', ',i,', ',translate_index(i))
 			return true
 	return false
 	
 func consume(resource: Res.Type, start: int, end: int) -> bool:
 	for i in range(start, end + 1):
 		if get_resource(resource, i):
+			print('Cons', ', ',resource, ', ',i, ', ',translate_index(i))
 			return true
 	return false
 
@@ -54,13 +56,16 @@ func create_resource(resource_enum: Res.Type, index: int) -> bool:
 	
 	return true
 
-func get_resource_progress_ratio(index: int) -> float:
-	var real_index = (index_modifier * SIZE) - index
-	if (real_index < 0):
-		real_index += SIZE
+func get_resource_progress_ratio(translated: int) -> float:
+	var real_index = inverse_translate_index(translated)
+	var offset = fmod(index_modifier, float(1) / SIZE)
 	
 	var ratio = float(real_index) / SIZE
-	return ratio
+	return ratio - offset
 
 func translate_index(index: int) -> int:
 	return int(index + floor(index_modifier * SIZE)) % SIZE
+	
+func inverse_translate_index(translated: int) -> int:
+	var offset = floor(index_modifier * SIZE)
+	return fmod((translated - offset + SIZE), SIZE)

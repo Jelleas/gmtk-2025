@@ -61,6 +61,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="CreateConsumer1" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 136.0
 offset_top = 123.0
 offset_right = 169.0
@@ -69,6 +70,7 @@ text = "1"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer2" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 232.0
 offset_top = 124.0
 offset_right = 265.0
@@ -77,6 +79,7 @@ text = "2"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer3" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 328.0
 offset_top = 123.0
 offset_right = 361.0
@@ -85,6 +88,7 @@ text = "3"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer4" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 424.0
 offset_top = 121.0
 offset_right = 457.0
@@ -93,6 +97,7 @@ text = "4"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer5" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 519.0
 offset_top = 122.0
 offset_right = 552.0
@@ -101,6 +106,7 @@ text = "5"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer6" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 519.0
 offset_top = 217.0
 offset_right = 552.0
@@ -109,6 +115,7 @@ text = "6"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer7" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 314.0
 offset_right = 553.0
@@ -117,6 +124,7 @@ text = "7"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer8" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 411.0
 offset_right = 553.0
@@ -125,6 +133,7 @@ text = "8"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer9" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 506.0
 offset_right = 553.0
@@ -133,6 +142,7 @@ text = "9"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer10" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 423.0
 offset_top = 505.0
 offset_right = 456.0
@@ -141,6 +151,7 @@ text = "10"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer11" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 328.0
 offset_top = 506.0
 offset_right = 361.0
@@ -149,6 +160,7 @@ text = "11"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer12" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 232.0
 offset_top = 508.0
 offset_right = 265.0
@@ -157,6 +169,7 @@ text = "12"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer13" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 136.0
 offset_top = 507.0
 offset_right = 169.0
@@ -165,6 +178,7 @@ text = "13"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer14" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 136.0
 offset_top = 409.0
 offset_right = 169.0
@@ -173,6 +187,7 @@ text = "14"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer15" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 136.0
 offset_top = 314.0
 offset_right = 169.0
@@ -181,6 +196,7 @@ text = "15"
 script = ExtResource("1_bk48f")
 
 [node name="CreateConsumer16" type="Button" parent="CreateConsumers"]
+layout_mode = 0
 offset_left = 136.0
 offset_top = 217.0
 offset_right = 169.0
