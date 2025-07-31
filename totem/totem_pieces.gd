@@ -48,11 +48,11 @@ class Modifier extends Resource:
 	var name: String
 	var price: int
 	var type: ModifierType
-	var icon: Sprite2D
+	var icon: Resource
 	var modifiers: Array[Callable]
 	var rarity: Rarity
 	
-	func _init(_name: String, _price: int, _type: ModifierType, _icon: Sprite2D, _modifiers: Array, _rarity: Rarity):
+	func _init(_name: String, _price: int, _type: ModifierType, _icon: Resource, _modifiers: Array, _rarity: Rarity):
 		name = _name
 		price = _price
 		type = _type
@@ -62,5 +62,5 @@ class Modifier extends Resource:
 		
 
 var modifiers: Array[Modifier] = [
-	Modifier.new("speed", 100, ModifierType.SPEED, Sprite2D.new(), [func(bt): bt.cooldown *= 0.8], Rarity.COMMON)
+	Modifier.new("speed", 100, ModifierType.SPEED, load("res://path/to/your/image.png"), [func(bt): bt.cooldown *= 0.8], Rarity.COMMON)
 ]
