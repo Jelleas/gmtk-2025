@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=15 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
 [ext_resource type="Texture2D" uid="uid://dw2e8lr3lde1l" path="res://tilemap_packed.png" id="2_bhu08"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="5_ctebd"]
 [ext_resource type="PackedScene" uid="uid://tmkdkgu7s5vv" path="res://tower/tower.tscn" id="6_4mnpp"]
 [ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://assets/Vector/bar_round_gloss_large.svg" id="6_eqmdw"]
+[ext_resource type="Script" path="res://resource_bar.gd" id="7_5fjre"]
 [ext_resource type="Script" uid="uid://b1tc24egun83x" path="res://ui/create_consumer.gd" id="7_ctebd"]
 
 [sub_resource type="Curve2D" id="Curve2D_5ymk8"]
@@ -241,7 +242,6 @@ script = ExtResource("2_05as6")
 
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("resource_path")]
 wait_time = 0.05
-autostart = true
 script = ExtResource("3_bhu08")
 resource_path = NodePath("../ResourcePath")
 
@@ -252,7 +252,7 @@ offset_right = 183.0
 offset_bottom = 46.0
 texture_under = ExtResource("5_ctebd")
 texture_progress = ExtResource("6_eqmdw")
-script = ExtResource("3_bhu08")
+script = ExtResource("7_5fjre")
 resource_path = NodePath("../ResourcePath")
 
 [node name="CreateProducer" type="Button" parent="." node_paths=PackedStringArray("resource_manager")]
