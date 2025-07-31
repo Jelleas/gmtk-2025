@@ -1,25 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfl5pn8htrw26"]
+[gd_scene load_steps=3 format=3 uid="uid://bfl5pn8htrw26"]
 
 [ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="1_0m23l"]
 [ext_resource type="Script" uid="uid://dy26s7uyp8kly" path="res://ui/shop/shop_item.gd" id="1_a5sgx"]
-[ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large.svg" id="2_a5sgx"]
 
 [node name="ShopItem" type="VBoxContainer"]
 script = ExtResource("1_a5sgx")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
-texture = ExtResource("1_0m23l")
-expand_mode = 4
+columns = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
+text = "foo"
 horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "90$"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
-text = "90$"
-icon = ExtResource("2_a5sgx")
-flat = true
+icon = ExtResource("1_0m23l")
 icon_alignment = 1
 expand_icon = true

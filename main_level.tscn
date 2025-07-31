@@ -342,6 +342,20 @@ offset_bottom = 330.0
 script = ExtResource("19_8m212")
 shop_item = ExtResource("20_8m212")
 
+[node name="Inventory" type="VBoxContainer" parent="UI"]
+offset_left = 840.0
+offset_top = 139.0
+offset_right = 880.0
+offset_bottom = 179.0
+
+[node name="Label" type="Label" parent="UI/Inventory"]
+layout_mode = 2
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Inventory"]
+layout_mode = 2
+
 [node name="TotemInterface" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")
 totem_scene = ExtResource("6_4mnpp")
