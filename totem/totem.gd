@@ -11,13 +11,28 @@ var actions: Array = []
 var needed_resources:Array = []
 var created_resources:Array = []
 var modifiers: Array = []
-var base
+
+enum BaseType {
+	EMPTY,
+	PRODUCER,
+	DART,
+	FROGBOMB,
+	SWAMP,
+	VOODOO,
+}
+
+var base:BaseType = BaseType.EMPTY
+
+enum ModifierType {
+	SPEED,
+}
 
 func init(resource_man: Path2D, resource: Res.Type, start_index: int, end_index: int):
 	resource_manager = resource_man
 	start = start_index
 	end = end_index
 	if(resource != -1):
+		base = BaseType.PRODUCER
 		actions.append(func() -> void: create(resource))
 
 func _ready() -> void:
@@ -25,7 +40,12 @@ func _ready() -> void:
 	produce()
 
 func startTimer():
-	$Timer.wait_time = internal_timer
+	var time_to_wait = internal_timer
+	for mod in modifiers:
+		if mod == 0:
+			time_to_wait = time_to_wait * 0.8
+
+	$Timer.wait_time = time_to_wait
 	$Timer.start()
 
 func _process(delta: float) -> void:
@@ -55,19 +75,20 @@ func deposit():
 func create(resource: Res.Type):
 	created_resources.append(resource)
 
-func upgrade_speed():
-	internal_timer = internal_timer * 0.8
+func set_base(base_type: BaseType):
+	if(base_type != 1 && base != 1):
+		return false
+	base = base_type
 
-func add_two_to_one():
-	needed_resources.append([Res.Type.WOOD, true])
-	needed_resources.append([Res.Type.WOOD, true])
-	actions.append(func() -> void: two_to_one())
-
-func two_to_one():
-	if(needed_resources[0][1] == false && needed_resources[1][1] == false):
-		create(Res.Type.FROG)
-		needed_resources[0][1] = true
-		needed_resources[1][1] = true
+func add_modifier(modifier_type):
+	if(modifiers.size() > 4):
+		return false
+	modifiers.append(modifier_type)
+	
+func remove_modifier(modifier_type):
+	if(modifiers.size() > 4):
+		return false
+	modifiers.append(modifier_type)
 
 func produce():
 	var can_produce = true

@@ -7,20 +7,25 @@ extends Node2D
 var totems = []
 
 func totem_pressed(totem_index):
+	var totem = totems[totem_index]
 	if(totems[totem_index].size() < 5):
-		var totem = totems[totem_index]
-		var totem_instance = create_totem(totem[0], totem[1], totem[2])
-		totems[totem_index].append(totem_instance)
-		
-		if(totem_index <4):
-			totem[3].text ="P"
-		else:
-			totem[3].text ="C"
+		create_totem(totem_index, totem)
+	elif(totem[4].base == 0):
+		totem[4].set_base(Totem.BaseType.DART)
+	else:
+		totem[4].add_modifier(Totem.ModifierType.SPEED)
+	
 
-func create_totem(resource, start, end):
-	var totem = totem_scene.instantiate()
-	add_child(totem)
-	totem.init(resource_manager, resource, start, end)
+func create_totem(totem_index, totem):
+	var totem_scene = totem_scene.instantiate()
+	add_child(totem_scene)
+	totem_scene.init(resource_manager, totem[0], totem[1], totem[2])
+	totems[totem_index].append(totem_scene)
+	
+	if(totem_index <4):
+		totem[3].text ="P"
+	else:
+		totem[3].text ="C"
 
 func set_base(totem_index, base_type):
 	totems[totem_index].set_base()
@@ -63,7 +68,7 @@ func init_buttons():
 
 func hide_buttons():
 	for i in range(0, totems.size()):
-		if i == 1 || i == 2 || i == 4  || i == 5:
+		if i == 0 || i == 1 || i == 4  || i == 5:
 			print(i)
 			continue
 		totems[i][3].hide()
