@@ -2,7 +2,7 @@ extends Path2D
 
 @export var loop_seconds: float = 10
 var SIZE: int = 72
-var contents: Array = [] # type hint?
+var contents: Array[Node] = []
 var index_modifier: float = 0 # position of the path
 
 func _ready():
@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 		if contents[i] != null:
 			contents[i].progress_ratio = get_resource_progress_ratio(i)
 
-func deposit(resource, start: int, end: int) -> bool: # type hint?
+func deposit(resource: Res.Type, start: int, end: int) -> bool:
 	for i in range(start, end + 1):
 		if create_resource(resource, i):
 			return true

@@ -217,7 +217,8 @@ _data = {
 }
 point_count = 5
 
-[node name="Node2D" type="Node2D"]
+[node name="a" type="Node2D"]
+position = Vector2(230, 51)
 
 [node name="MonsterPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_5ymk8")
