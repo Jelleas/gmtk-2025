@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkmry7mk0hi18"]
+
+[ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="1_huu8b"]
+[ext_resource type="Script" uid="uid://dpeoh6st3b66a" path="res://ui/inventory/inventory_slot.gd" id="1_nktrt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nktrt"]
+bg_color = Color(0.890196, 0.854902, 0.788235, 0.196078)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_bottom = 90.0
+
+[node name="InventorySlot" type="VBoxContainer"]
+script = ExtResource("1_nktrt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nktrt")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "foo"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("1_huu8b")
+icon_alignment = 1
+expand_icon = true

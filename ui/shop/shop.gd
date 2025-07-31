@@ -1,6 +1,7 @@
 extends VBoxContainer
 
 @export var shop_item: PackedScene
+@export var inventory: Inventory
 
 const N_SLOTS: int = 3
 
@@ -25,6 +26,7 @@ func _ready() -> void:
 func _on_item_bought(item) -> void: # TODO type hint
 	print("bought, ", item)
 	reroll()
+	inventory.add_item(item)
 
 func reroll() -> void:
 	for item in items:

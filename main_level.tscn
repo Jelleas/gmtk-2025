@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=29 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
 [ext_resource type="Texture2D" uid="uid://dw2e8lr3lde1l" path="res://tilemap_packed.png" id="2_bhu08"]
@@ -22,6 +22,8 @@
 [ext_resource type="Script" uid="uid://bx8mgqkfs0pv3" path="res://ui/monster_tracker/monster_counter.gd" id="19_08fmi"]
 [ext_resource type="Script" uid="uid://bvhc545o6qhs" path="res://ui/shop/shop.gd" id="19_8m212"]
 [ext_resource type="PackedScene" uid="uid://bfl5pn8htrw26" path="res://ui/shop/shop_item.tscn" id="20_8m212"]
+[ext_resource type="Script" uid="uid://dahku7ck0x32r" path="res://ui/inventory/inventory.gd" id="21_xjl4t"]
+[ext_resource type="PackedScene" uid="uid://dkmry7mk0hi18" path="res://ui/inventory/inventory_slot.tscn" id="22_t3g51"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mnpp"]
 texture = ExtResource("2_bhu08")
@@ -268,10 +270,10 @@ resource_path = NodePath("../ResourcePath")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="ResourceTracker" type="VBoxContainer" parent="UI" node_paths=PackedStringArray("resource_path")]
-offset_left = 391.0
-offset_top = 645.0
-offset_right = 487.0
-offset_bottom = 723.0
+offset_left = 406.0
+offset_top = 635.0
+offset_right = 502.0
+offset_bottom = 713.0
 script = ExtResource("8_do8ha")
 resource_path = NodePath("../../ResourcePath")
 
@@ -314,10 +316,10 @@ text = "0"
 script = ExtResource("14_htena")
 
 [node name="MonsterTracker" type="VBoxContainer" parent="UI" node_paths=PackedStringArray("monster_path")]
-offset_left = 661.0
-offset_top = 643.0
-offset_right = 757.0
-offset_bottom = 694.0
+offset_left = 658.0
+offset_top = 636.0
+offset_right = 754.0
+offset_bottom = 687.0
 script = ExtResource("15_52es0")
 monster_path = NodePath("../../MonsterPath")
 
@@ -334,27 +336,28 @@ text = "0 escaped"
 horizontal_alignment = 1
 script = ExtResource("19_08fmi")
 
-[node name="Shop" type="VBoxContainer" parent="UI"]
+[node name="Shop" type="VBoxContainer" parent="UI" node_paths=PackedStringArray("inventory")]
 offset_left = 204.0
 offset_top = 114.0
 offset_right = 304.0
 offset_bottom = 330.0
 script = ExtResource("19_8m212")
 shop_item = ExtResource("20_8m212")
+inventory = NodePath("../Inventory")
 
 [node name="Inventory" type="VBoxContainer" parent="UI"]
-offset_left = 840.0
-offset_top = 139.0
-offset_right = 880.0
-offset_bottom = 179.0
+offset_left = 830.0
+offset_top = 80.0
+offset_right = 930.0
+offset_bottom = 184.0
+theme_override_constants/separation = 15
+script = ExtResource("21_xjl4t")
+inventory_slot = ExtResource("22_t3g51")
 
 [node name="Label" type="Label" parent="UI/Inventory"]
 layout_mode = 2
 text = "Inventory"
 horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Inventory"]
-layout_mode = 2
 
 [node name="TotemInterface" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")
