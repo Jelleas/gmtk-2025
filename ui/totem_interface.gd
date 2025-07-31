@@ -69,6 +69,5 @@ func init_buttons():
 func hide_buttons():
 	for i in range(0, totems.size()):
 		if i == 0 || i == 1 || i == 4  || i == 5:
-			print(i)
 			continue
 		totems[i][3].hide()
