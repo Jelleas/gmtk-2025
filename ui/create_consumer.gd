@@ -27,3 +27,5 @@ func create_totem() -> void:
 	# init resource script
 	totem.init(resource_manager, -1, start, end)
 	is_created = true
+	
+	text = "C"

@@ -29,3 +29,4 @@ func create_totem():
 	add_child(totem)
 	
 	totem.init(resource_manager, resource, start, end)
+	text = "P"
