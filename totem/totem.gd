@@ -12,27 +12,14 @@ var needed_resources:Array = []
 var created_resources:Array = []
 var modifiers: Array = []
 
-enum BaseType {
-	EMPTY,
-	PRODUCER,
-	DART,
-	FROGBOMB,
-	SWAMP,
-	VOODOO,
-}
-
-var base:BaseType = BaseType.EMPTY
-
-enum ModifierType {
-	SPEED,
-}
+var base:TotemPieces.BaseType = TotemPieces.BaseType.EMPTY
 
 func init(resource_man: Path2D, resource: Res.Type, start_index: int, end_index: int):
 	resource_manager = resource_man
 	start = start_index
 	end = end_index
 	if(resource != -1):
-		base = BaseType.PRODUCER
+		base = TotemPieces.BaseType.PRODUCER
 		actions.append(func() -> void: create(resource))
 
 func _ready() -> void:
@@ -75,7 +62,7 @@ func deposit():
 func create(resource: Res.Type):
 	created_resources.append(resource)
 
-func set_base(base_type: BaseType):
+func set_base(base_type: TotemPieces.BaseType):
 	if(base_type != 1 && base != 1):
 		return false
 	base = base_type

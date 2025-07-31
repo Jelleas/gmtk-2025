@@ -11,9 +11,9 @@ func totem_pressed(totem_index):
 	if(totems[totem_index].size() < 5):
 		create_totem(totem_index, totem)
 	elif(totem[4].base == 0):
-		totem[4].set_base(Totem.BaseType.DART)
+		totem[4].set_base(TotemPieces.BaseType.DART)
 	else:
-		totem[4].add_modifier(Totem.ModifierType.SPEED)
+		totem[4].add_modifier(TotemPieces.ModifierType.SPEED)
 	
 
 func create_totem(totem_index, totem):
