@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://dod3pkmsb116n" path="res://timer.gd" id="3_bhu08"]
 [ext_resource type="Script" uid="uid://b7qs6iul08i56" path="res://camera_2d.gd" id="4_05as6"]
 [ext_resource type="PackedScene" uid="uid://ig8ajdvhhbd3" path="res://resource.tscn" id="4_xqiim"]
-[ext_resource type="Script" path="res://monster_path.gd" id="5_6pb3s"]
+[ext_resource type="Script" uid="uid://ckoluvmpkkf00" path="res://monster_path.gd" id="5_6pb3s"]
 [ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="5_ctebd"]
-[ext_resource type="PackedScene" uid="uid://tmkdkgu7s5vv" path="res://tower/tower.tscn" id="6_4mnpp"]
-[ext_resource type="PackedScene" path="res://monster.tscn" id="6_e3ldi"]
+[ext_resource type="PackedScene" uid="uid://tmkdkgu7s5vv" path="res://totem/totem.tscn" id="6_4mnpp"]
+[ext_resource type="PackedScene" uid="uid://clt7pafdvryia" path="res://monster.tscn" id="6_e3ldi"]
 [ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://assets/Vector/bar_round_gloss_large.svg" id="6_eqmdw"]
 [ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
 [ext_resource type="PackedScene" uid="uid://bmc2jmy6ojjcv" path="res://ui/totemInterface.tscn" id="8_eqmdw"]
@@ -309,4 +309,4 @@ script = ExtResource("14_htena")
 
 [node name="TotemInterface" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")
-tower_scene = ExtResource("6_4mnpp")
+totem_scene = ExtResource("6_4mnpp")
