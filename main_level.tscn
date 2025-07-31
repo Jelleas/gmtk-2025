@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=27 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
 [ext_resource type="Texture2D" uid="uid://dw2e8lr3lde1l" path="res://tilemap_packed.png" id="2_bhu08"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://ckoluvmpkkf00" path="res://monster_path.gd" id="5_6pb3s"]
 [ext_resource type="PackedScene" uid="uid://tmkdkgu7s5vv" path="res://totem/totem.tscn" id="6_4mnpp"]
 [ext_resource type="PackedScene" uid="uid://clt7pafdvryia" path="res://monster.tscn" id="6_e3ldi"]
-[ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://assets/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
+[ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
 [ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
 [ext_resource type="PackedScene" uid="uid://bmc2jmy6ojjcv" path="res://ui/totemInterface.tscn" id="8_eqmdw"]
 [ext_resource type="Script" uid="uid://brs7pxde6f6fi" path="res://ui/resource_tracker/wood_counter.gd" id="12_do8ha"]
@@ -16,10 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="13_xqiim"]
 [ext_resource type="Script" uid="uid://ch56vgnhbb8nu" path="res://ui/resource_tracker/frog_counter.gd" id="14_htena"]
 [ext_resource type="Script" uid="uid://bcit1i2pbruel" path="res://ui/monster_tracker/monster_tracker.gd" id="15_52es0"]
-[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="15_ah7fh"]
-[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://assets/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="15_ah7fh"]
+[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://kenney_ui-pack-space-expansion/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="17_x2wht"]
 [ext_resource type="Script" uid="uid://bx8mgqkfs0pv3" path="res://ui/monster_tracker/monster_counter.gd" id="19_08fmi"]
+[ext_resource type="Script" uid="uid://bvhc545o6qhs" path="res://ui/shop/shop.gd" id="19_8m212"]
+[ext_resource type="PackedScene" uid="uid://bfl5pn8htrw26" path="res://ui/shop/shop_item.tscn" id="20_8m212"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mnpp"]
 texture = ExtResource("2_bhu08")
@@ -266,10 +268,10 @@ resource_path = NodePath("../ResourcePath")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="ResourceTracker" type="VBoxContainer" parent="UI" node_paths=PackedStringArray("resource_path")]
-offset_left = 203.0
-offset_top = 131.0
-offset_right = 299.0
-offset_bottom = 171.0
+offset_left = 391.0
+offset_top = 645.0
+offset_right = 487.0
+offset_bottom = 723.0
 script = ExtResource("8_do8ha")
 resource_path = NodePath("../../ResourcePath")
 
@@ -312,10 +314,10 @@ text = "0"
 script = ExtResource("14_htena")
 
 [node name="MonsterTracker" type="VBoxContainer" parent="UI" node_paths=PackedStringArray("monster_path")]
-offset_left = 849.0
-offset_top = 131.0
-offset_right = 945.0
-offset_bottom = 171.0
+offset_left = 661.0
+offset_top = 643.0
+offset_right = 757.0
+offset_bottom = 694.0
 script = ExtResource("15_52es0")
 monster_path = NodePath("../../MonsterPath")
 
@@ -331,6 +333,14 @@ layout_mode = 2
 text = "0 escaped"
 horizontal_alignment = 1
 script = ExtResource("19_08fmi")
+
+[node name="Shop" type="VBoxContainer" parent="UI"]
+offset_left = 204.0
+offset_top = 114.0
+offset_right = 304.0
+offset_bottom = 330.0
+script = ExtResource("19_8m212")
+shop_item = ExtResource("20_8m212")
 
 [node name="TotemInterface" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")

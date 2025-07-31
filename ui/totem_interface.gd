@@ -12,7 +12,7 @@ func _ready() -> void:
 	$CreateConsumers/CreateConsumer1.init(resource_manager, totem_scene, 0, 1)
 	$CreateConsumers/CreateConsumer2.init(resource_manager, totem_scene, 3, 4)
 	$CreateConsumers/CreateConsumer3.init(resource_manager, totem_scene, 9, 10)
-	$CreateConsumers/CreateConsumer4.init(resource_manager, totem_scene, 15, 15)
+	$CreateConsumers/CreateConsumer4.init(resource_manager, totem_scene, 15, 16)
 	$CreateConsumers/CreateConsumer5.init(resource_manager, totem_scene, 18, 19)
 	$CreateConsumers/CreateConsumer6.init(resource_manager, totem_scene, 21, 22)
 	$CreateConsumers/CreateConsumer7.init(resource_manager, totem_scene, 27, 28)
