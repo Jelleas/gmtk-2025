@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=19 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
 [ext_resource type="Texture2D" uid="uid://dw2e8lr3lde1l" path="res://tilemap_packed.png" id="2_bhu08"]
@@ -8,8 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="5_ctebd"]
 [ext_resource type="PackedScene" uid="uid://tmkdkgu7s5vv" path="res://tower/tower.tscn" id="6_4mnpp"]
 [ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://assets/Vector/bar_round_gloss_large.svg" id="6_eqmdw"]
-[ext_resource type="Script" path="res://resource_bar.gd" id="7_5fjre"]
+[ext_resource type="Script" uid="uid://xjggkl7wtjqu" path="res://ui/resource_tracker/resource_bar.gd" id="7_5fjre"]
 [ext_resource type="Script" uid="uid://b1tc24egun83x" path="res://ui/create_consumer.gd" id="7_ctebd"]
+[ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
+[ext_resource type="Script" uid="uid://brs7pxde6f6fi" path="res://ui/resource_tracker/wood_counter.gd" id="12_do8ha"]
+[ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="13_xqiim"]
+[ext_resource type="Script" uid="uid://ch56vgnhbb8nu" path="res://ui/resource_tracker/frog_counter.gd" id="14_htena"]
 
 [sub_resource type="Curve2D" id="Curve2D_5ymk8"]
 
@@ -234,6 +238,7 @@ tile_map_data = PackedByteArray("AAAGAB8AAAAAAAgAAAAgAAUAAAACAAYAAAAGAAUAAAABAAc
 tile_set = SubResource("TileSet_ctebd")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(353, 295)
 script = ExtResource("4_05as6")
 
 [node name="ResourcePath" type="Path2D" parent="."]
@@ -243,16 +248,6 @@ script = ExtResource("2_05as6")
 [node name="Timer" type="Timer" parent="." node_paths=PackedStringArray("resource_path")]
 wait_time = 0.05
 script = ExtResource("3_bhu08")
-resource_path = NodePath("../ResourcePath")
-
-[node name="ResourceBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("resource_path")]
-offset_left = 87.0
-offset_top = 6.0
-offset_right = 183.0
-offset_bottom = 46.0
-texture_under = ExtResource("5_ctebd")
-texture_progress = ExtResource("6_eqmdw")
-script = ExtResource("7_5fjre")
 resource_path = NodePath("../ResourcePath")
 
 [node name="CreateProducer" type="Button" parent="." node_paths=PackedStringArray("resource_manager")]
@@ -275,3 +270,51 @@ text = "Create Consumer
 script = ExtResource("7_ctebd")
 tower_scene = ExtResource("6_4mnpp")
 resource_manager = NodePath("../ResourcePath")
+
+[node name="ResourceTracker" type="CanvasLayer" parent="." node_paths=PackedStringArray("resource_path")]
+script = ExtResource("8_do8ha")
+resource_path = NodePath("../ResourcePath")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourceTracker"]
+offset_left = 203.0
+offset_top = 131.0
+offset_right = 299.0
+offset_bottom = 171.0
+
+[node name="ResourceBar" type="TextureProgressBar" parent="ResourceTracker/VBoxContainer"]
+layout_mode = 2
+texture_under = ExtResource("5_ctebd")
+texture_progress = ExtResource("6_eqmdw")
+script = ExtResource("7_5fjre")
+
+[node name="WoodTracker" type="HBoxContainer" parent="ResourceTracker/VBoxContainer"]
+layout_mode = 2
+
+[node name="WoodRect" type="TextureRect" parent="ResourceTracker/VBoxContainer/WoodTracker"]
+layout_mode = 2
+texture = ExtResource("13_xqiim")
+
+[node name="MarginContainer" type="MarginContainer" parent="ResourceTracker/VBoxContainer/WoodTracker"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WoodCounter" type="Label" parent="ResourceTracker/VBoxContainer/WoodTracker/MarginContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("12_do8ha")
+
+[node name="FrogTracker" type="HBoxContainer" parent="ResourceTracker/VBoxContainer"]
+layout_mode = 2
+
+[node name="FrogRect" type="TextureRect" parent="ResourceTracker/VBoxContainer/FrogTracker"]
+layout_mode = 2
+texture = ExtResource("13_xqiim")
+
+[node name="MarginContainer" type="MarginContainer" parent="ResourceTracker/VBoxContainer/FrogTracker"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FrogCounter" type="Label" parent="ResourceTracker/VBoxContainer/FrogTracker/MarginContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("14_htena")
