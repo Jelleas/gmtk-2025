@@ -12,8 +12,8 @@ func _ready() -> void:
 
 func init(item_) -> void: # TODO type hint
 	item = item_
-	$GridContainer/NameLabel.text = item
-	$GridContainer/PriceLabel.text = "100$"
+	$HBoxContainer/NameLabel.text = item
+	$HBoxContainer/PriceLabel.text = "100$"
 
 func _on_button_up() -> void:
 	if item != null:

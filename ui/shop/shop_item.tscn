@@ -6,23 +6,19 @@
 [node name="ShopItem" type="VBoxContainer"]
 script = ExtResource("1_a5sgx")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-columns = 2
 
-[node name="NameLabel" type="Label" parent="GridContainer"]
+[node name="NameLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "foo"
 horizontal_alignment = 1
 
-[node name="PriceLabel" type="Label" parent="GridContainer"]
+[node name="PriceLabel" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "90$"
 horizontal_alignment = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
