@@ -19,7 +19,9 @@ enum Rarity {
 	COMMON,
 	UNCOMMON,
 	RARE,
-	DAISYDAIRY,
+	EPIC,
+	LEGENDARY,
+	GAMING
 }
 
 class Base extends Resource:
@@ -49,18 +51,20 @@ class Modifier extends Resource:
 	var price: int
 	var type: ModifierType
 	var icon: Sprite2D
-	var modifiers: Array[Callable]
 	var rarity: Rarity
-	
-	func _init(_name: String, _price: int, _type: ModifierType, _icon: Sprite2D, _modifiers: Array, _rarity: Rarity):
-		name = _name
-		price = _price
-		type = _type
-		icon = _icon
-		modifiers = _modifiers
-		rarity = _rarity
+
+class Speed1 extends Modifier:
+	func _init():
+		name = "speed"
+		price = 100
+		type = ModifierType.SPEED
+		icon = Sprite2D.new()
+		rarity = Rarity.COMMON
+				
+	func apply(bt):
+		bt.cooldown *= 0.8
 		
 
 var modifiers: Array[Modifier] = [
-	Modifier.new("speed", 100, ModifierType.SPEED, Sprite2D.new(), [func(bt): bt.cooldown *= 0.8], Rarity.COMMON)
+	Speed1.new()
 ]
