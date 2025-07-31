@@ -1,5 +1,6 @@
 extends Path2D
 
+@export var resource_scene: PackedScene
 @export var loop_seconds: float = 10
 var SIZE: int = 72
 var contents: Array[Node] = []
@@ -41,8 +42,7 @@ func create_resource(resource_enum: Res.Type, index: int) -> bool:
 	
 	if contents[actual_index] != null:
 		return false
-	
-	var resource_scene = load("res://resource.tscn")
+
 	var resource = resource_scene.instantiate()
 	add_child(resource)
 	

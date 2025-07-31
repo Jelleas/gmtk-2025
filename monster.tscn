@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://clt7pafdvryia"]
+
+[ext_resource type="Script" uid="uid://c75kjpflhiyel" path="res://monster.gd" id="1_mrqeg"]
+[ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="2_ga5te"]
+
+[node name="Monster" type="PathFollow2D"]
+rotation = -1.5708
+script = ExtResource("1_mrqeg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ga5te")
