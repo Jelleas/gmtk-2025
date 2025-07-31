@@ -30,7 +30,7 @@ func consume(resource: Res.Type, start: int, end: int) -> bool:
 
 func get_resource(resource: Res.Type, index: int) -> bool:
 	var actual_index = translate_index(index)
-	if contents[actual_index].type == resource:
+	if  contents[actual_index] != null && contents[actual_index].type == resource:
 		remove_child(contents[actual_index])
 		contents[actual_index] = null
 		return true
@@ -47,7 +47,7 @@ func create_resource(resource_enum: Res.Type, index: int) -> bool:
 	add_child(resource)
 	
 	# init resource script
-	resource.init(resource_enum, get_resource_progress_ratio(index))
+	resource.init(resource_enum, get_resource_progress_ratio(actual_index))
 	
 	# add to inventory
 	contents[actual_index] = resource
@@ -55,8 +55,12 @@ func create_resource(resource_enum: Res.Type, index: int) -> bool:
 	return true
 
 func get_resource_progress_ratio(index: int) -> float:
-	var offset = fmod(index_modifier, float(1) / SIZE)
-	return float(index) / SIZE + offset
+	var real_index = (index_modifier * SIZE) - index
+	if (real_index < 0):
+		real_index += SIZE
+	
+	var ratio = float(real_index) / SIZE
+	return ratio
 
 func translate_index(index: int) -> int:
 	return int(index + floor(index_modifier * SIZE)) % SIZE
