@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=26 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
 [ext_resource type="Texture2D" uid="uid://dw2e8lr3lde1l" path="res://tilemap_packed.png" id="2_bhu08"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="15_ah7fh"]
 [ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://assets/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="17_x2wht"]
+[ext_resource type="Script" uid="uid://bx8mgqkfs0pv3" path="res://monster_counter.gd" id="19_08fmi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mnpp"]
 texture = ExtResource("2_bhu08")
@@ -325,6 +326,12 @@ value = 100.0
 texture_under = ExtResource("15_ah7fh")
 texture_progress = ExtResource("16_x2wht")
 script = ExtResource("17_x2wht")
+
+[node name="MonsterCounter" type="Label" parent="UI/MonsterTracker"]
+layout_mode = 2
+text = "0 escaped"
+horizontal_alignment = 1
+script = ExtResource("19_08fmi")
 
 [node name="TotemInterface" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")
