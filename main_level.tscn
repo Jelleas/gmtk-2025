@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://b7qs6iul08i56" path="res://camera_2d.gd" id="4_05as6"]
 [ext_resource type="PackedScene" uid="uid://ig8ajdvhhbd3" path="res://resource.tscn" id="4_xqiim"]
 [ext_resource type="Script" uid="uid://ckoluvmpkkf00" path="res://monster_path.gd" id="5_6pb3s"]
-[ext_resource type="PackedScene" uid="uid://tmkdkgu7s5vv" path="res://totem/totem.tscn" id="6_4mnpp"]
 [ext_resource type="PackedScene" uid="uid://clt7pafdvryia" path="res://monster.tscn" id="6_e3ldi"]
 [ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
 [ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
@@ -356,8 +355,7 @@ horizontal_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Inventory"]
 layout_mode = 2
 
-[node name="TotemInterface" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("8_eqmdw")]
+[node name="TotemManager" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")
-totem_scene = ExtResource("6_4mnpp")
 
 [connection signal="child_exiting_tree" from="MonsterPath" to="MonsterPath" method="_on_child_exiting_tree"]

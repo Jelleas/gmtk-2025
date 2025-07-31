@@ -11,6 +11,7 @@ var actions: Array = []
 var needed_resources:Array = []
 var created_resources:Array = []
 var modifiers: Array = []
+var base
 
 func init(resource_man: Path2D, resource: Res.Type, start_index: int, end_index: int):
 	resource_manager = resource_man

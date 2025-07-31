@@ -1,0 +1,202 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmc2jmy6ojjcv"]
+
+[ext_resource type="Script" uid="uid://b1tc24egun83x" path="res://ui/create_consumer.gd" id="1_bk48f"]
+[ext_resource type="Script" uid="uid://bb5ordsn20hjx" path="res://ui/totem_interface.gd" id="1_xfnlq"]
+[ext_resource type="PackedScene" uid="uid://tmkdkgu7s5vv" path="res://totem/totem.tscn" id="2_xfnlq"]
+[ext_resource type="Script" uid="uid://3iinph6g21gf" path="res://ui/create_producer.gd" id="3_7yxgs"]
+
+[node name="TotemManager" type="Node2D"]
+script = ExtResource("1_xfnlq")
+totem_scene = ExtResource("2_xfnlq")
+
+[node name="CreateProducers" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreateProducer1" type="Button" parent="CreateProducers"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 410.0
+offset_right = 264.0
+offset_bottom = 441.0
+text = "1"
+script = ExtResource("3_7yxgs")
+
+[node name="CreateProducer2" type="Button" parent="CreateProducers"]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 410.0
+offset_right = 330.0
+offset_bottom = 441.0
+text = "2"
+script = ExtResource("3_7yxgs")
+
+[node name="CreateProducer3" type="Button" parent="CreateProducers"]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 410.0
+offset_right = 393.0
+offset_bottom = 441.0
+text = "3"
+script = ExtResource("3_7yxgs")
+
+[node name="CreateProducer4" type="Button" parent="CreateProducers"]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 410.0
+offset_right = 453.0
+offset_bottom = 441.0
+text = "4"
+script = ExtResource("3_7yxgs")
+
+[node name="CreateConsumers" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreateConsumer1" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 123.0
+offset_right = 169.0
+offset_bottom = 154.0
+text = "1"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer2" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 124.0
+offset_right = 265.0
+offset_bottom = 155.0
+text = "2"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer3" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 123.0
+offset_right = 361.0
+offset_bottom = 154.0
+text = "3"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer4" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 121.0
+offset_right = 457.0
+offset_bottom = 152.0
+text = "4"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer5" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 122.0
+offset_right = 552.0
+offset_bottom = 153.0
+text = "5"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer6" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 217.0
+offset_right = 552.0
+offset_bottom = 248.0
+text = "6"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer7" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 314.0
+offset_right = 553.0
+offset_bottom = 345.0
+text = "7"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer8" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 411.0
+offset_right = 553.0
+offset_bottom = 442.0
+text = "8"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer9" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 506.0
+offset_right = 553.0
+offset_bottom = 537.0
+text = "9"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer10" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 505.0
+offset_right = 456.0
+offset_bottom = 536.0
+text = "10"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer11" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 506.0
+offset_right = 361.0
+offset_bottom = 537.0
+text = "11"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer12" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 508.0
+offset_right = 265.0
+offset_bottom = 539.0
+text = "12"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer13" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 507.0
+offset_right = 169.0
+offset_bottom = 538.0
+text = "13"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer14" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 409.0
+offset_right = 169.0
+offset_bottom = 440.0
+text = "14"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer15" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 314.0
+offset_right = 169.0
+offset_bottom = 345.0
+text = "15"
+script = ExtResource("1_bk48f")
+
+[node name="CreateConsumer16" type="Button" parent="CreateConsumers"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 217.0
+offset_right = 169.0
+offset_bottom = 248.0
+text = "16"
+script = ExtResource("1_bk48f")
