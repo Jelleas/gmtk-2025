@@ -5,7 +5,7 @@ class_name Tower
 @export var start: int
 @export var end: int
 @export var resource_manager: Path2D
-@export var internal_timer: float = 10.0
+@export var internal_timer: float = 5.0
 
 var actions: Array = []
 var needed_resources:Array = []
