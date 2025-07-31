@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name Tower
+class_name Totem
 
 @export var start: int
 @export var end: int

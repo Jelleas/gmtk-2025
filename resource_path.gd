@@ -20,14 +20,12 @@ func _process(delta: float) -> void:
 func deposit(resource: Res.Type, start: int, end: int) -> bool:
 	for i in range(start, end + 1):
 		if create_resource(resource, i):
-			print('prod', ', ', resource, ', ',i,', ',translate_index(i))
 			return true
 	return false
 	
 func consume(resource: Res.Type, start: int, end: int) -> bool:
 	for i in range(start, end + 1):
 		if get_resource(resource, i):
-			print('Cons', ', ',resource, ', ',i, ', ',translate_index(i))
 			return true
 	return false
 
