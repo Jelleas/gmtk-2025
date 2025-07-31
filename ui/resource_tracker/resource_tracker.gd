@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends VBoxContainer
 
 @export var resource_path: Path2D;
 
