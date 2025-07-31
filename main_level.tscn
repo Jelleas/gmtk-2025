@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="13_xqiim"]
 [ext_resource type="Script" uid="uid://ch56vgnhbb8nu" path="res://ui/resource_tracker/frog_counter.gd" id="14_htena"]
 [ext_resource type="Script" uid="uid://bcit1i2pbruel" path="res://ui/monster_tracker/monster_tracker.gd" id="15_52es0"]
-[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="15_ah7fh"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="15_ah7fh"]
 [ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://assets/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="17_x2wht"]
 [ext_resource type="Script" uid="uid://bx8mgqkfs0pv3" path="res://ui/monster_tracker/monster_counter.gd" id="19_08fmi"]

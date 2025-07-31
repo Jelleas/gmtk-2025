@@ -4,10 +4,10 @@ extends Control
 @export var totem_scene: PackedScene
 
 func _ready() -> void:
-	$CreateProducers/CreateProducer1.init(resource_manager, totem_scene, 51, 52)
-	$CreateProducers/CreateProducer2.init(resource_manager, totem_scene, 47, 48)
-	$CreateProducers/CreateProducer3.init(resource_manager, totem_scene, 43, 44)
-	$CreateProducers/CreateProducer4.init(resource_manager, totem_scene, 39, 40)
+	$CreateProducers/CreateProducer1.init(resource_manager, totem_scene, Res.Type.WOOD, 51, 52)
+	$CreateProducers/CreateProducer2.init(resource_manager, totem_scene, Res.Type.WOOD, 47, 48)
+	$CreateProducers/CreateProducer3.init(resource_manager, totem_scene, Res.Type.FROG, 43, 44)
+	$CreateProducers/CreateProducer4.init(resource_manager, totem_scene, Res.Type.FROG, 39, 40)
 	
 	$CreateConsumers/CreateConsumer1.init(resource_manager, totem_scene, 0, 1)
 	$CreateConsumers/CreateConsumer2.init(resource_manager, totem_scene, 3, 4)
