@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=25 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
 [ext_resource type="Texture2D" uid="uid://dw2e8lr3lde1l" path="res://tilemap_packed.png" id="2_bhu08"]
@@ -16,6 +16,10 @@
 [ext_resource type="Script" uid="uid://xjggkl7wtjqu" path="res://ui/resource_tracker/resource_bar.gd" id="13_6pb3s"]
 [ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="13_xqiim"]
 [ext_resource type="Script" uid="uid://ch56vgnhbb8nu" path="res://ui/resource_tracker/frog_counter.gd" id="14_htena"]
+[ext_resource type="Script" uid="uid://bcit1i2pbruel" path="res://ui/monster_tracker/monster_tracker.gd" id="15_52es0"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="15_ah7fh"]
+[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://assets/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
+[ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="17_x2wht"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4mnpp"]
 texture = ExtResource("2_bhu08")
@@ -307,10 +311,23 @@ layout_mode = 2
 text = "0"
 script = ExtResource("14_htena")
 
-[node name="MonsterTracker" type="VBoxContainer" parent="UI"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MonsterTracker" type="VBoxContainer" parent="UI" node_paths=PackedStringArray("monster_path")]
+offset_left = 849.0
+offset_top = 131.0
+offset_right = 945.0
+offset_bottom = 171.0
+script = ExtResource("15_52es0")
+monster_path = NodePath("../../MonsterPath")
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI/MonsterTracker"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("15_ah7fh")
+texture_progress = ExtResource("16_x2wht")
+script = ExtResource("17_x2wht")
 
 [node name="TotemInterface" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")
 totem_scene = ExtResource("6_4mnpp")
+
+[connection signal="child_exiting_tree" from="MonsterPath" to="MonsterPath" method="_on_child_exiting_tree"]

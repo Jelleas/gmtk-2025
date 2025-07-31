@@ -2,7 +2,7 @@ extends PathFollow2D
 
 class_name Monster
 
-signal monster_escape(cost: int)
+signal monster_escape(monster: Monster)
 
 const LOOP_SECONDS = 20
 
@@ -25,6 +25,6 @@ func init(type_: Monster.Type):
 
 func escape():
 	print("escaped")
-	monster_escape.emit(escape_cost)
+	monster_escape.emit(self)
 	queue_free()
 	
