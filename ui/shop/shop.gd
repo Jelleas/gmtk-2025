@@ -4,18 +4,27 @@ extends VBoxContainer
 @export var inventory: Inventory
 @export var totem_interface: TotemInterface
 
-const N_SLOTS: int = 3
+const N_MODIFIER_SLOTS: int = 3
+const N_BASE_SLOTS: int = 1
 
 var items: Array[ShopItem] = []
+
+var totem: Totem
 
 func _ready() -> void:
 	reroll()
 	$RerollButton.button_up.connect(_on_reroll_button_button_up)
 	totem_interface.TotemSelected.connect(_on_totem_selected)
+	inventory.TotemPieceRemoved.connect(_on_totem_piece_removed)
 	hide()
 
-func _on_totem_selected(totem: Totem) -> void:
+func _on_totem_selected(totem_: Totem) -> void:
+	totem = totem_
 	show()
+	pop_on_screen()
+
+func _on_totem_piece_removed(totem_piece: TotemPieces.TotemPiece) -> void:
+	sync_with_totem()
 
 func _on_reroll_button_button_up() -> void:
 	reroll()
@@ -27,18 +36,56 @@ func _on_item_bought(item) -> void: # TODO type hint
 func reroll() -> void:
 	for item in items:
 		item.queue_free()
+
 	items = []
 	
+	for it in get_random_sample(TotemPieces.modifiers, N_MODIFIER_SLOTS):
+		items.append(create_item(it))
+		
+	for it in get_random_sample(TotemPieces.base_types, N_BASE_SLOTS):
+		items.append(create_item(it))
+
+	pop_on_screen()
+	
+func pop_on_screen():
+	for item in items:
+		item.modulate.a = 0.0
+		item.disable()
+
+	for item in items:	
+		
+		var tween = create_tween()
+		tween.tween_property(item, "modulate:a", 1.0, 0.7).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	sync_with_totem()
+	
+func sync_with_totem() -> void:
+	if totem == null:
+		return
+	
+	for it in items:
+		var is_base_piece = it.item.is_base_type
+		var has_base = totem.base != null
+		
+		if (has_base and is_base_piece) or (not has_base and not is_base_piece):
+			it.disable()
+		else:
+			it.enable()
+	
+func get_random_sample(items: Array, n: int) -> Array:
 	var indices = []
-	while len(indices) < N_SLOTS:
-		var index = randi() % TotemPieces.modifiers.size()
+	while len(indices) < n:
+		var index = randi() % items.size()
 		if not indices.has(index):
 			indices.append(index)
-			
+	
+	var random_items = []
 	for index in indices:
-		items.append(create_item(TotemPieces.modifiers[index]))
+		random_items.append(items[index])
 
-func create_item(modifier: TotemPieces.Modifier) -> ShopItem: # TODO type hint
+	return random_items
+
+func create_item(modifier: TotemPieces.TotemPiece) -> ShopItem:
 	var shop_item = shop_item.instantiate()
 	shop_item.init(modifier)
 	add_child(shop_item)

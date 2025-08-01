@@ -4,7 +4,7 @@ class_name InventorySlot
 
 signal ItemDeleted(item: TotemPieces.TotemPiece)
 
-var content: TotemPieces.TotemPiece
+var totem_piece: TotemPieces.TotemPiece
 
 func _ready() -> void:
 	style_button()
@@ -12,7 +12,36 @@ func _ready() -> void:
 	$Control/DeleteButton.button_up.connect(_on_delete_button_pressed)
 
 func _on_delete_button_pressed():
-	ItemDeleted.emit(content)
+	hide_delete()
+	ItemDeleted.emit(totem_piece)
+	
+func show_delete() -> void:
+	$Control/DeleteButton.self_modulate.a = 1.0
+	$Control/DeleteButton.disabled = false
+
+func hide_delete() -> void:
+	$Control/DeleteButton.self_modulate.a = 0.0
+	$Control/DeleteButton.disabled = true
+
+func is_empty() -> bool:
+	return totem_piece == null
+	
+func empty() -> void:
+	totem_piece = null
+	$Label.self_modulate.a = 0.0
+	$Control/DeleteButton.self_modulate.a = 0.0
+	$HBoxContainer/TextureRect.self_modulate.a = 0.0
+	
+func fill(content_: TotemPieces.TotemPiece) -> void:
+	totem_piece = content_
+
+	$Label.self_modulate.a = 1.0
+	$Label.text = totem_piece.name
+	
+	$HBoxContainer/TextureRect.self_modulate.a = 1.0
+	
+	tooltip_text = totem_piece.description
+	$Control/DeleteButton.tooltip_text = totem_piece.description
 
 func style_button() -> void:
 	var delete_button = $Control/DeleteButton
@@ -37,26 +66,3 @@ func style_button() -> void:
 	delete_button.set("theme_override_styles/normal", normal_style)
 	delete_button.set("theme_override_styles/hover", hover_style)
 	delete_button.set("theme_override_styles/pressed", pressed_style)
-
-func show_delete() -> void:
-	$Control/DeleteButton.self_modulate.a = 1.0
-
-func is_empty() -> bool:
-	return content == null
-	
-func empty() -> void:
-	content = null
-	$Label.self_modulate.a = 0.0
-	$Control/DeleteButton.self_modulate.a = 0.0
-	$HBoxContainer/TextureRect.self_modulate.a = 0.0
-	
-func fill(content_: TotemPieces.TotemPiece) -> void: # TODO type hint
-	content = content_
-
-	$Label.self_modulate.a = 1.0
-	$Label.text = content.name
-	
-	$HBoxContainer/TextureRect.self_modulate.a = 1.0
-	
-	tooltip_text = content.description
-	$Control/DeleteButton.tooltip_text = content.description

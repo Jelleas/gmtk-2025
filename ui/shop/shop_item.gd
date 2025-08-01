@@ -17,6 +17,16 @@ func init(item_: TotemPieces.TotemPiece) -> void:
 	$HBoxContainer/NameLabel.text = item.name
 	$HBoxContainer/PriceLabel.text = str(item.price) + '$'
 
+func enable() -> void:
+	$HBoxContainer/NameLabel.self_modulate.a = 1.0
+	$HBoxContainer/PriceLabel.self_modulate.a = 1.0
+	$Button.disabled = false
+	
+func disable() -> void:
+	$HBoxContainer/NameLabel.self_modulate.a = 0.5
+	$HBoxContainer/PriceLabel.self_modulate.a = 0.5
+	$Button.disabled = true
+
 func _on_button_up() -> void:
 	if item != null:
 		item_bought.emit(item)

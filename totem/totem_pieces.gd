@@ -45,7 +45,7 @@ class TotemBase extends TotemPiece:
 
 class Forest extends TotemBase:
 	func _init():
-		name = "forest"
+		name = "Forest"
 		price = 100
 		type = BaseType.PRODUCER
 		icon = Sprite2D.new()
@@ -59,7 +59,7 @@ class Forest extends TotemBase:
 
 class Pond extends TotemBase:
 	func _init():
-		name = "pond"
+		name = "Pond"
 		price = 100
 		type = BaseType.PRODUCER
 		icon = Sprite2D.new()
@@ -73,7 +73,7 @@ class Pond extends TotemBase:
 
 class Dart extends TotemBase:
 	func _init():
-		name = "dart"
+		name = "Dart"
 		price = 100
 		type = BaseType.DART
 		icon = Sprite2D.new()

@@ -2,6 +2,8 @@ extends VBoxContainer
 
 class_name Inventory
 
+signal TotemPieceRemoved(totem_piece: TotemPieces.TotemPiece)
+
 @export var totem_interface: TotemInterface
 @export var inventory_slot: PackedScene
 
@@ -88,4 +90,7 @@ func _on_item_deleted(item) -> void:
 		totem.remove_base()
 	else:
 		totem.remove_modifier(item)
+		
+	TotemPieceRemoved.emit(item)
+
 	set_totem(totem)
