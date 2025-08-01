@@ -2,19 +2,26 @@ extends VBoxContainer
 
 class_name ShopItem
 
-signal item_bought(item) # TODO type hint
+signal item_bought(modifier: TotemPieces.Modifier)
 
-var item # TODO type hint
+var item: TotemPieces.Modifier
 
 func _ready() -> void:
 	$Button.custom_minimum_size = Vector2(100, 50)
 	$Button.button_up.connect(_on_button_up)
 
-func init(item_) -> void: # TODO type hint
+func init(item_: TotemPieces.Modifier) -> void:
 	item = item_
-	$HBoxContainer/NameLabel.text = item
-	$HBoxContainer/PriceLabel.text = "100$"
+	tooltip_text = item.description
+	$Button.tooltip_text = item.description
+	$HBoxContainer/NameLabel.text = item.name
+	$HBoxContainer/PriceLabel.text = str(item.price) + '$'
 
 func _on_button_up() -> void:
 	if item != null:
 		item_bought.emit(item)
+
+func _make_custom_tooltip(for_text):
+	var label = Label.new()
+	label.text = for_text
+	return label

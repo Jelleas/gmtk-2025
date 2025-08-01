@@ -89,7 +89,7 @@ class Modifier extends Resource:
 
 class Speed1 extends Modifier:
 	func _init():
-		name = "Speed"
+		name = "Speed 1"
 		price = 100
 		description = "Activate the totem 10% faster"
 		type = ModifierType.SPEED
@@ -103,8 +103,8 @@ class Speed1 extends Modifier:
 
 class Speed2 extends Modifier:
 	func _init():
-		name = "Speed"
-		price = 100
+		name = "Speed 2"
+		price = 200
 		description = "Activate the totem 20% faster"
 		type = ModifierType.SPEED
 		icon = Sprite2D.new()
@@ -117,8 +117,8 @@ class Speed2 extends Modifier:
 
 class Speed3 extends Modifier:
 	func _init():
-		name = "Speed"
-		price = 100
+		name = "Speed 3"
+		price = 300
 		description = "Activate the totem 30% faster"
 		type = ModifierType.SPEED
 		icon = Sprite2D.new()
@@ -129,7 +129,7 @@ class Speed3 extends Modifier:
 		totem_base.cooldown *= 0.7
 		return totem_base
 
-var modifiers: Array[Modifier] = [
+static var modifiers: Array[Modifier] = [
 	Speed1.new(),
 	Speed2.new(),
 	Speed3.new()
