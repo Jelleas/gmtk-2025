@@ -2,14 +2,34 @@ extends VBoxContainer
 
 class_name Inventory
 
+@export var totem_interface: TotemInterface
 @export var inventory_slot: PackedScene
 
 const DEFAULT_N_SLOTS: int = 2
 
 var slots: Array[InventorySlot] = []
 
+var totem: Totem = null
+
 func _ready() -> void:
 	_init_slots(DEFAULT_N_SLOTS)
+	totem_interface.TotemSelected.connect(_on_totem_selected)
+
+func _on_totem_selected(totem: Totem):
+	set_totem(totem)
+	
+func set_totem(totem_: Totem):
+	totem = totem_
+	
+	var totem_pieces: Array[TotemPieces.TotemPiece] = []
+	
+	totem_pieces.append(totem.base)
+	for mod in totem.modifiers:
+		totem_pieces.append(mod)
+	
+	fill(totem_pieces)
+	
+	$Label.text = totem.base.name.capitalize() + ' Totem'
 
 func fill(items: Array[TotemPieces.TotemPiece]) -> void:
 	var n_slots = items.size() + 1

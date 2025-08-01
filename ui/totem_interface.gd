@@ -1,32 +1,43 @@
 extends Node2D
 
+class_name TotemInterface
+
 @export var resource_manager: Path2D
 @export var totem_scene: PackedScene
 
+signal TotemSelected(totem: Totem)
+signal TotemUnselected(totem: Totem)
 
 var totems: Array = []
 
 func totem_pressed(totem_index: int):
-	var totem = totems[totem_index]
+	var fill_plot = totems[totem_index]
+	var totem: Totem = null
+	
 	if(totems[totem_index].size() < 5):
-		create_totem(totem_index, totem)
+		totem = create_totem(totem_index, fill_plot)
 	#elif(totem[4].base == 0):
 		#totem[4].set_base(TotemPieces.BaseType.DART)
 	else:
-		totem[4].add_modifier(TotemPieces.Speed1.new())
+		fill_plot[4].add_modifier(TotemPieces.Speed1.new())
+		totem = fill_plot[4]
+
+	TotemSelected.emit(totem)
 	
 
-func create_totem(totem_index: int, totem):
+func create_totem(totem_index: int, fill_plot) -> Totem:
 	var totem_scene = totem_scene.instantiate()
 	add_child(totem_scene)
-	totem_scene.init(resource_manager, totem[1], totem[2])
+	totem_scene.init(resource_manager, fill_plot[1], fill_plot[2])
 	totems[totem_index].append(totem_scene)
 	
 	if(totem_index <4):
-		totem_scene.set_base(totem[0])
-		totem[3].text = totem[0].name
+		totem_scene.set_base(fill_plot[0])
+		fill_plot[3].text = fill_plot[0].name
 	else:
-		totem[3].text ="C"
+		fill_plot[3].text ="C"
+		
+	return totem_scene
 
 func set_base(totem_index: int, base: TotemPieces.TotemBase):
 	totems[totem_index].set_base(base)
