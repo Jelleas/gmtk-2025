@@ -84,13 +84,11 @@ func set_base(new_base: TotemPieces.TotemBase):
 	
 	if(base.type == TotemPieces.BaseType.PRODUCER):
 		var base_init = $Producer
-		add_child(base_init)
 		base_init.init(self)
 		base_scene = base_init
 		
 	if(base.type == TotemPieces.BaseType.DART):
 		var base_init = $Dart
-		add_child(base_init)
 		base_init.init(self)
 		base_scene = base_init
 	
