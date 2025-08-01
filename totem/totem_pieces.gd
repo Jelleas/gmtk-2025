@@ -79,30 +79,58 @@ var base_types: Array[Base] = [
 class Modifier extends Resource:
 	var name: String
 	var price: int
+	var description: String
 	var type: ModifierType
 	var icon: Sprite2D
 	var rarity: Rarity
-	var consumes: Array[Res.Type]
-	var produces: Array[Res.Type]
 	
 	func apply(_totem_base):
 		push_error("Modifier subclass must implement 'apply()'")
 
 class Speed1 extends Modifier:
 	func _init():
-		name = "speed"
+		name = "Speed"
 		price = 100
+		description = "Activate the totem 10% faster"
 		type = ModifierType.SPEED
 		icon = Sprite2D.new()
 		rarity = Rarity.COMMON
-		consumes = [Res.Type.WOOD]
-		produces = []
 				
 	func apply(totem_base):
+		#totem_base.energy_cost *= 1 / 0.9
+		totem_base.cooldown *= 0.9
+		return totem_base
+
+class Speed2 extends Modifier:
+	func _init():
+		name = "Speed"
+		price = 100
+		description = "Activate the totem 20% faster"
+		type = ModifierType.SPEED
+		icon = Sprite2D.new()
+		rarity = Rarity.RARE
+				
+	func apply(totem_base):
+		#totem_base.energy_cost *= 1 / 0.8
 		totem_base.cooldown *= 0.8
 		return totem_base
-		
+
+class Speed3 extends Modifier:
+	func _init():
+		name = "Speed"
+		price = 100
+		description = "Activate the totem 30% faster"
+		type = ModifierType.SPEED
+		icon = Sprite2D.new()
+		rarity = Rarity.EPIC
+				
+	func apply(totem_base):
+		#totem_base.energy_cost *= 1 / 0.7
+		totem_base.cooldown *= 0.7
+		return totem_base
 
 var modifiers: Array[Modifier] = [
-	Speed1.new()
+	Speed1.new(),
+	Speed2.new(),
+	Speed3.new()
 ]

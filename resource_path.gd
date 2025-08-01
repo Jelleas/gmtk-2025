@@ -1,5 +1,7 @@
 extends Path2D
 
+class_name ResourceManager
+
 @export var resource_scene: PackedScene
 @export var loop_seconds: float = 10
 var SIZE: int = 72

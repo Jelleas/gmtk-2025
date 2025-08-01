@@ -4,7 +4,7 @@ class_name Totem
 
 var start: int
 var end: int
-@export var resource_manager: Path2D
+@export var resource_manager: ResourceManager
 var timer: Timer
 
 var actions: Array = []
