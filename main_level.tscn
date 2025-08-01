@@ -352,6 +352,10 @@ script = ExtResource("19_8m212")
 shop_item = ExtResource("20_8m212")
 inventory = NodePath("../Inventory")
 
+[node name="RerollButton" type="Button" parent="UI/Shop"]
+layout_mode = 2
+text = "Reroll"
+
 [node name="Inventory" type="VBoxContainer" parent="UI" node_paths=PackedStringArray("totem_interface")]
 offset_left = 830.0
 offset_top = 80.0

@@ -9,9 +9,12 @@ var items: Array[ShopItem] = []
 
 func _ready() -> void:
 	reroll()
+	$RerollButton.button_up.connect(_on_reroll_button_button_up)
+
+func _on_reroll_button_button_up() -> void:
+	reroll()
 
 func _on_item_bought(item) -> void: # TODO type hint
-	print("bought, ", item)
 	reroll()
 	inventory.add_item(item)
 
