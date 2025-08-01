@@ -36,6 +36,30 @@ class Base extends Resource:
 	var produces: Array[Res.Type]
 	
 
+class Forest extends Base:
+	func _init():
+		name = "forest"
+		price = 100
+		type = BaseType.PRODUCER
+		icon = Sprite2D.new()
+		damage = 0
+		cooldown = 5.0
+		crit_chance = 0
+		consumes = []
+		produces = [Res.Type.WOOD]
+
+class Pond extends Base:
+	func _init():
+		name = "pond"
+		price = 100
+		type = BaseType.PRODUCER
+		icon = Sprite2D.new()
+		damage = 0
+		cooldown = 10.0
+		crit_chance = 0
+		consumes = []
+		produces = [Res.Type.FROG]
+
 class Dart extends Base:
 	func _init():
 		name = "dart"
@@ -49,7 +73,7 @@ class Dart extends Base:
 		produces = []
 
 var BaseTypes: Array[Base] = [
-	Dart.new()
+	Dart.new(), Forest.new(), Pond.new()
 ]
 
 class Modifier extends Resource:

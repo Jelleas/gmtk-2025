@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://buyy73ip5sskn" path="res://totem/totem.gd" id="1_758mn"]
 
-[node name="Tower" type="Node2D"]
+[node name="Totem" type="Node2D"]
 script = ExtResource("1_758mn")
 
 [node name="Timer" type="Timer" parent="."]
