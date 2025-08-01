@@ -62,6 +62,8 @@ class Pond extends TotemBase:
 		crit_chance = 0
 		consumes = []
 		produces = [Res.Type.FROG]
+		total_energy = 100.0
+		energy_cost = 5.0
 
 class Dart extends TotemBase:
 	func _init():
@@ -74,6 +76,8 @@ class Dart extends TotemBase:
 		crit_chance = 0.05
 		consumes = [Res.Type.WOOD]
 		produces = []
+		total_energy = 100.0
+		energy_cost = 5.0
 
 var base_types: Array[TotemBase] = [
 	Dart.new(), Forest.new(), Pond.new()
