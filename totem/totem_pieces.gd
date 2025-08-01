@@ -84,8 +84,8 @@ class Dart extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 10.0
 
-var base_types: Array[TotemBase] = [
-	Dart.new(), Forest.new(), Pond.new()
+static var base_types: Array[TotemBase] = [
+	Forest.new(), Pond.new(), Dart.new()
 ]
 
 class Modifier extends TotemPiece:
