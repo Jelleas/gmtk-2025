@@ -8,7 +8,6 @@ var end: int
 var timer: Timer
 
 var actions: Array = []
-var needed_resources: Array[Res.Type] = []
 var inventory: Array[Res.Type] = []
 var created_resources:Array = []
 var modifiers: Array = []
@@ -20,6 +19,8 @@ var cooldown: float
 var crit_chance: float
 var total_energy: float
 var energy_cost: float
+var produces: Array[Res.Type] = []
+var consumes: Array[Res.Type] = []
 
 func init(resource_man: Path2D, start_index: int, end_index: int):
 	resource_manager = resource_man
@@ -38,19 +39,18 @@ func startTimer():
 	timer.start()
 
 func _process(delta: float) -> void:
-	if(needed_resources.size() > 0):
+	if(consumes.size() > 0):
 		retrieve()
 	deposit()
 
 func _on_timer_timeout():
-	produce()
 	startTimer()
 
 func retrieve():
-	if(needed_resources.size() == inventory.size()):
+	if(consumes.size() == inventory.size()):
 		return
 	
-	var copy_needed = needed_resources.duplicate()
+	var copy_needed = consumes.duplicate()
 	for item in inventory:
 		if item in copy_needed:
 			copy_needed.erase(item)
@@ -87,8 +87,3 @@ func add_modifier(modifier: TotemPieces.Modifier):
 	
 func remove_modifier(modifier_type):
 	return
-
-func produce():
-	if(inventory.size() == needed_resources.size()): 
-		for action in actions:
-			action.call()

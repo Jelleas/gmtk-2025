@@ -49,7 +49,7 @@ class Forest extends TotemBase:
 		consumes = []
 		produces = [Res.Type.WOOD]
 		total_energy = 100.0
-		energy_cost = 5.0
+		energy_cost = 100.0
 
 class Pond extends TotemBase:
 	func _init():
@@ -63,7 +63,7 @@ class Pond extends TotemBase:
 		consumes = []
 		produces = [Res.Type.FROG]
 		total_energy = 100.0
-		energy_cost = 5.0
+		energy_cost = 100.0
 
 class Dart extends TotemBase:
 	func _init():
