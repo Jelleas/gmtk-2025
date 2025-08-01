@@ -28,7 +28,7 @@ func create_totem(totem_index: int, totem):
 	else:
 		totem[3].text ="C"
 
-func set_base(totem_index: int, base: TotemPieces.Base):
+func set_base(totem_index: int, base: TotemPieces.TotemBase):
 	totems[totem_index].set_base(base)
 
 func add_modifier(totem_index: int, modifier: TotemPieces.Modifier):
