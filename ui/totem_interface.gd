@@ -12,18 +12,8 @@ var totems: Array = []
 
 func totem_pressed(totem_index: int):
 	var fill_plot = totems[totem_index]
-	var totem: Totem = null
-	
-	if(totems[totem_index].size() < 5):
-		totem = create_totem(totem_index, fill_plot)
-	#elif(totem[4].base == 0):
-		#totem[4].set_base(TotemPieces.BaseType.DART)
-	else:
-		fill_plot[4].add_modifier(TotemPieces.Speed1.new())
-		totem = fill_plot[4]
-
+	var totem = create_totem(totem_index, fill_plot)
 	TotemSelected.emit(totem)
-	
 
 func create_totem(totem_index: int, fill_plot) -> Totem:
 	var totem_scene = totem_scene.instantiate()
@@ -35,8 +25,8 @@ func create_totem(totem_index: int, fill_plot) -> Totem:
 		totem_scene.set_base(fill_plot[0])
 		fill_plot[3].text = fill_plot[0].name
 	else:
-		fill_plot[3].text ="C"
-		
+		totem_scene.set_base(TotemPieces.Dart.new())
+		fill_plot[3].text = "Dart"
 	return totem_scene
 
 func set_base(totem_index: int, base: TotemPieces.TotemBase):
