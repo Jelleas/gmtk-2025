@@ -38,11 +38,13 @@ func fill(items: Array[TotemPieces.TotemPiece]) -> void:
 		var slot = slots[i]
 		slot.fill(item)
 	
-func add(item: TotemPieces.TotemPiece): # TODO type hint
-	for slot in slots:
-		if slot.is_empty():
-			slot.fill(item)
-			break
+func add(item): # TODO type hint
+	if item is TotemPieces.BaseType:
+		totem.set_base(item)
+	else:
+		totem.add_modifier(item)
+	
+	set_totem(totem)
 
 func _init_slots(n_slots: int) -> void:
 	for i in range(slots.size() - n_slots):

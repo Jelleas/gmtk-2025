@@ -97,8 +97,6 @@ func set_base(new_base: TotemPieces.TotemBase):
 	startTimer()
 
 func add_modifier(modifier: TotemPieces.Modifier):
-	if(modifiers.size() > 4):
-		return false
 	modifiers.append(modifier)
 	base_scene.apply_modifier(modifier)
 	

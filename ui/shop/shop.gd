@@ -2,6 +2,7 @@ extends VBoxContainer
 
 @export var shop_item: PackedScene
 @export var inventory: Inventory
+@export var totem_interface: TotemInterface
 
 const N_SLOTS: int = 3
 
@@ -10,13 +11,18 @@ var items: Array[ShopItem] = []
 func _ready() -> void:
 	reroll()
 	$RerollButton.button_up.connect(_on_reroll_button_button_up)
+	totem_interface.TotemSelected.connect(_on_totem_selected)
+	hide()
+
+func _on_totem_selected(totem: Totem) -> void:
+	show()
 
 func _on_reroll_button_button_up() -> void:
 	reroll()
 
 func _on_item_bought(item) -> void: # TODO type hint
+	inventory.add(item)
 	reroll()
-	inventory.add_item(item)
 
 func reroll() -> void:
 	for item in items:
