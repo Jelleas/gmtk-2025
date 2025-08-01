@@ -3,3 +3,4 @@
 /android/
 .DS_Store
 kenney_ui-pack-space-expansion
+*.tmp
