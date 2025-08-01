@@ -52,6 +52,9 @@ class Modifier extends Resource:
 	var type: ModifierType
 	var icon: Sprite2D
 	var rarity: Rarity
+	
+	func apply(_totem_base):
+		push_error("Modifier subclass must implement 'apply()'")
 
 class Speed1 extends Modifier:
 	func _init():
@@ -61,8 +64,8 @@ class Speed1 extends Modifier:
 		icon = Sprite2D.new()
 		rarity = Rarity.COMMON
 				
-	func apply(bt):
-		bt.cooldown *= 0.8
+	func apply(totem_base):
+		totem_base.cooldown *= 0.8
 		
 
 var modifiers: Array[Modifier] = [
