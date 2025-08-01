@@ -8,12 +8,8 @@ var totems: Array = []
 
 func totem_pressed(totem_index: int):
 	var totem = totems[totem_index]
-	if(totems[totem_index].size() < 5):
-		create_totem(totem_index, totem)
-	#elif(totem[4].base == 0):
-		#totem[4].set_base(TotemPieces.BaseType.DART)
-	else:
-		totem[4].add_modifier(TotemPieces.Speed1.new())
+
+	create_totem(totem_index, totem)
 	
 
 func create_totem(totem_index: int, totem):
@@ -26,7 +22,8 @@ func create_totem(totem_index: int, totem):
 		totem_scene.set_base(totem[0])
 		totem[3].text = totem[0].name
 	else:
-		totem[3].text ="C"
+		totem_scene.set_base(TotemPieces.Dart.new())
+		totem[3].text = "Dart"
 
 func set_base(totem_index: int, base: TotemPieces.TotemBase):
 	totems[totem_index].set_base(base)

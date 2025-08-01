@@ -21,6 +21,8 @@ var total_energy: float
 var energy_cost: float
 var produces: Array[Res.Type] = []
 var consumes: Array[Res.Type] = []
+var needs_met: bool = false
+var is_active: bool = false
 
 func init(resource_man: Path2D, start_index: int, end_index: int):
 	resource_manager = resource_man
@@ -39,24 +41,33 @@ func startTimer():
 	timer.start()
 
 func _process(delta: float) -> void:
-	if(consumes.size() > 0):
+	if (!is_active):
+		return
+	if(!needs_met):
 		retrieve()
 	deposit()
 
 func _on_timer_timeout():
 	startTimer()
 
-func retrieve():
-	if(consumes.size() == inventory.size()):
-		return
-	
+func check_needed():
 	var copy_needed = consumes.duplicate()
 	for item in inventory:
 		if item in copy_needed:
 			copy_needed.erase(item)
-		
-	for resource in copy_needed:
+	return copy_needed
+
+func retrieve():
+	var needed = check_needed()
+	if(needed.size() == 0):
+		needs_met = true
+		return
+
+	for resource in needed:
 		var res = resource_manager.consume(resource, start, end)
+		if (res):
+			inventory.append(resource)
+		
 
 func deposit():
 	while created_resources.size() > 0:
@@ -73,6 +84,12 @@ func set_base(new_base: TotemPieces.TotemBase):
 	
 	if(base.type == TotemPieces.BaseType.PRODUCER):
 		var base_init = $Producer
+		add_child(base_init)
+		base_init.init(self)
+		base_scene = base_init
+		
+	if(base.type == TotemPieces.BaseType.DART):
+		var base_init = $Dart
 		add_child(base_init)
 		base_init.init(self)
 		base_scene = base_init

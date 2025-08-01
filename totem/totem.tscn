@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://tmkdkgu7s5vv"]
+[gd_scene load_steps=4 format=3 uid="uid://tmkdkgu7s5vv"]
 
 [ext_resource type="Script" uid="uid://buyy73ip5sskn" path="res://totem/totem.gd" id="1_758mn"]
 [ext_resource type="Script" uid="uid://b78kd0ybgaab4" path="res://totem/producer.gd" id="2_1gino"]
+[ext_resource type="Script" uid="uid://ckfmgbqgrvf0c" path="res://totem/dart.gd" id="3_gpwgi"]
 
 [node name="Totem" type="Node2D"]
 script = ExtResource("1_758mn")
@@ -12,3 +13,6 @@ autostart = true
 
 [node name="Producer" type="Node2D" parent="."]
 script = ExtResource("2_1gino")
+
+[node name="Dart" type="Node2D" parent="."]
+script = ExtResource("3_gpwgi")

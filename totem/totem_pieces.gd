@@ -77,12 +77,12 @@ class Dart extends TotemBase:
 		type = BaseType.DART
 		icon = Sprite2D.new()
 		damage = 10
-		cooldown = 10.0
+		cooldown = 1.0
 		crit_chance = 0.05
 		consumes = [Res.Type.WOOD]
 		produces = []
 		total_energy = 100.0
-		energy_cost = 5.0
+		energy_cost = 10.0
 
 var base_types: Array[TotemBase] = [
 	Dart.new(), Forest.new(), Pond.new()
