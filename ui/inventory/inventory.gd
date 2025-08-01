@@ -5,14 +5,12 @@ class_name Inventory
 @export var totem_interface: TotemInterface
 @export var inventory_slot: PackedScene
 
-const DEFAULT_N_SLOTS: int = 2
-
 var slots: Array[InventorySlot] = []
 
 var totem: Totem = null
 
 func _ready() -> void:
-	_init_slots(DEFAULT_N_SLOTS)
+	$Label.text = ""
 	totem_interface.TotemSelected.connect(_on_totem_selected)
 
 func _on_totem_selected(totem: Totem):
