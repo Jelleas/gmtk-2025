@@ -24,11 +24,16 @@ enum Rarity {
 	GAMING
 }
 
-class TotemBase extends Resource:
+class TotemPiece extends Resource:
 	var name: String
 	var price: int
-	var type: BaseType
 	var icon: Sprite2D
+	var description: String
+	var rarity: Rarity
+	
+
+class TotemBase extends TotemPiece:
+	var type: BaseType
 	var damage: int
 	var cooldown: float
 	var crit_chance: float
@@ -83,13 +88,8 @@ var base_types: Array[TotemBase] = [
 	Dart.new(), Forest.new(), Pond.new()
 ]
 
-class Modifier extends Resource:
-	var name: String
-	var price: int
-	var description: String
+class Modifier extends TotemPiece:
 	var type: ModifierType
-	var icon: Sprite2D
-	var rarity: Rarity
 	
 	func apply(_totem_base):
 		push_error("Modifier subclass must implement 'apply()'")

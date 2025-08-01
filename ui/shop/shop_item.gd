@@ -2,15 +2,15 @@ extends VBoxContainer
 
 class_name ShopItem
 
-signal item_bought(modifier: TotemPieces.Modifier)
+signal item_bought(modifier: TotemPieces.TotemPiece)
 
-var item: TotemPieces.Modifier
+var item: TotemPieces.TotemPiece
 
 func _ready() -> void:
 	$Button.custom_minimum_size = Vector2(100, 50)
 	$Button.button_up.connect(_on_button_up)
 
-func init(item_: TotemPieces.Modifier) -> void:
+func init(item_: TotemPieces.TotemPiece) -> void:
 	item = item_
 	tooltip_text = item.description
 	$Button.tooltip_text = item.description
