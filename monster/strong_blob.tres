@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MonsterConfig" load_steps=3 format=3 uid="uid://cyjdqf7uo68o3"]
+
+[ext_resource type="Script" uid="uid://n1no8gnftcbf" path="res://monster/monster_config.gd" id="1_2b1s2"]
+[ext_resource type="SpriteFrames" uid="uid://dre8s8negrgli" path="res://monster/blob_animation.tres" id="2_ejnqt"]
+
+[resource]
+script = ExtResource("1_2b1s2")
+name = "Blob"
+health = 200
+speed = 6
+escape_cost = 15
+rank = 4
+sprite = ExtResource("2_ejnqt")
+resistances = Array[int]([])
+metadata/_custom_type_script = "uid://n1no8gnftcbf"
