@@ -47,6 +47,10 @@ func add(item): # TODO type hint
 	set_totem(totem)
 
 func _init_slots(n_slots: int) -> void:
+	var MIN_SLOTS = 5
+	
+	n_slots = max(n_slots, MIN_SLOTS)
+	
 	for i in range(slots.size() - n_slots):
 		_pop_slot()
 	
