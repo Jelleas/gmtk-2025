@@ -4,44 +4,45 @@ extends Node2D
 @export var totem_scene: PackedScene
 
 
-var totems = []
+var totems: Array = []
 
-func totem_pressed(totem_index):
+func totem_pressed(totem_index: int):
 	var totem = totems[totem_index]
 	if(totems[totem_index].size() < 5):
 		create_totem(totem_index, totem)
-	elif(totem[4].base == 0):
-		totem[4].set_base(TotemPieces.BaseType.DART)
+	#elif(totem[4].base == 0):
+		#totem[4].set_base(TotemPieces.BaseType.DART)
 	else:
-		totem[4].add_modifier(TotemPieces.ModifierType.SPEED)
+		totem[4].add_modifier(TotemPieces.Speed1.new())
 	
 
-func create_totem(totem_index, totem):
+func create_totem(totem_index: int, totem):
 	var totem_scene = totem_scene.instantiate()
 	add_child(totem_scene)
-	totem_scene.init(resource_manager, totem[0], totem[1], totem[2])
+	totem_scene.init(resource_manager, totem[1], totem[2])
 	totems[totem_index].append(totem_scene)
 	
 	if(totem_index <4):
-		totem[3].text ="P"
+		totem_scene.set_base(totem[0])
+		totem[3].text = totem[0].name
 	else:
 		totem[3].text ="C"
 
-func set_base(totem_index, base_type):
-	totems[totem_index].set_base()
+func set_base(totem_index: int, base: TotemPieces.Base):
+	totems[totem_index].set_base(base)
 
-func upgrade_totem(totem_index):
-	totems[totem_index].upgrade()
+func add_modifier(totem_index: int, modifier: TotemPieces.Modifier):
+	totems[totem_index].add_modifier(modifier)
 
-func enable_plot(totem_index):
+func enable_plot(totem_index: int):
 	totems[totem_index][3].show()
 
 func _ready() -> void:
 	totems = [
-		[Res.Type.WOOD, 51, 52, $TotemPlot],
-		[Res.Type.WOOD, 47, 48, $TotemPlot1],
-		[Res.Type.FROG, 43, 44, $TotemPlot2],
-		[Res.Type.FROG, 39, 40, $TotemPlot3],
+		[TotemPieces.Forest.new(), 51, 52, $TotemPlot],
+		[TotemPieces.Forest.new(), 47, 48, $TotemPlot1],
+		[TotemPieces.Pond.new(), 43, 44, $TotemPlot2],
+		[TotemPieces.Pond.new(), 39, 40, $TotemPlot3],
 		[-1, 0, 1, $TotemPlot4],
 		[-1, 3, 4, $TotemPlot5],
 		[-1, 9, 10, $TotemPlot6],
@@ -70,4 +71,4 @@ func hide_buttons():
 	for i in range(0, totems.size()):
 		if i == 0 || i == 1 || i == 4  || i == 5:
 			continue
-		totems[i][3].hide()
+		#totems[i][3].hide()

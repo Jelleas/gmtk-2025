@@ -72,7 +72,7 @@ class Dart extends Base:
 		consumes = [Res.Type.WOOD]
 		produces = []
 
-var BaseTypes: Array[Base] = [
+var base_types: Array[Base] = [
 	Dart.new(), Forest.new(), Pond.new()
 ]
 
@@ -100,6 +100,7 @@ class Speed1 extends Modifier:
 				
 	func apply(totem_base):
 		totem_base.cooldown *= 0.8
+		return totem_base
 		
 
 var modifiers: Array[Modifier] = [

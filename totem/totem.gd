@@ -2,38 +2,37 @@ extends Node2D
 
 class_name Totem
 
-@export var start: int
-@export var end: int
+var start: int
+var end: int
 @export var resource_manager: Path2D
-@export var internal_timer: float = 10.0
+var timer: Timer
 
 var actions: Array = []
 var needed_resources:Array = []
 var created_resources:Array = []
 var modifiers: Array = []
 
-var base:TotemPieces.BaseType = TotemPieces.BaseType.EMPTY
+var base:TotemPieces.Base
+var base_scene: Node2D
+var damage: int
+var cooldown: float
+var crit_chance: float
 
-func init(resource_man: Path2D, resource: Res.Type, start_index: int, end_index: int):
+func init(resource_man: Path2D, start_index: int, end_index: int):
 	resource_manager = resource_man
 	start = start_index
 	end = end_index
-	if(resource != -1):
-		base = TotemPieces.BaseType.PRODUCER
-		actions.append(func() -> void: create(resource))
 
-func _ready() -> void:
-	$Timer.timeout.connect(_on_timer_timeout)
-	produce()
+	timer = Timer.new()
+	timer.one_shot = true
+	timer.autostart = false
+	add_child(timer)
+	timer.timeout.connect(_on_timer_timeout)
 
 func startTimer():
-	var time_to_wait = internal_timer
-	for mod in modifiers:
-		if mod == 0:
-			time_to_wait = time_to_wait * 0.8
-
-	$Timer.wait_time = time_to_wait
-	$Timer.start()
+	var time_to_wait = cooldown
+	timer.wait_time = time_to_wait
+	timer.start()
 
 func _process(delta: float) -> void:
 	if(needed_resources.size() > 0):
@@ -59,23 +58,27 @@ func deposit():
 		else:
 			break
 
-func create(resource: Res.Type):
-	created_resources.append(resource)
-
-func set_base(base_type: TotemPieces.BaseType):
-	if(base_type != 1 && base != 1):
+func set_base(new_base: TotemPieces.Base):
+	if(base != null && new_base.type != TotemPieces.BaseType.EMPTY && base.type != TotemPieces.BaseType.EMPTY):
 		return false
-	base = base_type
+	base = new_base
+	
+	if(base.type == TotemPieces.BaseType.PRODUCER):
+		var base_init = $Producer
+		add_child(base_init)
+		base_init.init(self)
+		base_scene = base_init
+	
+	startTimer()
 
-func add_modifier(modifier_type):
+func add_modifier(modifier: TotemPieces.Modifier):
 	if(modifiers.size() > 4):
 		return false
-	modifiers.append(modifier_type)
+	modifiers.append(modifier)
+	base_scene.apply_modifier(modifier)
 	
 func remove_modifier(modifier_type):
-	if(modifiers.size() > 4):
-		return false
-	modifiers.append(modifier_type)
+	return
 
 func produce():
 	var can_produce = true
