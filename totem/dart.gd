@@ -11,6 +11,9 @@ var cooldown: float
 var total_energy: float
 var energy_cost: float
 var current_energy: float
+var range: float
+
+var target: bool = false
 
 func init(parent_ref):
 	totem = parent_ref
@@ -24,14 +27,25 @@ func init(parent_ref):
 	cooldown = totem.base.cooldown
 	total_energy = totem.base.total_energy
 	energy_cost = totem.base.energy_cost
+	range = totem.base.range
 	
 	totem.damage = totem.base.damage
 	totem.crit_chance = totem.base.crit_chance
 	totem.cooldown = totem.base.cooldown
+	totem.range = totem.base.range
 	totem.total_energy = totem.base.total_energy
 	totem.energy_cost = totem.base.energy_cost
 	totem.produces = totem.base.produces
 	totem.consumes = totem.base.consumes
+	
+	print(totem.plot_position)
+	$AttackArea.position = totem.plot_position
+	var tile_size = totem.tile_map_layer.tile_set.tile_size
+	var center = totem.tile_map_layer.map_to_local(totem.plot_position)
+	$AttackArea/CollisionShape2D.global_position = totem.tile_map_layer.to_global(center)
+	$AttackArea/CollisionShape2D.shape.radius = totem.base.range
+	
+	$AttackArea.body_entered.connect(set_target)
 	
 	is_active = true
 	totem.is_active = true
@@ -48,8 +62,12 @@ func refill_energy():
 		totem.inventory = []
 		totem.needs_met = false
 
+func set_target():
+	target = true
+	print('target')
+
 func totem_action():
-	if(current_energy >= energy_cost):
+	if(target && current_energy >= energy_cost):
 		current_energy -= energy_cost
 		print("PEW PEW PEW")
 

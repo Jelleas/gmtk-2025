@@ -37,6 +37,7 @@ class TotemBase extends TotemPiece:
 	var damage: int
 	var cooldown: float
 	var crit_chance: float
+	var range: float
 	var consumes: Array[Res.Type]
 	var produces: Array[Res.Type]
 	var total_energy: float
@@ -56,6 +57,7 @@ class Forest extends TotemBase:
 		produces = [Res.Type.WOOD]
 		total_energy = 100.0
 		energy_cost = 100.0
+		range = 0.0
 
 class Pond extends TotemBase:
 	func _init():
@@ -70,6 +72,7 @@ class Pond extends TotemBase:
 		produces = [Res.Type.FROG]
 		total_energy = 100.0
 		energy_cost = 100.0
+		range = 0.0
 
 class Dart extends TotemBase:
 	func _init():
@@ -84,6 +87,7 @@ class Dart extends TotemBase:
 		produces = []
 		total_energy = 100.0
 		energy_cost = 10.0
+		range = 60.0
 
 static var base_types: Array[TotemBase] = [
 	Forest.new(), Pond.new(), Dart.new()
