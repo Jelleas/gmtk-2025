@@ -4,7 +4,9 @@ class_name Totem
 
 var start: int
 var end: int
+var plot_position: Vector2
 @export var resource_manager: ResourceManager
+@export var tile_map_layer: TileMapLayer
 var timer: Timer
 
 var actions: Array = []
@@ -17,6 +19,7 @@ var base_scene: Node2D
 var damage: int
 var cooldown: float
 var crit_chance: float
+var range: float
 var total_energy: float
 var energy_cost: float
 var produces: Array[Res.Type] = []
@@ -24,10 +27,13 @@ var consumes: Array[Res.Type] = []
 var needs_met: bool = false
 var is_active: bool = false
 
-func init(resource_man: Path2D, start_index: int, end_index: int):
+func init(resource_man: Path2D, start_index: int, end_index: int, tile_map: TileMapLayer, plot_pos: Vector2):
 	resource_manager = resource_man
 	start = start_index
 	end = end_index
+	
+	tile_map_layer = tile_map
+	plot_position = plot_pos
 
 	timer = Timer.new()
 	timer.one_shot = true

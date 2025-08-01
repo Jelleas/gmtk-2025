@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://tmkdkgu7s5vv"]
+[gd_scene load_steps=6 format=3 uid="uid://tmkdkgu7s5vv"]
 
 [ext_resource type="Script" uid="uid://buyy73ip5sskn" path="res://totem/totem.gd" id="1_758mn"]
 [ext_resource type="Script" uid="uid://b78kd0ybgaab4" path="res://totem/producer.gd" id="2_1gino"]
 [ext_resource type="Script" uid="uid://ckfmgbqgrvf0c" path="res://totem/dart.gd" id="3_gpwgi"]
 [ext_resource type="Script" uid="uid://rh033edclfd5" path="res://totem/frog_bomb.gd" id="4_irn1f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_irn1f"]
 
 [node name="Totem" type="Node2D"]
 script = ExtResource("1_758mn")
@@ -17,6 +19,11 @@ script = ExtResource("2_1gino")
 
 [node name="Dart" type="Node2D" parent="."]
 script = ExtResource("3_gpwgi")
+
+[node name="AttackArea" type="Area2D" parent="Dart"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dart/AttackArea"]
+shape = SubResource("CircleShape2D_irn1f")
 
 [node name="FrogBomb" type="Node2D" parent="."]
 script = ExtResource("4_irn1f")
