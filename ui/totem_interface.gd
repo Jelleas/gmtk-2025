@@ -50,11 +50,25 @@ func add_modifier(totem_index: int, modifier: TotemPieces.Modifier):
 #func enable_plot(totem_index: int):
 	#plots[totem_index][2].show()
 
+var adjacent_offsets: Array[Vector2i] = [
+	Vector2i(0, 0),
+	Vector2i(-1, -1),
+	Vector2i(0, -1),
+	Vector2i(1, -1),
+	Vector2i(-1, 0),
+	Vector2i(1, 0),
+	Vector2i(-1, 1),
+	Vector2i(0,  1),
+	Vector2i(1,  1),
+]
+
 func _on_tile_clicked(cell_coords: Vector2i, tile_id: int) -> void:
 	for i in range(0, plots.size()):
-		if cell_coords == plots[i][1]:
-			print(cell_coords, plots[i][1], i)
-			totem_pressed(i)
+		var plot_coords: Vector2i = plots[i][1]
+		for offset in adjacent_offsets:
+			if cell_coords + offset == plot_coords:
+				totem_pressed(i)
+				break
 
 func _ready() -> void:
 	tile_map.tile_clicked.connect(_on_tile_clicked)
