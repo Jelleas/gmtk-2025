@@ -98,5 +98,9 @@ func add_modifier(modifier: TotemPieces.Modifier):
 	modifiers.append(modifier)
 	base_scene.apply_modifier(modifier)
 	
+func remove_base():
+	base = null
+	
 func remove_modifier(modifier_type):
-	return
+	var i = modifiers.find(modifier_type)
+	modifiers.remove_at(i)

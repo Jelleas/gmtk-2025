@@ -28,10 +28,26 @@ layout_mode = 2
 text = "foo"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(80, 50)
+[node name="HBoxContainer" type="CenterContainer" parent="."]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_huu8b")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="DeleteButton" type="Button" parent="Control"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+offset_right = 35.0
+offset_bottom = 35.0
 size_flags_horizontal = 4
-icon = ExtResource("1_huu8b")
+theme_override_font_sizes/font_size = 17
+text = "🗑️"
 icon_alignment = 1
 expand_icon = true

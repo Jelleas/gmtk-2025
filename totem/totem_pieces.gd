@@ -31,7 +31,6 @@ class TotemPiece extends Resource:
 	var icon: Sprite2D
 	var description: String
 	var rarity: Rarity
-	
 
 class TotemBase extends TotemPiece:
 	var type: BaseType
@@ -42,6 +41,7 @@ class TotemBase extends TotemPiece:
 	var produces: Array[Res.Type]
 	var total_energy: float
 	var energy_cost: float
+	var is_base_type = true
 
 class Forest extends TotemBase:
 	func _init():
@@ -90,6 +90,7 @@ static var base_types: Array[TotemBase] = [
 ]
 
 class Modifier extends TotemPiece:
+	var is_base_type = false
 	var type: ModifierType
 	
 	func apply(_totem_base):
