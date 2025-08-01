@@ -8,15 +8,19 @@ var end: int
 var timer: Timer
 
 var actions: Array = []
-var needed_resources:Array = []
+var inventory: Array[Res.Type] = []
 var created_resources:Array = []
 var modifiers: Array = []
 
-var base:TotemPieces.Base
+var base:TotemPieces.TotemBase
 var base_scene: Node2D
 var damage: int
 var cooldown: float
 var crit_chance: float
+var total_energy: float
+var energy_cost: float
+var produces: Array[Res.Type] = []
+var consumes: Array[Res.Type] = []
 
 func init(resource_man: Path2D, start_index: int, end_index: int):
 	resource_manager = resource_man
@@ -35,20 +39,24 @@ func startTimer():
 	timer.start()
 
 func _process(delta: float) -> void:
-	if(needed_resources.size() > 0):
+	if(consumes.size() > 0):
 		retrieve()
 	deposit()
 
 func _on_timer_timeout():
-	produce()
 	startTimer()
 
 func retrieve():
-	for i in range(0, needed_resources.size()):
-		if(needed_resources[i][1] == true):
-			var res = resource_manager.consume(needed_resources[i][0], start, end)
-			if(res):
-				needed_resources[i][1] = false
+	if(consumes.size() == inventory.size()):
+		return
+	
+	var copy_needed = consumes.duplicate()
+	for item in inventory:
+		if item in copy_needed:
+			copy_needed.erase(item)
+		
+	for resource in copy_needed:
+		var res = resource_manager.consume(resource, start, end)
 
 func deposit():
 	while created_resources.size() > 0:
@@ -58,7 +66,7 @@ func deposit():
 		else:
 			break
 
-func set_base(new_base: TotemPieces.Base):
+func set_base(new_base: TotemPieces.TotemBase):
 	if(base != null && new_base.type != TotemPieces.BaseType.EMPTY && base.type != TotemPieces.BaseType.EMPTY):
 		return false
 	base = new_base
@@ -79,13 +87,3 @@ func add_modifier(modifier: TotemPieces.Modifier):
 	
 func remove_modifier(modifier_type):
 	return
-
-func produce():
-	var can_produce = true
-	for resource in needed_resources:
-		if(resource[1] == false):
-			can_produce == false
-
-	if(can_produce): 
-		for action in actions:
-			action.call()

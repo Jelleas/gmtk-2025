@@ -24,7 +24,7 @@ enum Rarity {
 	GAMING
 }
 
-class Base extends Resource:
+class TotemBase extends Resource:
 	var name: String
 	var price: int
 	var type: BaseType
@@ -34,9 +34,10 @@ class Base extends Resource:
 	var crit_chance: float
 	var consumes: Array[Res.Type]
 	var produces: Array[Res.Type]
-	
+	var total_energy: float
+	var energy_cost: float
 
-class Forest extends Base:
+class Forest extends TotemBase:
 	func _init():
 		name = "forest"
 		price = 100
@@ -47,8 +48,10 @@ class Forest extends Base:
 		crit_chance = 0
 		consumes = []
 		produces = [Res.Type.WOOD]
+		total_energy = 100.0
+		energy_cost = 100.0
 
-class Pond extends Base:
+class Pond extends TotemBase:
 	func _init():
 		name = "pond"
 		price = 100
@@ -59,8 +62,10 @@ class Pond extends Base:
 		crit_chance = 0
 		consumes = []
 		produces = [Res.Type.FROG]
+		total_energy = 100.0
+		energy_cost = 100.0
 
-class Dart extends Base:
+class Dart extends TotemBase:
 	func _init():
 		name = "dart"
 		price = 100
@@ -71,8 +76,10 @@ class Dart extends Base:
 		crit_chance = 0.05
 		consumes = [Res.Type.WOOD]
 		produces = []
+		total_energy = 100.0
+		energy_cost = 5.0
 
-var base_types: Array[Base] = [
+var base_types: Array[TotemBase] = [
 	Dart.new(), Forest.new(), Pond.new()
 ]
 
