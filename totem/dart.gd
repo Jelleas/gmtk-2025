@@ -10,7 +10,7 @@ var crit_chance: float
 var cooldown: float
 var total_energy: float
 var energy_cost: float
-var current_energy: float = 0.0
+var current_energy: float
 
 func init(parent_ref):
 	totem = parent_ref

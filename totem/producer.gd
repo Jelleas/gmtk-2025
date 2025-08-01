@@ -44,6 +44,8 @@ func refill_energy():
 
 func totem_action():
 	for resource in produces:
+		if(randf() < totem.crit_chance):
+			totem.created_resources.append(resource)
 		totem.created_resources.append(resource)
 
 func apply_modifier(modifier: TotemPieces.Modifier):

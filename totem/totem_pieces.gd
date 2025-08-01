@@ -13,6 +13,7 @@ enum BaseType {
 
 enum ModifierType {
 	SPEED,
+	CRIT
 }
 
 enum Rarity {
@@ -135,9 +136,23 @@ class Speed3 extends Modifier:
 		#totem_base.energy_cost *= 1 / 0.7
 		totem_base.cooldown *= 0.7
 		return totem_base
+		
+class Crit1 extends Modifier:
+	func _init():
+		name = "Crit 1"
+		price = 100
+		description = "Increase chance of critical strikes by 5%"
+		type = ModifierType.CRIT
+		icon = Sprite2D.new()
+		rarity = Rarity.COMMON
+				
+	func apply(totem_base):
+		totem_base.crit_chance += 0.05
+		return totem_base
 
 static var modifiers: Array[Modifier] = [
 	Speed1.new(),
 	Speed2.new(),
-	Speed3.new()
+	Speed3.new(),
+	Crit1.new()
 ]
