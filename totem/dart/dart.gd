@@ -94,7 +94,6 @@ func shoot(from: Vector2, target: Area2D):
 	var to = totem.tile_map_layer.to_local(target.global_position)
 	var projectile_scene = preload("res://totem/dart/dart_projectile.tscn")
 	var proj = projectile_scene.instantiate()
-	proj.target = target
 	proj.damage = damage
 	proj.global_position = from
 	proj.direction = (to - from).normalized()
