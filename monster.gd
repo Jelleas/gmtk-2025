@@ -34,6 +34,7 @@ func _ready() -> void:
 	monster_body.monitoring = true
 	monster_body.monitorable = true
 	monster_body.area_entered.connect(get_hit)
+	monster_body.add_to_group("monster")
 
 func get_hit(proj: Area2D):
 	if(proj.is_in_group("projectile") && proj.target == monster_body || proj.target == null):
