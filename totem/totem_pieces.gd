@@ -5,6 +5,7 @@ class_name TotemPieces
 enum BaseType {
 	EMPTY,
 	PRODUCER,
+	CONVERTER,
 	DART,
 	FROGBOMB,
 	SWAMP,
@@ -80,6 +81,118 @@ class Pond extends TotemBase:
 		energy_cost = 0
 		range = 0.0
 
+class MossValley extends TotemBase:
+	func _init():
+		name = "Moss valley"
+		price = 100
+		type = BaseType.PRODUCER
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#D62828")
+		damage = 0
+		cooldown = 10.0
+		crit_chance = 0
+		consumes = []
+		produces = [Res.Type.SHROOM]
+		total_energy = 100.0
+		energy_cost = 0
+		range = 0.0
+
+class Shrubbery extends TotemBase:
+	func _init():
+		name = "Shubbery"
+		price = 100
+		type = BaseType.PRODUCER
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#C21807")
+		damage = 0
+		cooldown = 10.0
+		crit_chance = 0
+		consumes = []
+		produces = [Res.Type.BERRY]
+		total_energy = 100.0
+		energy_cost = 0
+		range = 0.0
+
+class FrogBurner extends TotemBase:
+	func _init():
+		name = "Frog burner"
+		price = 100
+		type = BaseType.PRODUCER
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#FF6B00")
+		damage = 0
+		cooldown = 10.0
+		crit_chance = 0
+		consumes = [Res.Type.FROG]
+		produces = [Res.Type.CRISPY_FROG]
+		total_energy = 100.0
+		energy_cost = 100
+		range = 0.0
+
+class FrogSkinner extends TotemBase:
+	func _init():
+		name = "Frog skinner"
+		price = 100
+		type = BaseType.CONVERTER
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#4A9153")
+		damage = 0
+		cooldown = 10.0
+		crit_chance = 0
+		consumes = [Res.Type.FROG]
+		produces = [Res.Type.FROG_SKIN]
+		total_energy = 100.0
+		energy_cost = 100
+		range = 0.0
+
+class BerryJuicer extends TotemBase:
+	func _init():
+		name = "Berry juicer"
+		price = 100
+		type = BaseType.CONVERTER
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#C21807")
+		damage = 0
+		cooldown = 10.0
+		crit_chance = 0
+		consumes = [Res.Type.BERRY]
+		produces = [Res.Type.BERRY_JUICE]
+		total_energy = 100.0
+		energy_cost = 100
+		range = 0.0
+
+class ShroomMulcher extends TotemBase:
+	func _init():
+		name = "Shroom mulcher"
+		price = 100
+		type = BaseType.CONVERTER
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#2E2E2E")
+		damage = 0
+		cooldown = 10.0
+		crit_chance = 0
+		consumes = [Res.Type.SHROOM]
+		produces = [Res.Type.MAGIC_DUST]
+		total_energy = 100.0
+		energy_cost = 100
+		range = 0.0
+
+class PotionStation extends TotemBase:
+	func _init():
+		name = "Potion Station"
+		price = 100
+		type = BaseType.CONVERTER
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#2E2E2E")
+		damage = 0
+		cooldown = 10.0
+		crit_chance = 0
+		consumes = [Res.Type.MAGIC_DUST, Res.Type.BERRY_JUICE]
+		produces = [Res.Type.POTION]
+		total_energy = 100.0
+		energy_cost = 100
+		range = 0.0
+
 class Dart extends TotemBase:
 	func _init():
 		name = "Dart"
@@ -113,7 +226,7 @@ class FrogBomb extends TotemBase:
 		range = 600.0
 
 static var base_types: Array[TotemBase] = [
-	Dart.new(), FrogBomb.new()
+	Dart.new(), FrogBomb.new(), FrogBurner.new(), FrogSkinner.new(), ShroomMulcher.new(), BerryJuicer.new(), PotionStation.new()
 ]
 
 class Modifier extends TotemPiece:
