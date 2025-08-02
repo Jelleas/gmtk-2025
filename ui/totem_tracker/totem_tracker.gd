@@ -46,6 +46,8 @@ func _on_totem_selected(totem_: Totem):
 	totem.TotemChanged.connect(_on_totem_changed)
 	
 func set_totem():
+	set_header()
+	
 	$HBoxContainer/DescriptionLabel.text = totem.name()
 
 	set_consumes()
@@ -54,6 +56,20 @@ func set_totem():
 	$HBoxContainer/MarginContainer3/StatsGrid.set_stats(totem)
 
 	show()
+
+func set_header():
+	var rect = $HBoxContainer/MarginContainer2/TextureRect
+	if totem.base == null:
+		rect.hide()
+	else:
+		var texture = totem.base.icon
+		var image = texture.get_image()
+		image.resize(68, 48, Image.INTERPOLATE_LANCZOS)
+
+		var resized_texture = ImageTexture.create_from_image(image)
+		rect.texture = resized_texture
+
+		rect.show()
 
 func set_consumes():
 	if totem.get_consumes().size() == 0:
@@ -66,7 +82,6 @@ func set_consumes():
 		$HBoxContainer/ConsumesLabel.show()
 	
 func set_produces():
-	
 	if totem.get_produces().size() == 0:
 		$HBoxContainer/ProducesResourceList.hide()
 		$HBoxContainer/ProducesLabel.hide()

@@ -10,3 +10,12 @@ func set_resource(resource_: Res.Type, quantity_: int) -> void:
 	quantity = quantity_
 	
 	$Label.text = str(quantity) + " " + Res.Type.keys()[resource].capitalize()
+
+	var path = Res.image_path(resource_)
+	var texture = load(path)
+#
+	var image = texture.get_image()
+	image.resize(32, 32, Image.INTERPOLATE_LANCZOS)
+
+	var resized_texture = ImageTexture.create_from_image(image)
+	$TextureRect.texture = resized_texture
