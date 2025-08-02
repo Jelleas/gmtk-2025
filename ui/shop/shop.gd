@@ -56,8 +56,7 @@ func pop_on_screen():
 		item.modulate.a = 0.5
 		item.disable()
 
-	for item in items:	
-		
+	for item in items:
 		var tween = create_tween()
 		tween.tween_property(item, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 

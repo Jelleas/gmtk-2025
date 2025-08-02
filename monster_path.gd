@@ -54,7 +54,6 @@ func _spawn_new_monster():
 	spawn(monster)
 	
 func _start_new_wave():
-	print("spawning new wave")
 	current_wave += 1
 	current_rank += 5
 	var max_monster_rank = current_rank / 3

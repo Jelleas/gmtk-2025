@@ -90,7 +90,6 @@ func check_needed():
 
 func retrieve():
 	var needed = check_needed()
-	print(needed)
 	if(needed.size() == 0):
 		needs_met = true
 		return

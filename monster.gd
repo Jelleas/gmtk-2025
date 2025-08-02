@@ -65,7 +65,6 @@ func _process(delta: float) -> void:
 			new_direction = Direction.LEFT
 	
 	if new_direction != current_direction:
-		print("changing direction to ", Direction.find_key(new_direction))
 		current_direction = new_direction
 		match new_direction:
 			Direction.UP:
@@ -108,7 +107,6 @@ func take_damage(damage: int):
 		tween.tween_callback(queue_free)
 
 func escape():
-	print("escaped")
 	monster_escape.emit(self)
 	queue_free()
 	
