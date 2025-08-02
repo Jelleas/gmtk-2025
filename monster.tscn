@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://clt7pafdvryia"]
+[gd_scene load_steps=3 format=3 uid="uid://clt7pafdvryia"]
 
 [ext_resource type="Script" uid="uid://c75kjpflhiyel" path="res://monster.gd" id="1_mrqeg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3gyj"]
 
 [node name="Monster" type="PathFollow2D"]
 rotation = -1.5708
@@ -9,3 +11,13 @@ script = ExtResource("1_mrqeg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 autoplay = "default"
+
+[node name="MonsterBody" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterBody"]
+shape = SubResource("CircleShape2D_s3gyj")
+
+[connection signal="area_entered" from="MonsterBody" to="." method="get_hit"]
+[connection signal="area_shape_entered" from="MonsterBody" to="." method="get_hit"]
+[connection signal="body_entered" from="MonsterBody" to="." method="get_hit"]
+[connection signal="body_shape_entered" from="MonsterBody" to="." method="get_hit"]
