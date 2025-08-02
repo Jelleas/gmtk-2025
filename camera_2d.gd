@@ -1,8 +1,8 @@
 extends Camera2D
 
-@export var move_speed := 500.0
+@export var move_speed := 750.0
 @export var mouse_zoom_speed := 0.1
-@export var min_zoom_value := 0.5
+@export var min_zoom_value := 0.3
 @export var max_zoom_value := 3
 
 func _process(delta):

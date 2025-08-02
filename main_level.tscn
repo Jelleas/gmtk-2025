@@ -91,7 +91,7 @@ tile_map_data = PackedByteArray("AAAHAAYABgABAAEAAAAHAAcABgABAAAAAAAHAAgABgABAAA
 tile_set = ExtResource("2_s8c5p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(353, 295)
+position = Vector2(354, 295)
 script = ExtResource("4_05as6")
 
 [node name="ResourcePath" type="Path2D" parent="."]
