@@ -5,29 +5,42 @@ class_name TotemInterface
 @export var resource_manager: Path2D
 @export var totem_scene: PackedScene
 @export var tile_map: TileMapLayer
+@export var empty_plot: PackedScene
 
 signal TotemSelected(totem: Totem)
 signal TotemUnselected(totem: Totem)
 
 var plots: Array = []
+var price: int = 5
+
 
 func totem_pressed(plot_index: int):
 	var fill_plot = plots[plot_index]
 	var totem
-	if(!plots[plot_index].size() > 2):
+	if(!plots[plot_index][2] == Totem):
+		var empty_plot = plots[plot_index][2]
+		empty_plot.destroy()
 		totem = create_totem(plot_index, fill_plot)
 		plots[plot_index][2] = totem
+		price *= 2
+		update_plot_price()
 	else:
 		totem = plots[plot_index][2]
 	
 	TotemSelected.emit(totem)
-
+	
 func create_totem(totem_index: int, fill_plot) -> Totem:
 	var totem_scene = totem_scene.instantiate()
 	add_child(totem_scene)
 	totem_scene.init(resource_manager, fill_plot[0][0], fill_plot[0][1], tile_map, fill_plot[1])
-	plots[totem_index].append(totem_scene)
+	plots[totem_index][2] = totem_scene
 	
+	if(totem_index < 4):
+		set_producer(totem_index, totem_scene)
+	
+	return totem_scene
+
+func set_producer(totem_index: int, totem_scene) -> void:
 	match totem_index:
 		0:
 			totem_scene.set_base(TotemPieces.Forest.new())
@@ -37,7 +50,6 @@ func create_totem(totem_index: int, fill_plot) -> Totem:
 			totem_scene.set_base(TotemPieces.Pond.new())
 		3:
 			totem_scene.set_base(TotemPieces.Pond.new())
-	return totem_scene
 
 func set_base(totem_index: int, base: TotemPieces.TotemBase):
 	plots[totem_index].set_base(base)
@@ -45,8 +57,36 @@ func set_base(totem_index: int, base: TotemPieces.TotemBase):
 func add_modifier(totem_index: int, modifier: TotemPieces.Modifier):
 	plots[totem_index].add_modifier(modifier)
 
-#func enable_plot(totem_index: int):
-	#plots[totem_index][2].show()
+func update_plot_price():
+	for i in range(0, plots.size()):
+		if(!plots[i][2].has_method("init")):
+			plots[i][2].set_price(price)
+
+func add_empty_plot(plot_index: int, plot_pos: Vector2i):
+	var tile_size = tile_map.tile_set.tile_size
+	var local_pos = tile_map.map_to_local(plot_pos)
+	var global_pos = tile_map.to_global(local_pos)
+	
+	
+	var sprite = empty_plot.instantiate()
+
+	match plot_index:
+		0:
+			sprite.set_color(TotemPieces.Forest.new().sprite_color)
+		1:
+			sprite.set_color(TotemPieces.Forest.new().sprite_color)
+		2:
+			sprite.set_color(TotemPieces.Pond.new().sprite_color)
+		3:
+			sprite.set_color(TotemPieces.Pond.new().sprite_color)
+		_: 
+			sprite.set_color(Color.html("#ffffff"))
+	
+	sprite.global_position = local_pos
+	sprite.set_price(price)
+	add_child(sprite)
+	
+	return sprite
 
 var adjacent_offsets: Array[Vector2i] = [
 	Vector2i(0, 0),
@@ -92,3 +132,7 @@ func _ready() -> void:
 		[[63, 64], Vector2i(4, 15)],
 		[[69, 70], Vector2i(4, 9)],
 	]
+	
+	for i in range(0, plots.size()):
+		var empty_plot = add_empty_plot(i, plots[i][1])
+		plots[i].append(empty_plot)

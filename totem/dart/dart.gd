@@ -62,7 +62,6 @@ func init(parent_ref):
 	totem.is_active = true
 
 func _process(delta: float) -> void:
-	totem.current_energy = current_energy
 	if !is_active:
 		return
 	if(current_energy <= energy_cost):

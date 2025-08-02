@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmc2jmy6ojjcv"]
+[gd_scene load_steps=4 format=3 uid="uid://bmc2jmy6ojjcv"]
 
 [ext_resource type="Script" uid="uid://bb5ordsn20hjx" path="res://ui/totem_interface.gd" id="1_xfnlq"]
 [ext_resource type="PackedScene" uid="uid://tmkdkgu7s5vv" path="res://totem/totem.tscn" id="2_xfnlq"]
+[ext_resource type="PackedScene" uid="uid://bboaxorms0tq" path="res://totem/empty_plot.tscn" id="3_bk48f"]
 
 [node name="TotemManager" type="Node2D"]
 script = ExtResource("1_xfnlq")
 totem_scene = ExtResource("2_xfnlq")
+empty_plot = ExtResource("3_bk48f")
