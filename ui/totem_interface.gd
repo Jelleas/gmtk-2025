@@ -17,7 +17,7 @@ var price: int = 5
 func totem_pressed(plot_index: int):
 	var fill_plot = plots[plot_index]
 	var totem
-	if(!plots[plot_index][2] == Totem):
+	if(!plots[plot_index][2] is Totem):
 		var empty_plot = plots[plot_index][2]
 		empty_plot.destroy()
 		totem = create_totem(plot_index, fill_plot)
@@ -59,7 +59,7 @@ func add_modifier(totem_index: int, modifier: TotemPieces.Modifier):
 
 func update_plot_price():
 	for i in range(0, plots.size()):
-		if(!plots[i][2] == Totem):
+		if(!plots[i][2] is Totem):
 			plots[i][2].set_price(price)
 
 func add_empty_plot(plot_index: int, plot_pos: Vector2i):
