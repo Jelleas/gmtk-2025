@@ -10,6 +10,7 @@ func _ready() -> void:
 	style_button()
 	empty()
 	$Control/DeleteButton.button_up.connect(_on_delete_button_pressed)
+	$Control/DeleteButton.disabled = true
 
 func _on_delete_button_pressed():
 	hide_delete()
