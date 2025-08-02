@@ -7,6 +7,7 @@ signal monster_killed(monster: Monster)
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var monster_body: Area2D = $MonsterBody
+@onready var health_bar: TextureProgressBar = $TextureProgressBar
 
 const LOOP_SECONDS = 100
 
@@ -18,6 +19,7 @@ var previous_position: Vector2
 var current_direction: Direction
 var original_modulate: Color
 var config: MonsterConfig
+var is_dead: bool = false
 
 enum Direction {
 	UP, DOWN, LEFT, RIGHT
@@ -36,6 +38,8 @@ func _ready() -> void:
 	monster_body.monitorable = true
 	monster_body.area_entered.connect(get_hit)
 	monster_body.add_to_group("monster")
+	health_bar.max_value = config.health
+	health_bar.value = config.health 
 
 func get_hit(proj: Area2D):
 	if(proj.is_in_group("projectile") && proj.target == monster_body || proj.target == null):
@@ -43,6 +47,7 @@ func get_hit(proj: Area2D):
 		proj.queue_free()
 
 func _process(delta: float) -> void:
+	if is_dead: return
 	var direction = (position - previous_position).normalized()
 	var cardinal = Vector2(round(direction.x), round(direction.y))
 	if direction.length() < 0.1:
@@ -75,6 +80,7 @@ func _process(delta: float) -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if is_dead: return
 	progress_ratio += delta / (LOOP_SECONDS / speed)
 	
 	if progress_ratio >= 1.0:
@@ -90,11 +96,16 @@ func init(_config: MonsterConfig):
 
 func take_damage(damage: int):
 	health -= damage
+	health_bar.value = health
 	_flash()
 	if(health <= 0):
-		print("killed")
+		is_dead = true
 		monster_killed.emit(self)
-		queue_free()
+		sprite.stop()
+		$MonsterBody.queue_free()
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite, "modulate:a", 0.0, 0.5)
+		tween.tween_callback(queue_free)
 
 func escape():
 	print("escaped")
