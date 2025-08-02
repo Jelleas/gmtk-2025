@@ -17,6 +17,7 @@ var frames: SpriteFrames
 var previous_position: Vector2
 var current_direction: Direction
 var original_modulate: Color
+var config: MonsterConfig
 
 enum Direction {
 	UP, DOWN, LEFT, RIGHT
@@ -79,7 +80,8 @@ func _physics_process(delta: float) -> void:
 	if progress_ratio >= 1.0:
 		escape()
 
-func init(config: MonsterConfig):
+func init(_config: MonsterConfig):
+	config = _config
 	escape_cost = config.escape_cost
 	speed = config.speed
 	health = config.health
