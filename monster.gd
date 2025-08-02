@@ -16,6 +16,7 @@ var health: int
 var frames: SpriteFrames
 var previous_position: Vector2
 var current_direction: Direction
+var original_modulate: Color
 
 enum Direction {
 	UP, DOWN, LEFT, RIGHT
@@ -24,6 +25,7 @@ enum Direction {
 func _ready() -> void:
 	previous_position = position
 	current_direction = Direction.UP
+	original_modulate = modulate
 	sprite.sprite_frames = frames
 	sprite.speed_scale = speed
 	sprite.play("walk_up")
@@ -96,7 +98,6 @@ func escape():
 	queue_free()
 	
 func _flash():
-	var original = modulate
 	var tween = create_tween()
 	sprite.modulate = Color.RED
-	tween.tween_property(sprite, "modulate", original, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(sprite, "modulate", original_modulate, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
