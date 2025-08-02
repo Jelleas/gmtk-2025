@@ -45,11 +45,11 @@ func set_producer(totem_index: int, totem_scene) -> void:
 		0:
 			totem_scene.set_base(TotemPieces.Forest.new())
 		1:
-			totem_scene.set_base(TotemPieces.Forest.new())
+			totem_scene.set_base(TotemPieces.Pond.new())
 		2:
-			totem_scene.set_base(TotemPieces.Pond.new())
+			totem_scene.set_base(TotemPieces.MossValley.new())
 		3:
-			totem_scene.set_base(TotemPieces.Pond.new())
+			totem_scene.set_base(TotemPieces.Shrubbery.new())
 
 func set_base(totem_index: int, base: TotemPieces.TotemBase):
 	plots[totem_index].set_base(base)
@@ -74,11 +74,11 @@ func add_empty_plot(plot_index: int, plot_pos: Vector2i):
 		0:
 			sprite.set_color(TotemPieces.Forest.new().sprite_color)
 		1:
-			sprite.set_color(TotemPieces.Forest.new().sprite_color)
+			sprite.set_color(TotemPieces.Pond.new().sprite_color)
 		2:
-			sprite.set_color(TotemPieces.Pond.new().sprite_color)
+			sprite.set_color(TotemPieces.MossValley.new().sprite_color)
 		3:
-			sprite.set_color(TotemPieces.Pond.new().sprite_color)
+			sprite.set_color(TotemPieces.Shrubbery.new().sprite_color)
 		_: 
 			sprite.set_color(Color.html("#ffffff"))
 	

@@ -3,9 +3,11 @@ extends VBoxContainer
 @export var shop_item: PackedScene
 @export var inventory: Inventory
 @export var totem_interface: TotemInterface
+@export var bones_tracker: BonesTracker
 
 const N_MODIFIER_SLOTS: int = 3
 const N_BASE_SLOTS: int = 1
+const REROLL_COST: int = 10
 
 var items: Array[ShopItem] = []
 
@@ -27,11 +29,13 @@ func _on_totem_piece_removed(totem_piece: TotemPieces.TotemPiece) -> void:
 	sync_with_totem()
 
 func _on_reroll_button_button_up() -> void:
+	if !bones_tracker.spend(REROLL_COST): return
 	reroll()
 
 func _on_item_bought(item) -> void: # TODO type hint
-	inventory.add(item)
-	reroll()
+	if bones_tracker.spend(item.price):
+		inventory.add(item)
+		reroll()
 
 func reroll() -> void:
 	for item in items:
@@ -52,8 +56,7 @@ func pop_on_screen():
 		item.modulate.a = 0.5
 		item.disable()
 
-	for item in items:	
-		
+	for item in items:
 		var tween = create_tween()
 		tween.tween_property(item, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 

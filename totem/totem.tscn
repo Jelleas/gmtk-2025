@@ -60,7 +60,6 @@ func refill_energy():
 func totem_action():
 	if(current_energy >= energy_cost):
 		current_energy -= energy_cost
-		print(\"PEW PEW PEW\")
 
 func apply_modifier(modifier: TotemPieces.Modifier):
 	var mod_totem = modifier.apply(totem.base)

@@ -117,6 +117,8 @@ func set_base(new_base: TotemPieces.TotemBase):
 	match base.type:
 		TotemPieces.BaseType.PRODUCER:
 			base_init = producer_scene.instantiate()
+		TotemPieces.BaseType.CONVERTER:
+			base_init = producer_scene.instantiate()
 		TotemPieces.BaseType.DART:
 			base_init = dart_scene.instantiate()
 		TotemPieces.BaseType.FROGBOMB:

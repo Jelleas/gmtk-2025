@@ -12,5 +12,3 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		if tile_id != -1:
 			emit_signal("tile_clicked", cell_coords, tile_id)
-		else:
-			print("❌ No tile at:", cell_coords)
