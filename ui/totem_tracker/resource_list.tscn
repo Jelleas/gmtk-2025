@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj26ivbhptj4n"]
+
+[ext_resource type="Script" uid="uid://cawdqqcx2uhu8" path="res://ui/totem_tracker/resource_list.gd" id="1_bm8an"]
+[ext_resource type="PackedScene" uid="uid://cylm8s6douiv6" path="res://ui/totem_tracker/resource_line.tscn" id="2_5phaf"]
+
+[node name="ResourceList" type="MarginContainer"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+script = ExtResource("1_bm8an")
+resource_line = ExtResource("2_5phaf")
+
+[node name="GridContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
