@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="MonsterConfig" load_steps=3 format=3 uid="uid://cyjdqf7uo68o3"]
 
 [ext_resource type="Script" uid="uid://n1no8gnftcbf" path="res://monster/monster_config.gd" id="1_2b1s2"]
-[ext_resource type="SpriteFrames" path="res://monster/blobboii_spriteframes.tres" id="2_2b1s2"]
+[ext_resource type="SpriteFrames" uid="uid://ccyn0babntewe" path="res://monster/blobboii_spriteframes.tres" id="2_2b1s2"]
 
 [resource]
 script = ExtResource("1_2b1s2")
@@ -13,4 +13,5 @@ rank = 4
 sprite = ExtResource("2_2b1s2")
 scale = 1.0
 resistances = Array[int]([])
+bones = 5
 metadata/_custom_type_script = "uid://n1no8gnftcbf"

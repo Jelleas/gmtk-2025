@@ -9,3 +9,4 @@ class_name MonsterConfig
 @export var sprite: SpriteFrames
 @export var scale: float
 @export var resistances: Array[TotemPieces.BaseType]
+@export var bones: int
