@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var move_speed := 300.0
+@export var move_speed := 500.0
 @export var mouse_zoom_speed := 0.1
 @export var min_zoom_value := 0.5
 @export var max_zoom_value := 3
@@ -13,12 +13,11 @@ func _process(delta):
 	
 	var zoom_value := Input.get_action_strength("camera_zoom_in") - Input.get_action_strength("camera_zoom_out")
 	
-	
 	# Normalize to prevent faster diagonal movement
 	if input_vector.length_squared() > 1.0:
 		input_vector = input_vector.normalized()
 
-	position += input_vector * move_speed * delta
+	position += input_vector * move_speed * delta * (1/zoom.x)
 	_zoom(zoom_value * delta)
 
 func _unhandled_input(event: InputEvent) -> void:
