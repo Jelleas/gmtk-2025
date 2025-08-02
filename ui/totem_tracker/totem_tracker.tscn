@@ -1,0 +1,142 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfj3upnhcrhkl"]
+
+[ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="1_rae0c"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="2_dmyxo"]
+[ext_resource type="Texture2D" uid="uid://dyeavgbjrqewr" path="res://assets/Vector/Yellow/bar_round_gloss_large.svg" id="3_dmyxo"]
+[ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="4_wusnp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmyxo"]
+bg_color = Color(0.890196, 0.85098, 0.780392, 0.188235)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Panel" type="PanelContainer"]
+offset_right = 51.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dmyxo")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("1_rae0c")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "This totem does some damages to monsters with frogs"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ProducesLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "  Produces"
+autowrap_mode = 2
+
+[node name="ProducesContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/ProducesContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ProducesContainer/GridContainer"]
+layout_mode = 2
+text = "3"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ProducesContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_rae0c")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="HBoxContainer/ProducesContainer/GridContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/ProducesContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_rae0c")
+stretch_mode = 3
+
+[node name="Label3" type="Label" parent="HBoxContainer/ProducesContainer/GridContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/ProducesContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_rae0c")
+stretch_mode = 3
+
+[node name="ConsumesLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "  Consumes"
+autowrap_mode = 2
+
+[node name="ConsumesContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/ConsumesContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/ConsumesContainer/GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/ConsumesContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_rae0c")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="HBoxContainer/ConsumesContainer/GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/ConsumesContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_rae0c")
+stretch_mode = 3
+
+[node name="Label3" type="Label" parent="HBoxContainer/ConsumesContainer/GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/ConsumesContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_rae0c")
+stretch_mode = 3
+
+[node name="EnergyLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Energy"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="EnergyBar" type="TextureProgressBar" parent="HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_dmyxo")
+texture_progress = ExtResource("3_dmyxo")
+script = ExtResource("4_wusnp")

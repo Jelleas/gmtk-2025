@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3gyj"]
 
 [node name="Monster" type="PathFollow2D"]
-rotates = false
+rotation = -1.5708
 loop = false
 script = ExtResource("1_mrqeg")
 
