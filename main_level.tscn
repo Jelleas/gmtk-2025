@@ -74,7 +74,7 @@ point_count = 6
 
 [sub_resource type="Curve2D" id="Curve2D_5ymk8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 320.375, 701.038, 0, 0, 0, 0, 319.625, 566.602, 0, 0, 0, 0, 105, 566, 0, 0, 0, 0, 105, 87, 0, 0, 0, 0, 583, 87, 0, 0, 0, 0, 583, 566, 0, 0, 0, 0, 368.875, 566.074, 0, 0, 0, 0, 367.875, 700.334)
+"points": PackedVector2Array(0, 0, 0, 0, 2558, 3977, 0, 0, 0, 0, 2551, 3216, 0, 0, 0, 0, 836, 3214, 0, 0, 0, 0, 810, 489, 0, 0, 0, 0, 4664, 489, 0, 0, 0, 0, 4687, 3216, 0, 0, 0, 0, 2941, 3213, 0, 0, 0, 0, 2950, 3984)
 }
 point_count = 8
 
@@ -104,7 +104,6 @@ resource_scene = ExtResource("4_xqiim")
 
 [node name="MonsterPath" type="Path2D" parent="."]
 position = Vector2(-641, -437)
-scale = Vector2(8, 5.683)
 curve = SubResource("Curve2D_5ymk8")
 script = ExtResource("5_6pb3s")
 monster_scene = ExtResource("6_e3ldi")
