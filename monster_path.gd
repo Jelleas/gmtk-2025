@@ -1,6 +1,9 @@
 extends Path2D
 
+class_name MonsterPath
+
 signal monster_escape(monster: Monster)
+signal monster_killed(monster: Monster)
 
 @export var monster_scene: PackedScene
 @export var wave_seconds: float = 10
@@ -32,9 +35,13 @@ func spawn(config: MonsterConfig):
 	monsters.append(monster)
 	
 	monster.monster_escape.connect(_on_monster_escape)
+	monster.monster_killed.connect(_on_monster_killed)
 	
-func _on_monster_escape(monster: Monster):
+func _on_monster_escape(monster: Monster) -> void:
 	monster_escape.emit(monster)
+
+func _on_monster_killed(monster: Monster) -> void:
+	monster_killed.emit(monster)
 
 func _on_child_exiting_tree(node: Node) -> void:
 	monsters.erase(node)

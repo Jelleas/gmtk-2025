@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=36 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dod3pkmsb116n" path="res://timer.gd" id="3_bhu08"]
 [ext_resource type="Script" uid="uid://b7qs6iul08i56" path="res://camera_2d.gd" id="4_05as6"]
 [ext_resource type="PackedScene" uid="uid://ig8ajdvhhbd3" path="res://resource.tscn" id="4_xqiim"]
-[ext_resource type="Script" path="res://monster_path.gd" id="5_6pb3s"]
+[ext_resource type="Script" uid="uid://ckoluvmpkkf00" path="res://monster_path.gd" id="5_6pb3s"]
 [ext_resource type="PackedScene" uid="uid://clt7pafdvryia" path="res://monster.tscn" id="6_e3ldi"]
 [ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://assets/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
 [ext_resource type="Script" uid="uid://n1no8gnftcbf" path="res://monster/monster_config.gd" id="7_386tm"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://bfl5pn8htrw26" path="res://ui/shop/shop_item.tscn" id="20_8m212"]
 [ext_resource type="Script" uid="uid://dahku7ck0x32r" path="res://ui/inventory/inventory.gd" id="21_xjl4t"]
 [ext_resource type="PackedScene" uid="uid://dkmry7mk0hi18" path="res://ui/inventory/inventory_slot.tscn" id="22_t3g51"]
+[ext_resource type="Texture2D" uid="uid://dg0x508rvhega" path="res://assets/resources/bone.png" id="24_5hsgd"]
+[ext_resource type="Script" uid="uid://c18x3fabprn01" path="res://ui/bones_tracker.gd" id="24_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://bfj3upnhcrhkl" path="res://ui/totem_tracker/totem_tracker.tscn" id="28_s8c5p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcp4w"]
@@ -197,6 +199,29 @@ layout_mode = 2
 text = "0 escaped"
 horizontal_alignment = 1
 script = ExtResource("19_08fmi")
+
+[node name="BonesTracker" type="HBoxContainer" parent="UI" node_paths=PackedStringArray("monster_path")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -40.0
+offset_right = 36.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("24_pcp4w")
+monster_path = NodePath("../../MonsterPath")
+
+[node name="CountLabel" type="Label" parent="UI/BonesTracker"]
+layout_mode = 2
+text = "100"
+
+[node name="TextureRect" type="TextureRect" parent="UI/BonesTracker"]
+layout_mode = 2
+texture = ExtResource("24_5hsgd")
+expand_mode = 2
 
 [node name="TotemUI" type="HBoxContainer" parent="UI"]
 anchors_preset = 6
