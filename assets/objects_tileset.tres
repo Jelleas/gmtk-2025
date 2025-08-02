@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dmffpqm1nplbx"]
+
+[ext_resource type="Texture2D" uid="uid://c4ju61wga1h8q" path="res://assets/merged-rollers.png" id="2_7yxwx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_himki"]
+texture = ExtResource("2_7yxwx")
+texture_region_size = Vector2i(128, 91)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+
+[resource]
+tile_size = Vector2i(128, 91)
+sources/6 = SubResource("TileSetAtlasSource_himki")
+tile_proxies/coords_level = [[0, Vector2i(0, 0)], [6, Vector2i(0, 0)], [1, Vector2i(0, 0)], [6, Vector2i(1, 0)], [2, Vector2i(0, 0)], [6, Vector2i(2, 0)], [3, Vector2i(0, 0)], [6, Vector2i(0, 1)], [4, Vector2i(0, 0)], [6, Vector2i(1, 1)], [5, Vector2i(0, 0)], [6, Vector2i(2, 1)], [7, Vector2i(0, 0)], [11, Vector2i(0, 0)], [8, Vector2i(0, 0)], [11, Vector2i(1, 0)], [9, Vector2i(0, 0)], [11, Vector2i(2, 0)], [10, Vector2i(0, 0)], [11, Vector2i(0, 1)]]
