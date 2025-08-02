@@ -23,7 +23,6 @@ func _process(delta: float) -> void:
 	var total_energy = totem.get_total_energy()
 	energy_bar.max_value = total_energy
 	
-	
 	var tween = create_tween()
 	tween.tween_property(
 		energy_bar,
@@ -48,14 +47,35 @@ func _on_totem_selected(totem_: Totem):
 	
 func set_totem():
 	$HBoxContainer/DescriptionLabel.text = totem.name()
+
+	set_consumes()
+	set_produces()
 	
-	var produces_map = _create_resource_map(totem.get_produces())
-	$HBoxContainer/ProducesResourceList.set_resources(produces_map)
-	
-	var consumes_map = _create_resource_map(totem.get_consumes())
-	$HBoxContainer/ConsumesResourceList.set_resources(consumes_map)
+	$HBoxContainer/MarginContainer3/StatsGrid.set_stats(totem)
 
 	show()
+
+func set_consumes():
+	if totem.get_consumes().size() == 0:
+		$HBoxContainer/ConsumesResourceList.hide()
+		$HBoxContainer/ConsumesLabel.hide()
+	else:
+		var consumes_map = _create_resource_map(totem.get_consumes())
+		$HBoxContainer/ConsumesResourceList.show()
+		$HBoxContainer/ConsumesResourceList.set_resources(consumes_map)
+		$HBoxContainer/ConsumesLabel.show()
+	
+func set_produces():
+	
+	if totem.get_produces().size() == 0:
+		$HBoxContainer/ProducesResourceList.hide()
+		$HBoxContainer/ProducesLabel.hide()
+	else:
+		var produces_map = _create_resource_map(totem.get_produces())
+		$HBoxContainer/ProducesResourceList.show()
+		$HBoxContainer/ProducesResourceList.set_resources(produces_map)
+		$HBoxContainer/ProducesLabel.show()
+	
 	
 func _create_resource_map(resources: Array[Res.Type]) -> Dictionary[Res.Type, int]:
 	var resource_map: Dictionary[Res.Type, int] = {}

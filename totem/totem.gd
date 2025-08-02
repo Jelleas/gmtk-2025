@@ -184,3 +184,28 @@ func get_produces() -> Array[Res.Type]:
 	if modified_base == null:
 		return []
 	return modified_base.produces
+
+func get_crit() -> float:
+	if modified_base == null:
+		return 0
+	return modified_base.crit_chance
+
+func get_damage() -> float:
+	if modified_base == null:
+		return 0
+	return modified_base.damage
+
+func get_cooldown() -> float:
+	if modified_base == null:
+		return 0
+	return modified_base.cooldown
+
+func get_range() -> float:
+	if modified_base == null:
+		return 0
+	return modified_base.range
+
+func get_energy_cost() -> float:
+	if modified_base == null:
+		return 0
+	return modified_base.energy_cost
