@@ -14,4 +14,4 @@ func init(monster_path_: Path2D) -> void:
 	monster_path.monster_escape.connect(_on_monster_escape)
 
 func _on_monster_escape(monster: Monster):
-	value -= monster.escape_cost
+	value -= monster.config.escape_cost
