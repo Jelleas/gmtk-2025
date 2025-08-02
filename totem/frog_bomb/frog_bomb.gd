@@ -87,17 +87,15 @@ func refill_energy():
 func totem_action():
 	if(locked_target && current_energy >= energy_cost):
 		current_energy -= energy_cost
-		shoot(local_pos, locked_target)
+		drop(local_pos, locked_target)
 		
-func shoot(from: Vector2, target: Area2D):
+func drop(from: Vector2, target: Area2D):
 	var to = totem.tile_map_layer.to_local(target.global_position)
-	var projectile_scene = preload("res://totem/dart/dart_projectile.tscn")
+	var projectile_scene = preload("res://totem/frog_bomb/projectile.tscn")
 	var proj = projectile_scene.instantiate()
 	proj.target = target
 	proj.damage = damage
-	proj.global_position = from
-	proj.direction = (to - from).normalized()
-
+	proj.global_position = to
 	add_child(proj)
 
 func apply_modifier(modifier: TotemPieces.Modifier):

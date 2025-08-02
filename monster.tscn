@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c75kjpflhiyel" path="res://monster.gd" id="1_mrqeg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3gyj"]
+radius = 120.0
 
 [node name="Monster" type="PathFollow2D"]
 rotation = -1.5708

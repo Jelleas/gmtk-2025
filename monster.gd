@@ -16,6 +16,7 @@ var health: int
 var frames: SpriteFrames
 var previous_position: Vector2
 var current_direction: Direction
+var original_modulate: Color
 
 enum Direction {
 	UP, DOWN, LEFT, RIGHT
@@ -24,6 +25,7 @@ enum Direction {
 func _ready() -> void:
 	previous_position = position
 	current_direction = Direction.UP
+	original_modulate = modulate
 	sprite.sprite_frames = frames
 	sprite.speed_scale = speed
 	sprite.play("walk_up")
@@ -32,6 +34,7 @@ func _ready() -> void:
 	monster_body.monitoring = true
 	monster_body.monitorable = true
 	monster_body.area_entered.connect(get_hit)
+	monster_body.add_to_group("monster")
 
 func get_hit(proj: Area2D):
 	if(proj.is_in_group("projectile") && proj.target == monster_body || proj.target == null):
@@ -84,6 +87,7 @@ func init(config: MonsterConfig):
 
 func take_damage(damage: int):
 	health -= damage
+	_flash()
 	if(health <= 0):
 		print("killed")
 		monster_killed.emit(self)
@@ -94,3 +98,7 @@ func escape():
 	monster_escape.emit(self)
 	queue_free()
 	
+func _flash():
+	var tween = create_tween()
+	sprite.modulate = Color.RED
+	tween.tween_property(sprite, "modulate", original_modulate, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)

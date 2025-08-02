@@ -4,6 +4,7 @@ class_name Totem
 
 @export var producer_scene: PackedScene
 @export var dart_scene: PackedScene
+@export var frog_scene: PackedScene
 
 var start: int
 var end: int
@@ -46,7 +47,8 @@ func init(resource_man: Path2D, start_index: int, end_index: int, tile_map: Tile
 	var tile_size = tile_map_layer.tile_set.tile_size
 	local_pos = tile_map_layer.map_to_local(plot_position)
 	global_pos = tile_map_layer.to_global(local_pos)
-
+	
+	sprite.global_position = global_pos
 	
 	timer = Timer.new()
 	timer.one_shot = true
@@ -101,15 +103,17 @@ func set_base(new_base: TotemPieces.TotemBase):
 		return false
 	base = new_base
 	
-	if(base.type == TotemPieces.BaseType.PRODUCER):
-		var base_init = producer_scene.instantiate()
-		base_init.init(self)
-		base_scene = base_init
-		
-	if(base.type == TotemPieces.BaseType.DART):
-		var base_init = dart_scene.instantiate()
-		base_init.init(self)
-		base_scene = base_init
+	var base_init
+	match base.type:
+		TotemPieces.BaseType.PRODUCER:
+			base_init = producer_scene.instantiate()
+		TotemPieces.BaseType.DART:
+			base_init = dart_scene.instantiate()
+		TotemPieces.BaseType.FROGBOMB:
+			base_init = frog_scene.instantiate()
+
+	base_init.init(self)
+	base_scene = base_init
 	
 	add_child(base_scene)
 	

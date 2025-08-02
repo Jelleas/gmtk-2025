@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_resource type="SpriteFrames" load_steps=50 format=3 uid="uid://ckuprh4iyde6j"]
+=======
+[gd_resource type="SpriteFrames" load_steps=50 format=3 uid="uid://ccyn0babntewe"]
+>>>>>>> 0dbd4decd98f34f74ad8d07c1f0e06ff44a64d67
 
 [ext_resource type="Texture2D" uid="uid://bughtcw3bb8vm" path="res://assets/monsters/blobboii.png" id="1_fqrvk"]
 
