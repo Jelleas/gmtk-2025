@@ -51,15 +51,15 @@ func style_button() -> void:
 
 	# Create the StyleBoxes
 	var normal_style = StyleBoxFlat.new()
-	normal_style.bg_color = Color(0.8, 0, 0)  # red
+	normal_style.bg_color = Color(0.8, 0, 0)
 	normal_style.set_corner_radius_all(5)
 	
 	var hover_style = StyleBoxFlat.new()
-	hover_style.bg_color = Color(1, 0.2, 0.2)  # lighter red
+	hover_style.bg_color = Color(1, 0.2, 0.2)
 	hover_style.set_corner_radius_all(5)
 
 	var pressed_style = StyleBoxFlat.new()
-	pressed_style.bg_color = Color(0.6, 0, 0)  # darker red
+	pressed_style.bg_color = Color(0.6, 0, 0)
 	pressed_style.set_corner_radius_all(5)
 	
 	# Apply StyleBoxes via theme overrides
