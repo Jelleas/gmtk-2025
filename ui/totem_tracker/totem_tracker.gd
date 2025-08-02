@@ -18,9 +18,9 @@ func _process(delta: float) -> void:
 
 	var energy_bar = $HBoxContainer/MarginContainer/EnergyBar
 
-	var current_energy = totem.current_energy
+	var current_energy = totem.get_current_energy()
 	energy_bar.value = current_energy
-	var total_energy = totem.total_energy
+	var total_energy = totem.get_total_energy()
 	energy_bar.max_value = total_energy
 	
 	
@@ -49,10 +49,10 @@ func _on_totem_selected(totem_: Totem):
 func set_totem():
 	$HBoxContainer/DescriptionLabel.text = totem.name()
 	
-	var produces_map = _create_resource_map(totem.produces)
+	var produces_map = _create_resource_map(totem.get_produces())
 	$HBoxContainer/ProducesResourceList.set_resources(produces_map)
 	
-	var consumes_map = _create_resource_map(totem.consumes)
+	var consumes_map = _create_resource_map(totem.get_consumes())
 	$HBoxContainer/ConsumesResourceList.set_resources(consumes_map)
 
 	show()

@@ -24,23 +24,18 @@ var created_resources:Array = []
 var modifiers: Array = []
 
 var base:TotemPieces.TotemBase
+var modified_base: TotemPieces.TotemBase
 var base_scene: Node2D
-var damage: int
-var cooldown: float
-var crit_chance: float
-var range: float
 var current_energy: float
 var total_energy: float
-var energy_cost: float
-var produces: Array[Res.Type] = []
-var consumes: Array[Res.Type] = []
 var needs_met: bool = false
-var is_active: bool = false
 
 func init(resource_man: Path2D, start_index: int, end_index: int, tile_map: TileMapLayer, plot_pos: Vector2):
 	resource_manager = resource_man
 	start = start_index
 	end = end_index
+	
+	current_energy = 100
 	
 	tile_map_layer = tile_map
 	plot_position = plot_pos
@@ -60,22 +55,34 @@ func init(resource_man: Path2D, start_index: int, end_index: int, tile_map: Tile
 	timer.timeout.connect(_on_timer_timeout)
 
 func startTimer():
-	var time_to_wait = cooldown
+	var time_to_wait = modified_base.cooldown
 	timer.wait_time = time_to_wait
 	timer.start()
 
 func _process(delta: float) -> void:
-	if (!is_active):
+	if (base == null):
 		return
 	if(!needs_met):
 		retrieve()
 	deposit()
+	
+	if(current_energy <= modified_base.energy_cost):
+		refill_energy()
+
+func refill_energy():
+	if(needs_met):
+		current_energy = modified_base.total_energy
+		inventory = []
+		needs_met = false
 
 func _on_timer_timeout():
 	startTimer()
+	if (current_energy >= modified_base.energy_cost):
+		if base_scene.totem_action(modified_base):
+			current_energy -= modified_base.energy_cost
 
 func check_needed():
-	var copy_needed = consumes.duplicate()
+	var copy_needed = modified_base.consumes.duplicate()
 	for item in inventory:
 		if item in copy_needed:
 			copy_needed.erase(item)
@@ -120,29 +127,60 @@ func set_base(new_base: TotemPieces.TotemBase):
 	
 	add_child(base_scene)
 	
+	set_modified_base()
+	
 	startTimer()
 	
 	TotemChanged.emit(self)
 
 func add_modifier(modifier: TotemPieces.Modifier):
 	modifiers.append(modifier)
-	base_scene.apply_modifier(modifier)
-	
+	set_modified_base()
 	TotemChanged.emit(self)
 	
 func remove_base():
 	base = null
-	
+	modified_base = null
 	TotemChanged.emit(self)
 	
 func remove_modifier(modifier_type):
 	var i = modifiers.find(modifier_type)
 	modifiers.remove_at(i)
 	
+	set_modified_base()
+	
 	TotemChanged.emit(self)
+
+func set_modified_base():
+	var base_ = base.duplicate()
+		
+	for mod in modifiers:
+		mod.apply(base_)
+	
+	modified_base = base_
+
 
 func name() -> String:
 	if base == null:
 		return "Empty"
 	return base.name
 	
+func get_total_energy() -> int:
+	if modified_base == null:
+		return 0
+	return modified_base.total_energy
+	
+func get_current_energy() -> int:
+	if modified_base == null:
+		return 0
+	return current_energy
+
+func get_consumes() -> Array[Res.Type]:
+	if modified_base == null:
+		return []
+	return modified_base.consumes
+
+func get_produces() -> Array[Res.Type]:
+	if modified_base == null:
+		return []
+	return modified_base.produces

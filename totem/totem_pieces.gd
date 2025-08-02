@@ -58,7 +58,7 @@ class Forest extends TotemBase:
 		consumes = []
 		produces = [Res.Type.WOOD]
 		total_energy = 100.0
-		energy_cost = 100.0
+		energy_cost = 0
 		range = 0.0
 
 class Pond extends TotemBase:
@@ -74,7 +74,7 @@ class Pond extends TotemBase:
 		consumes = []
 		produces = [Res.Type.FROG]
 		total_energy = 100.0
-		energy_cost = 100.0
+		energy_cost = 0
 		range = 0.0
 
 class Dart extends TotemBase:
