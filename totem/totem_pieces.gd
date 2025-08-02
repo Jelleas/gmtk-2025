@@ -110,7 +110,7 @@ class FrogBomb extends TotemBase:
 		range = 600.0
 
 static var base_types: Array[TotemBase] = [
-	Forest.new(), Pond.new(), Dart.new(), FrogBomb.new()
+	Dart.new(), FrogBomb.new()
 ]
 
 class Modifier extends TotemPiece:

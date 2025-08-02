@@ -30,17 +30,13 @@ func create_totem(totem_index: int, fill_plot) -> Totem:
 	
 	match totem_index:
 		0:
-			totem_scene.set_base(TotemPieces.base_types[0])
+			totem_scene.set_base(TotemPieces.Forest.new())
 		1:
-			totem_scene.set_base(TotemPieces.base_types[0])
+			totem_scene.set_base(TotemPieces.Forest.new())
 		2:
-			totem_scene.set_base(TotemPieces.base_types[1])
+			totem_scene.set_base(TotemPieces.Pond.new())
 		3:
-			totem_scene.set_base(TotemPieces.base_types[1])
-		4:
-			totem_scene.set_base(TotemPieces.FrogBomb.new())
-		5:
-			totem_scene.set_base(TotemPieces.Dart.new())
+			totem_scene.set_base(TotemPieces.Pond.new())
 	return totem_scene
 
 func set_base(totem_index: int, base: TotemPieces.TotemBase):
