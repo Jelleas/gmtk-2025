@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://dahku7ck0x32r" path="res://ui/inventory/inventory.gd" id="21_xjl4t"]
 [ext_resource type="PackedScene" uid="uid://dkmry7mk0hi18" path="res://ui/inventory/inventory_slot.tscn" id="22_t3g51"]
 [ext_resource type="Texture2D" uid="uid://dg0x508rvhega" path="res://assets/resources/bone.png" id="24_5hsgd"]
-[ext_resource type="Script" path="res://ui/bones_tracker.gd" id="24_pcp4w"]
+[ext_resource type="Script" uid="uid://c18x3fabprn01" path="res://ui/bones_tracker.gd" id="24_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://bfj3upnhcrhkl" path="res://ui/totem_tracker/totem_tracker.tscn" id="28_s8c5p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcp4w"]

@@ -76,11 +76,11 @@ func refill_energy():
 		needs_met = false
 
 func _on_timer_timeout():
-	startTimer()
 	if (current_energy >= modified_base.energy_cost):
 		if base_scene.totem_action(modified_base):
 			current_energy -= modified_base.energy_cost
-
+	startTimer()
+	
 func check_needed():
 	var copy_needed = modified_base.consumes.duplicate()
 	for item in inventory:

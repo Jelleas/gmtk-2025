@@ -13,7 +13,9 @@ enum BaseType {
 
 enum ModifierType {
 	SPEED,
-	CRIT
+	CRIT,
+	RANGE,
+	ENERGY_COST
 }
 
 enum Rarity {
@@ -158,7 +160,6 @@ class Speed3 extends Modifier:
 		rarity = Rarity.EPIC
 				
 	func apply(totem_base):
-		#totem_base.energy_cost *= 1 / 0.7
 		totem_base.cooldown *= 0.7
 		return totem_base
 		
@@ -175,9 +176,121 @@ class Crit1 extends Modifier:
 		totem_base.crit_chance += 0.05
 		return totem_base
 
+class Crit2 extends Modifier:
+	func _init():
+		name = "Crit 2"
+		price = 200
+		description = "Increase chance of critical strikes by 10%"
+		type = ModifierType.CRIT
+		icon = Sprite2D.new()
+		rarity = Rarity.RARE
+				
+	func apply(totem_base):
+		totem_base.crit_chance += 0.10
+		return totem_base
+
+class Crit3 extends Modifier:
+	func _init():
+		name = "Crit 3"
+		price = 300
+		description = "Increase chance of critical strikes by 20%"
+		type = ModifierType.CRIT
+		icon = Sprite2D.new()
+		rarity = Rarity.EPIC
+
+	func apply(totem_base):
+		totem_base.crit_chance += 0.20
+		return totem_base
+
+class Range1 extends Modifier:
+	func _init():
+		name = "Range 1"
+		price = 100
+		description = "Increase range by 10%"
+		type = ModifierType.RANGE
+		icon = Sprite2D.new()
+		rarity = Rarity.COMMON
+
+	func apply(totem_base):
+		totem_base.range *= 1.10
+		return totem_base
+
+class Range2 extends Modifier:
+	func _init():
+		name = "Range 2"
+		price = 200
+		description = "Increase range by 20%"
+		type = ModifierType.RANGE
+		icon = Sprite2D.new()
+		rarity = Rarity.RARE
+
+	func apply(totem_base):
+		totem_base.range *= 1.20
+		return totem_base
+
+class Range3 extends Modifier:
+	func _init():
+		name = "Range 3"
+		price = 300
+		description = "Increase range by 30%"
+		type = ModifierType.RANGE
+		icon = Sprite2D.new()
+		rarity = Rarity.EPIC
+
+	func apply(totem_base):
+		totem_base.range *= 1.30
+		return totem_base
+
+class EnergyCost1 extends Modifier:
+	func _init():
+		name = "Energy 1"
+		price = 100
+		description = "Reduces energy consumption by 5%"
+		type = ModifierType.ENERGY_COST
+		icon = Sprite2D.new()
+		rarity = Rarity.COMMON
+
+	func apply(totem_base):
+		totem_base.energy_cost *= 0.95
+		return totem_base
+
+class EnergyCost2 extends Modifier:
+	func _init():
+		name = "Energy 2"
+		price = 200
+		description = "Reduces energy consumption by 10%"
+		type = ModifierType.ENERGY_COST
+		icon = Sprite2D.new()
+		rarity = Rarity.RARE
+
+	func apply(totem_base):
+		totem_base.energy_cost *= 0.90
+		return totem_base
+	
+class EnergyCost3 extends Modifier:
+	func _init():
+		name = "Energy 3"
+		price = 300
+		description = "Reduces energy consumption by 20%"
+		type = ModifierType.ENERGY_COST
+		icon = Sprite2D.new()
+		rarity = Rarity.EPIC
+
+	func apply(totem_base):
+		totem_base.energy_cost *= 0.80
+		return totem_base
+
 static var modifiers: Array[Modifier] = [
 	Speed1.new(),
 	Speed2.new(),
 	Speed3.new(),
-	Crit1.new()
+	Crit1.new(),
+	Crit2.new(),
+	Crit3.new(),
+	Range1.new(),
+	Range2.new(),
+	Range3.new(),
+	EnergyCost1.new(),
+	EnergyCost2.new(),
+	EnergyCost3.new(),
 ]
