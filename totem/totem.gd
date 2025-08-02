@@ -27,6 +27,7 @@ var damage: int
 var cooldown: float
 var crit_chance: float
 var range: float
+var current_energy: float
 var total_energy: float
 var energy_cost: float
 var produces: Array[Res.Type] = []
@@ -129,3 +130,9 @@ func remove_base():
 func remove_modifier(modifier_type):
 	var i = modifiers.find(modifier_type)
 	modifiers.remove_at(i)
+
+func name() -> String:
+	if base == null:
+		return "Empty"
+	return base.name
+	
