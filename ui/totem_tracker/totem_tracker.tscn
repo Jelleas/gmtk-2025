@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0usigqqfy5mb" path="res://ui/totem_tracker/totem_tracker.gd" id="1_ccepk"]
 [ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="1_rae0c"]
-[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="2_dmyxo"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="2_dmyxo"]
 [ext_resource type="Texture2D" uid="uid://dyeavgbjrqewr" path="res://assets/Vector/Yellow/bar_round_gloss_large.svg" id="3_dmyxo"]
 [ext_resource type="PackedScene" uid="uid://dj26ivbhptj4n" path="res://ui/totem_tracker/resource_list.tscn" id="4_huc5e"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="4_wusnp"]

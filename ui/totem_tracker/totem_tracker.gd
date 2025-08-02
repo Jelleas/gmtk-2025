@@ -6,14 +6,39 @@ class_name TotemTracker
 
 var totem: Totem
 
+var old_energy: int
+
 func _ready() -> void:
 	totem_manager.TotemSelected.connect(_on_totem_selected)
 	hide()
 	
+func _process(delta: float) -> void:
+	if totem == null or totem.base == null:
+		return
+
+	var energy_bar = $HBoxContainer/MarginContainer/EnergyBar
+
+	var current_energy = totem.current_energy
+	energy_bar.value = current_energy
+	var total_energy = totem.total_energy
+	energy_bar.max_value = total_energy
+	
+	
+	var tween = create_tween()
+	tween.tween_property(
+		energy_bar,
+		"value", 
+		current_energy,
+		0.1
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	old_energy = current_energy
+	
+	
 func _on_totem_selected(totem_: Totem):
 	totem = totem_
 
-	$HBoxContainer/DescriptionLabel.text = totem.name
+	$HBoxContainer/DescriptionLabel.text = totem.name()
 	
 	var produces_map = _create_resource_map(totem.produces)
 	$HBoxContainer/ProducesResourceList.set_resources(produces_map)
