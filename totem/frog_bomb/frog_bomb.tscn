@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c18gatq2tlnuy"]
+
+[ext_resource type="Script" uid="uid://b0olvug71j455" path="res://totem/frog_bomb/frog_bomb.gd" id="1_x6ox2"]
+
+[sub_resource type="GDScript" id="GDScript_x6ox2"]
+script/source = "extends Area2D
+
+signal target_detected(target)
+
+func _ready():
+	monitoring = true
+	monitorable = true
+	connect(\"body_entered\", _on_body_entered)
+
+func _on_body_entered(body):
+	if body.is_in_group(\"enemy\"):
+		emit_signal(\"target_detected\", body)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6ox2"]
+
+[node name="FrogBomb" type="Node2D"]
+script = ExtResource("1_x6ox2")
+
+[node name="AttackArea" type="Area2D" parent="."]
+script = SubResource("GDScript_x6ox2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_x6ox2")

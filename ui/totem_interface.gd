@@ -37,7 +37,9 @@ func create_totem(totem_index: int, fill_plot) -> Totem:
 			totem_scene.set_base(TotemPieces.base_types[1])
 		3:
 			totem_scene.set_base(TotemPieces.base_types[1])
-		_:
+		4:
+			totem_scene.set_base(TotemPieces.FrogBomb.new())
+		5:
 			totem_scene.set_base(TotemPieces.Dart.new())
 	return totem_scene
 

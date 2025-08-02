@@ -92,9 +92,25 @@ class Dart extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 10.0
 		range = 600.0
+		
+class FrogBomb extends TotemBase:
+	func _init():
+		name = "Frog Bomb"
+		price = 300
+		type = BaseType.FROGBOMB
+		icon = Sprite2D.new()
+		sprite_color = Color.html("#ebdf0c")
+		damage = 50
+		cooldown = 3.0
+		crit_chance = 0.10
+		consumes = [Res.Type.FROG]
+		produces = []
+		total_energy = 100.0
+		energy_cost = 20.0
+		range = 600.0
 
 static var base_types: Array[TotemBase] = [
-	Forest.new(), Pond.new(), Dart.new()
+	Forest.new(), Pond.new(), Dart.new(), FrogBomb.new()
 ]
 
 class Modifier extends TotemPiece:
