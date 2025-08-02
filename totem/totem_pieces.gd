@@ -52,6 +52,7 @@ class TotemBase extends TotemPiece:
 class Forest extends TotemBase:
 	func _init():
 		name = "Forest"
+		description = "A dense, ancient forest teeming with towering trees and wildlife. Rich in timber, it's a vital source of wood."
 		price = 100
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/speed-l.png")
@@ -68,6 +69,7 @@ class Forest extends TotemBase:
 class Pond extends TotemBase:
 	func _init():
 		name = "Pond"
+		description = "A quiet, shallow pond nestled among reeds and lilies. Its calm waters are home to a thriving population of frogs."
 		price = 100
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/speed-l.png")
@@ -84,6 +86,7 @@ class Pond extends TotemBase:
 class MossValley extends TotemBase:
 	func _init():
 		name = "Moss valley"
+		description = "A damp, misty valley carpeted in thick, emerald moss. Soft underfoot and rich in mushrooms."
 		price = 100
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/speed-l.png")
@@ -100,6 +103,7 @@ class MossValley extends TotemBase:
 class Shrubbery extends TotemBase:
 	func _init():
 		name = "Shubbery"
+		description = "A modest yet well-kept patch of ornamental bushes containing berries. The Knights who say “Ni!” would be most pleased."
 		price = 100
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/speed-l.png")
@@ -116,6 +120,7 @@ class Shrubbery extends TotemBase:
 class FrogBurner extends TotemBase:
 	func _init():
 		name = "Frog burner"
+		description = "Converts frogs into crispy frogs."
 		price = 100
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/speed-l.png")
@@ -132,6 +137,7 @@ class FrogBurner extends TotemBase:
 class FrogSkinner extends TotemBase:
 	func _init():
 		name = "Frog skinner"
+		description = "Converts frogs into frog skin."
 		price = 100
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/speed-l.png")
@@ -148,6 +154,7 @@ class FrogSkinner extends TotemBase:
 class BerryJuicer extends TotemBase:
 	func _init():
 		name = "Berry juicer"
+		description = "We do not need the berries, just the juice exile."
 		price = 100
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/speed-l.png")
@@ -164,6 +171,7 @@ class BerryJuicer extends TotemBase:
 class ShroomMulcher extends TotemBase:
 	func _init():
 		name = "Shroom mulcher"
+		description = "Mulches shrooms to dust, magic dust."
 		price = 100
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/speed-l.png")
@@ -180,6 +188,7 @@ class ShroomMulcher extends TotemBase:
 class PotionStation extends TotemBase:
 	func _init():
 		name = "Potion Station"
+		description = "Brews potions out of magic dust and berry juice."
 		price = 100
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/speed-l.png")
@@ -193,9 +202,10 @@ class PotionStation extends TotemBase:
 		energy_cost = 100
 		range = 0.0
 
-class Dart extends TotemBase:
+class Dart1 extends TotemBase:
 	func _init():
 		name = "Dart"
+		description = "Consumes wood to shoot darts."
 		price = 100
 		type = BaseType.DART
 		icon = load("res://assets/totems/speed-l.png")
@@ -208,10 +218,28 @@ class Dart extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 10.0
 		range = 600.0
+
+class Dart2 extends TotemBase:
+	func _init():
+		name = "Poison Dart"
+		description = "Consumes wood and frogs to shoot poison darts."
+		price = 200
+		type = BaseType.DART
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#A0522D")
+		damage = 20
+		cooldown = 1.0
+		crit_chance = 0.05
+		consumes = [Res.Type.WOOD, Res.Type.FROG]
+		produces = []
+		total_energy = 100.0
+		energy_cost = 10.0
+		range = 600.0
 		
 class FrogBomb extends TotemBase:
 	func _init():
 		name = "Frog Bomb"
+		description = "Drops a big frog on enemies."
 		price = 300
 		type = BaseType.FROGBOMB
 		icon = load("res://assets/totems/speed-l.png")
@@ -226,7 +254,14 @@ class FrogBomb extends TotemBase:
 		range = 600.0
 
 static var base_types: Array[TotemBase] = [
-	Dart.new(), FrogBomb.new(), FrogBurner.new(), FrogSkinner.new(), ShroomMulcher.new(), BerryJuicer.new(), PotionStation.new()
+	Dart1.new(),
+	Dart2.new(),
+	FrogBomb.new(), 
+	FrogBurner.new(), 
+	FrogSkinner.new(), 
+	ShroomMulcher.new(), 
+	BerryJuicer.new(), 
+	PotionStation.new()
 ]
 
 class Modifier extends TotemPiece:
