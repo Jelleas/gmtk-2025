@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://clt7pafdvryia"]
+[gd_scene load_steps=5 format=3 uid="uid://clt7pafdvryia"]
 
 [ext_resource type="Script" uid="uid://c75kjpflhiyel" path="res://monster.gd" id="1_mrqeg"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="2_ga5te"]
+[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://assets/Vector/Red/bar_round_gloss_large.svg" id="3_vr0w3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s3gyj"]
 radius = 120.0
@@ -17,3 +19,11 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterBody"]
 shape = SubResource("CircleShape2D_s3gyj")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -47.0
+offset_top = -216.0
+offset_right = 49.0
+offset_bottom = -176.0
+texture_under = ExtResource("2_ga5te")
+texture_progress = ExtResource("3_vr0w3")

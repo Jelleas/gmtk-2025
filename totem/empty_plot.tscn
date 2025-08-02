@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bboaxorms0tq"]
+
+[ext_resource type="Texture2D" uid="uid://2tgfturtref7" path="res://assets/totems/totem-base.png" id="1_hvspm"]
+[ext_resource type="Script" uid="uid://c0vhbmmm7n5e6" path="res://totem/empty_plot.gd" id="2_3ogmi"]
+
+[node name="Empty" type="Sprite2D"]
+texture = ExtResource("1_hvspm")
+script = ExtResource("2_3ogmi")
+
+[node name="Price" type="Label" parent="."]
+custom_minimum_size = Vector2(30, 30)
+offset_left = -15.0
+offset_top = -34.5
+offset_right = 15.0
+offset_bottom = 34.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
