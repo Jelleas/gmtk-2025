@@ -7,4 +7,5 @@ class_name MonsterConfig
 @export var escape_cost: int
 @export var rank: int
 @export var sprite: SpriteFrames
+@export var scale: float
 @export var resistances: Array[TotemPieces.BaseType]

@@ -14,10 +14,19 @@ var escape_cost: int
 var speed: int
 var health: int
 var frames: SpriteFrames
+var previous_position: Vector2
+var current_direction: Direction
+
+enum Direction {
+	UP, DOWN, LEFT, RIGHT
+}
 
 func _ready() -> void:
+	previous_position = position
+	current_direction = Direction.UP
 	sprite.sprite_frames = frames
-	sprite.play("default")
+	sprite.speed_scale = speed
+	sprite.play("walk_up")
 	monster_body.collision_layer = 1
 	monster_body.collision_mask = 2
 	monster_body.monitoring = true
@@ -28,6 +37,37 @@ func get_hit(proj: Area2D):
 	if(proj.is_in_group("projectile") && proj.target == monster_body || proj.target == null):
 		take_damage(proj.damage)
 		proj.queue_free()
+
+func _process(delta: float) -> void:
+	var direction = (position - previous_position).normalized()
+	var cardinal = Vector2(round(direction.x), round(direction.y))
+	if direction.length() < 0.1:
+		cardinal = Vector2.ZERO
+	var new_direction = current_direction
+	
+	match cardinal:
+		Vector2(0, -1):
+			new_direction = Direction.UP
+		Vector2(1, 0):
+			new_direction = Direction.RIGHT
+		Vector2(0, 1):
+			new_direction = Direction.DOWN
+		Vector2(-1, 0):
+			new_direction = Direction.LEFT
+	
+	if new_direction != current_direction:
+		current_direction = new_direction
+		match new_direction:
+			Direction.UP:
+				sprite.play("walk_up")
+			Direction.RIGHT:
+				sprite.play("walk_right")
+			Direction.DOWN:
+				sprite.play("walk_down")
+			Direction.LEFT:
+				sprite.play("walk_left")
+	previous_position = position
+	
 
 func _physics_process(delta: float) -> void:
 	progress_ratio += delta / (LOOP_SECONDS / speed)
@@ -40,6 +80,7 @@ func init(config: MonsterConfig):
 	speed = config.speed
 	health = config.health
 	frames = config.sprite
+	scale = Vector2(config.scale, config.scale)
 
 func take_damage(damage: int):
 	health -= damage
