@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=35 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ckoluvmpkkf00" path="res://monster_path.gd" id="5_6pb3s"]
 [ext_resource type="PackedScene" uid="uid://clt7pafdvryia" path="res://monster.tscn" id="6_e3ldi"]
 [ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://assets/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
+[ext_resource type="Script" uid="uid://n1no8gnftcbf" path="res://monster/monster_config.gd" id="7_386tm"]
 [ext_resource type="Resource" uid="uid://bw0r0pecha804" path="res://monster/blob.tres" id="8_2px6s"]
 [ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
 [ext_resource type="PackedScene" uid="uid://bmc2jmy6ojjcv" path="res://ui/totemInterface.tscn" id="8_eqmdw"]
@@ -27,7 +28,7 @@
 [ext_resource type="Script" uid="uid://dahku7ck0x32r" path="res://ui/inventory/inventory.gd" id="21_xjl4t"]
 [ext_resource type="PackedScene" uid="uid://dkmry7mk0hi18" path="res://ui/inventory/inventory_slot.tscn" id="22_t3g51"]
 [ext_resource type="Texture2D" uid="uid://dg0x508rvhega" path="res://assets/resources/bone.png" id="24_5hsgd"]
-[ext_resource type="Script" uid="uid://c18x3fabprn01" path="res://ui/bones_tracker.gd" id="24_pcp4w"]
+[ext_resource type="Script" path="res://ui/bones_tracker.gd" id="24_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://bfj3upnhcrhkl" path="res://ui/totem_tracker/totem_tracker.tscn" id="28_s8c5p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcp4w"]
@@ -69,7 +70,7 @@ sources/2 = SubResource("TileSetAtlasSource_pcp4w")
 
 [sub_resource type="Curve2D" id="Curve2D_05as6"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 200, 184, 0, 0, 0, 0, 486, 186, 0, 0, 0, 0, 488, 472, 0, 0, 0, 0, 342.5, 473.375, 0, 0, 0, 0, 201, 474, 0, 0, 0, 0, 200, 184)
+"points": PackedVector2Array(0, 0, 0, 0, 1605.86, 1052.63, 0, 0, 0, 0, 3918.86, 1050.63, 0, 0, 0, 0, 3916.86, 2692.63, 0, 0, 0, 0, 2784.86, 2690.63, 0, 0, 0, 0, 1605.86, 2693.63, 0, 0, 0, 0, 1605.86, 1052.63)
 }
 point_count = 6
 
@@ -98,7 +99,6 @@ script = ExtResource("4_05as6")
 
 [node name="ResourcePath" type="Path2D" parent="."]
 position = Vector2(-647.861, -470.628)
-scale = Vector2(8.02431, 5.68276)
 curve = SubResource("Curve2D_05as6")
 script = ExtResource("2_05as6")
 resource_scene = ExtResource("4_xqiim")
@@ -108,7 +108,7 @@ position = Vector2(-641, -437)
 curve = SubResource("Curve2D_5ymk8")
 script = ExtResource("5_6pb3s")
 monster_scene = ExtResource("6_e3ldi")
-monster_configs = Array[Resource]([ExtResource("8_2px6s"), ExtResource("9_2px6s")])
+monster_configs = Array[ExtResource("7_386tm")]([ExtResource("8_2px6s"), ExtResource("9_2px6s")])
 
 [node name="WaveTimer" type="Timer" parent="MonsterPath"]
 
