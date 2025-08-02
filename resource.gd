@@ -15,7 +15,7 @@ enum Type {
 	WOOD
 }
 
-static func type_to_image_path(_type: Res.Type) -> String:
+static func image_path(_type: Res.Type) -> String:
 	match _type:
 		Type.BERRY_JUICE: return "res://assets/resources/berry-juice.png"
 		Type.BERRY: return "res://assets/resources/berry.png"
@@ -35,5 +35,5 @@ var type: Res.Type
 func init(type_: Res.Type, progress_ratio_: float):
 	progress_ratio = progress_ratio_
 	type = type_
-	sprite.texture = load(type_to_image_path(type))
+	sprite.texture = load(image_path(type))
 	
