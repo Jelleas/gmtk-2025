@@ -33,6 +33,7 @@ func init(parent_ref):
 	energy_cost = totem.base.energy_cost
 	range = totem.base.range
 	
+	
 	totem.damage = totem.base.damage
 	totem.crit_chance = totem.base.crit_chance
 	totem.cooldown = totem.base.cooldown
@@ -41,13 +42,15 @@ func init(parent_ref):
 	totem.energy_cost = totem.base.energy_cost
 	totem.produces = totem.base.produces
 	totem.consumes = totem.base.consumes
-		
-	var tile_size = totem.tile_map_layer.tile_set.tile_size
-	local_pos = totem.tile_map_layer.map_to_local(totem.plot_position)
-	global_pos = totem.tile_map_layer.to_global(local_pos)
+
+	global_pos = totem.global_pos
+	local_pos = totem.local_pos
 	
+	totem.sprite.modulate = totem.base.sprite_color
+	totem.sprite.global_position = global_pos
+
 	attack_area = $AttackArea
-	attack_area.global_position = global_pos
+	attack_area.global_position = local_pos
 	$AttackArea/CollisionShape2D.shape.radius = totem.base.range
 	attack_area.area_entered.connect(_on_attack_area_entered)
 	attack_area.area_exited.connect(_on_attack_area_exited)
@@ -90,7 +93,7 @@ func totem_action():
 		
 func shoot(from: Vector2, target: Area2D):
 	var to = totem.tile_map_layer.to_local(target.global_position)
-	var projectile_scene = preload("res://totem/dart_projectile.tscn")
+	var projectile_scene = preload("res://totem/dart/dart_projectile.tscn")
 	var proj = projectile_scene.instantiate()
 	proj.target = target
 	proj.damage = damage

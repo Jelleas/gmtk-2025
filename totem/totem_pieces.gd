@@ -34,6 +34,7 @@ class TotemPiece extends Resource:
 
 class TotemBase extends TotemPiece:
 	var type: BaseType
+	var sprite_color: Color
 	var damage: int
 	var cooldown: float
 	var crit_chance: float
@@ -50,6 +51,7 @@ class Forest extends TotemBase:
 		price = 100
 		type = BaseType.PRODUCER
 		icon = Sprite2D.new()
+		sprite_color = Color.html("#046620")
 		damage = 0
 		cooldown = 5.0
 		crit_chance = 0
@@ -65,6 +67,7 @@ class Pond extends TotemBase:
 		price = 100
 		type = BaseType.PRODUCER
 		icon = Sprite2D.new()
+		sprite_color = Color.html("#42c2f5")
 		damage = 0
 		cooldown = 10.0
 		crit_chance = 0
@@ -80,6 +83,7 @@ class Dart extends TotemBase:
 		price = 100
 		type = BaseType.DART
 		icon = Sprite2D.new()
+		sprite_color = Color.html("#A0522D")
 		damage = 10
 		cooldown = 1.0
 		crit_chance = 0.05
