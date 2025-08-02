@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
-[ext_resource type="Script" uid="uid://c3fktuv5oyorb" path="res://tile_map_layer.gd" id="2_7256s"]
+[ext_resource type="Script" path="res://tile_map_layer.gd" id="2_7256s"]
 [ext_resource type="Texture2D" uid="uid://dw2e8lr3lde1l" path="res://tilemap_packed.png" id="2_bhu08"]
 [ext_resource type="TileSet" uid="uid://dmffpqm1nplbx" path="res://assets/objects_tileset.tres" id="2_s8c5p"]
 [ext_resource type="Script" uid="uid://dod3pkmsb116n" path="res://timer.gd" id="3_bhu08"]
