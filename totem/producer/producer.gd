@@ -11,6 +11,9 @@ var total_energy: float
 var energy_cost: float
 var current_energy: float
 
+var global_pos: Vector2
+var local_pos: Vector2
+
 func init(parent_ref):
 	totem = parent_ref
 	produces = totem.base.produces
@@ -28,6 +31,12 @@ func init(parent_ref):
 	totem.total_energy = totem.base.total_energy
 	totem.energy_cost = totem.base.energy_cost
 	totem.produces = totem.base.produces
+	
+	global_pos = totem.global_pos
+	local_pos = totem.local_pos
+	
+	totem.sprite.global_position = global_pos
+	totem.sprite.modulate = totem.base.sprite_color
 	
 	is_active = true
 	totem.is_active = true

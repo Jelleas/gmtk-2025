@@ -16,8 +16,3 @@ autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterBody"]
 shape = SubResource("CircleShape2D_s3gyj")
-
-[connection signal="area_entered" from="MonsterBody" to="." method="get_hit"]
-[connection signal="area_shape_entered" from="MonsterBody" to="." method="get_hit"]
-[connection signal="body_entered" from="MonsterBody" to="." method="get_hit"]
-[connection signal="body_shape_entered" from="MonsterBody" to="." method="get_hit"]
