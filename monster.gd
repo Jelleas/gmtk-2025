@@ -59,6 +59,7 @@ func _process(delta: float) -> void:
 			new_direction = Direction.LEFT
 	
 	if new_direction != current_direction:
+		print("changing direction to ", Direction.find_key(new_direction))
 		current_direction = new_direction
 		match new_direction:
 			Direction.UP:
