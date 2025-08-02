@@ -41,15 +41,6 @@ text = "This totem does some damages to monsters with frogs"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ProducesLabel" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "  Produces"
-autowrap_mode = 2
-
-[node name="ProducesResourceList" parent="HBoxContainer" instance=ExtResource("4_huc5e")]
-layout_mode = 2
-
 [node name="ConsumesLabel" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -57,6 +48,15 @@ text = "  Consumes"
 autowrap_mode = 2
 
 [node name="ConsumesResourceList" parent="HBoxContainer" instance=ExtResource("4_huc5e")]
+layout_mode = 2
+
+[node name="ProducesLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "  Produces"
+autowrap_mode = 2
+
+[node name="ProducesResourceList" parent="HBoxContainer" instance=ExtResource("4_huc5e")]
 layout_mode = 2
 
 [node name="EnergyLabel" type="Label" parent="HBoxContainer"]

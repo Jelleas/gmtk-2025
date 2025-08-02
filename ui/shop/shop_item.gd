@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func init(item_: TotemPieces.TotemPiece) -> void:
 	item = item_
+	$Button.icon = item.icon
 	tooltip_text = item.description
 	$Button.tooltip_text = item.description
 	$HBoxContainer/NameLabel.text = item.name

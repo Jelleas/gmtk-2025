@@ -42,6 +42,7 @@ func fill(content_: TotemPieces.TotemPiece) -> void:
 
 	$Label.self_modulate.a = 1.0
 	$Label.text = totem_piece.name
+	$HBoxContainer/TextureRect.texture = content_.icon
 	
 	$HBoxContainer/TextureRect.self_modulate.a = 1.0
 	

@@ -31,7 +31,7 @@ func set_totem(totem_: Totem):
 	fill(totem_pieces)
 	
 	if totem.base != null:
-		$Label.text = totem.base.name.capitalize() + ' Totem'
+		$Label.text = totem.base.name.capitalize()
 	else:
 		$Label.text = 'Totem'
 	

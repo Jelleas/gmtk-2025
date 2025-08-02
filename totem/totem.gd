@@ -90,6 +90,7 @@ func check_needed():
 
 func retrieve():
 	var needed = check_needed()
+	print(needed)
 	if(needed.size() == 0):
 		needs_met = true
 		return
@@ -116,6 +117,8 @@ func set_base(new_base: TotemPieces.TotemBase):
 	var base_init
 	match base.type:
 		TotemPieces.BaseType.PRODUCER:
+			base_init = producer_scene.instantiate()
+		TotemPieces.BaseType.CONVERTER:
 			base_init = producer_scene.instantiate()
 		TotemPieces.BaseType.DART:
 			base_init = dart_scene.instantiate()
