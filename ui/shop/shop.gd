@@ -18,6 +18,7 @@ func _ready() -> void:
 	$RerollButton.button_up.connect(_on_reroll_button_button_up)
 	totem_interface.TotemSelected.connect(_on_totem_selected)
 	inventory.TotemPieceRemoved.connect(_on_totem_piece_removed)
+	bones_tracker.bones_updated.connect(sync)
 	hide()
 
 func _on_totem_selected(totem_: Totem) -> void:
@@ -26,7 +27,7 @@ func _on_totem_selected(totem_: Totem) -> void:
 	pop_on_screen()
 
 func _on_totem_piece_removed(totem_piece: TotemPieces.TotemPiece) -> void:
-	sync_with_totem()
+	sync()
 
 func _on_reroll_button_button_up() -> void:
 	if !bones_tracker.spend(REROLL_COST): return
@@ -60,20 +61,24 @@ func pop_on_screen():
 		var tween = create_tween()
 		tween.tween_property(item, "modulate:a", 1.0, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-	sync_with_totem()
+	sync()
 	
-func sync_with_totem() -> void:
+func sync() -> void:
 	if totem == null:
 		return
 	
 	for it in items:
 		var is_base_piece = it.item.is_base_type
 		var has_base = totem.base != null
+		var cannot_buy = !bones_tracker.has(it.item.price)
+		var incompatible_base = has_base and is_base_piece
+		var incompatible_modifier = not has_base and not is_base_piece
 		
-		if (has_base and is_base_piece) or (not has_base and not is_base_piece):
+		if incompatible_base or incompatible_modifier or cannot_buy:
 			it.disable()
 		else:
 			it.enable()
+		
 	
 func get_random_sample(items: Array, n: int) -> Array:
 	var indices = []

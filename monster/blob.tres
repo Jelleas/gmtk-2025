@@ -6,12 +6,12 @@
 [resource]
 script = ExtResource("1_lsku8")
 name = "Blob"
-health = 100
+health = 1
 speed = 3
 escape_cost = 10
 rank = 1
 sprite = ExtResource("2_52os7")
 scale = 0.5
 resistances = Array[int]([])
-bones = 1
+bones = 5
 metadata/_custom_type_script = "uid://n1no8gnftcbf"

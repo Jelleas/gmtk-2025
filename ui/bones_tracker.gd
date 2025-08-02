@@ -1,9 +1,11 @@
 extends HBoxContainer
 class_name BonesTracker
 
+signal bones_updated()
+
 @export var monster_path: MonsterPath
 
-var n_bones: int = 100
+var n_bones: int = 1000
 
 func _ready() -> void:
 	$CountLabel.text = str(n_bones)
@@ -12,6 +14,7 @@ func _ready() -> void:
 func _on_monster_killed(monster: Monster) -> void:
 	n_bones += monster.config.bones
 	$CountLabel.text = str(n_bones)
+	bones_updated.emit()
 	
 func has(bone_amount: int) -> bool:
 	return n_bones >= bone_amount
