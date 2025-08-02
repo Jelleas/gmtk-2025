@@ -13,7 +13,11 @@ var energy_cost: float
 var current_energy: float
 var range: float
 
-var target: bool = false
+var global_pos: Vector2
+var local_pos: Vector2
+
+var locked_target: Area2D
+var attack_area: Area2D
 
 func init(parent_ref):
 	totem = parent_ref
@@ -37,15 +41,21 @@ func init(parent_ref):
 	totem.energy_cost = totem.base.energy_cost
 	totem.produces = totem.base.produces
 	totem.consumes = totem.base.consumes
-	
-	print(totem.plot_position)
-	$AttackArea.position = totem.plot_position
+		
 	var tile_size = totem.tile_map_layer.tile_set.tile_size
-	var center = totem.tile_map_layer.map_to_local(totem.plot_position)
-	$AttackArea/CollisionShape2D.global_position = totem.tile_map_layer.to_global(center)
-	$AttackArea/CollisionShape2D.shape.radius = totem.base.range
+	local_pos = totem.tile_map_layer.map_to_local(totem.plot_position)
+	global_pos = totem.tile_map_layer.to_global(local_pos)
 	
-	$AttackArea.body_entered.connect(set_target)
+	attack_area = $AttackArea
+	attack_area.global_position = global_pos
+	$AttackArea/CollisionShape2D.shape.radius = totem.base.range
+	attack_area.area_entered.connect(_on_attack_area_entered)
+	attack_area.area_exited.connect(_on_attack_area_exited)
+	attack_area.collision_mask = 1
+	attack_area.collision_layer = 1
+	attack_area.set_physics_process(true)
+	attack_area.monitoring = true
+	attack_area.monitorable = true
 	
 	is_active = true
 	totem.is_active = true
@@ -56,20 +66,38 @@ func _process(delta: float) -> void:
 	if(current_energy <= energy_cost):
 		refill_energy()
 
+func _on_attack_area_entered(body: Node2D) -> void:
+	if(!locked_target):
+		locked_target = body
+
+func _on_attack_area_exited(body: Node2D) -> void:
+	if locked_target == body:
+		locked_target = null
+		var target_list = attack_area.get_overlapping_bodies()
+		if(target_list.size() > 0):
+			locked_target = target_list[0]
+
 func refill_energy():
 	if(totem.needs_met):
 		current_energy = total_energy
 		totem.inventory = []
 		totem.needs_met = false
 
-func set_target():
-	target = true
-	print('target')
-
 func totem_action():
-	if(target && current_energy >= energy_cost):
+	if(locked_target && current_energy >= energy_cost):
 		current_energy -= energy_cost
-		print("PEW PEW PEW")
+		shoot(local_pos, locked_target)
+		
+func shoot(from: Vector2, target: Area2D):
+	var to = totem.tile_map_layer.to_local(target.global_position)
+	var projectile_scene = preload("res://totem/dart_projectile.tscn")
+	var proj = projectile_scene.instantiate()
+	proj.target = target
+	proj.damage = damage
+	proj.global_position = from
+	proj.direction = (to - from).normalized()
+
+	add_child(proj)
 
 func apply_modifier(modifier: TotemPieces.Modifier):
 	var mod_totem = modifier.apply(totem.base)
