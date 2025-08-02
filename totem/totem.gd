@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Totem
 
+signal TotemChanged(totem: Totem)
+
 @export var producer_scene: PackedScene
 @export var dart_scene: PackedScene
 @export var frog_scene: PackedScene
@@ -119,17 +121,25 @@ func set_base(new_base: TotemPieces.TotemBase):
 	add_child(base_scene)
 	
 	startTimer()
+	
+	TotemChanged.emit(self)
 
 func add_modifier(modifier: TotemPieces.Modifier):
 	modifiers.append(modifier)
 	base_scene.apply_modifier(modifier)
 	
+	TotemChanged.emit(self)
+	
 func remove_base():
 	base = null
+	
+	TotemChanged.emit(self)
 	
 func remove_modifier(modifier_type):
 	var i = modifiers.find(modifier_type)
 	modifiers.remove_at(i)
+	
+	TotemChanged.emit(self)
 
 func name() -> String:
 	if base == null:

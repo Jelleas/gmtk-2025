@@ -10,5 +10,4 @@ func _ready() -> void:
 
 func _on_monster_killed(monster: Monster) -> void:
 	n_bones += monster.config.bones
-	
 	$CountLabel.text = str(n_bones)

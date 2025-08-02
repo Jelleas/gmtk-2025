@@ -34,10 +34,19 @@ func _process(delta: float) -> void:
 
 	old_energy = current_energy
 	
+func _on_totem_changed(totem_: Totem):
+	set_totem()
 	
 func _on_totem_selected(totem_: Totem):
+	if totem != null:
+		totem.TotemChanged.disconnect(_on_totem_changed)
+	
 	totem = totem_
-
+	set_totem()
+	
+	totem.TotemChanged.connect(_on_totem_changed)
+	
+func set_totem():
 	$HBoxContainer/DescriptionLabel.text = totem.name()
 	
 	var produces_map = _create_resource_map(totem.produces)
