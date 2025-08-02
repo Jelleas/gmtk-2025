@@ -95,8 +95,11 @@ func retrieve():
 		return
 
 	for resource in needed:
-		var res = resource_manager.consume(resource, start, end)
-		if (res):
+		var res: Res = resource_manager.consume(resource, start, end)
+		if (res != null):
+			var tween = create_tween()
+			tween.tween_property(res, "global_position", global_pos, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+			tween.tween_callback(res.queue_free)
 			inventory.append(resource)
 		
 

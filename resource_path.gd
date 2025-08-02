@@ -5,7 +5,7 @@ class_name ResourceManager
 @export var resource_scene: PackedScene
 @export var loop_seconds: float = 10
 var SIZE: int = 72
-var contents: Array[Node] = []
+var contents: Array[Res] = []
 var index_modifier: float = 0 # position of the path
 
 func _ready():
@@ -25,19 +25,18 @@ func deposit(resource: Res.Type, start: int, end: int) -> bool:
 			return true
 	return false
 	
-func consume(resource: Res.Type, start: int, end: int) -> bool:
+func consume(resource: Res.Type, start: int, end: int) -> Res:
 	for i in range(start, end + 1):
-		if get_resource(resource, i):
-			return true
-	return false
+		return get_resource(resource, i)
+	return null
 
-func get_resource(resource: Res.Type, index: int) -> bool:
+func get_resource(resource: Res.Type, index: int) -> Res:
 	var actual_index = translate_index(index)
-	if  contents[actual_index] != null && contents[actual_index].type == resource:
-		remove_child(contents[actual_index])
+	var res = contents[actual_index]
+	if res != null && res.type == resource:
 		contents[actual_index] = null
-		return true
-	return false
+		return res
+	return null
 	
 func create_resource(resource_enum: Res.Type, index: int) -> bool:
 	var actual_index = translate_index(index)
