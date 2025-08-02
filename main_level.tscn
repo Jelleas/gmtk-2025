@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
-[ext_resource type="Script" path="res://tile_map_layer.gd" id="2_7256s"]
+[ext_resource type="Script" uid="uid://c3fktuv5oyorb" path="res://tile_map_layer.gd" id="2_7256s"]
 [ext_resource type="TileSet" uid="uid://guyvxyqwtbqe" path="res://assets/objects_tileset.tres" id="2_s8c5p"]
 [ext_resource type="Script" uid="uid://b7qs6iul08i56" path="res://camera_2d.gd" id="4_05as6"]
 [ext_resource type="PackedScene" uid="uid://ig8ajdvhhbd3" path="res://resource.tscn" id="4_xqiim"]
@@ -274,9 +274,10 @@ text = "Reroll"
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -140.0
-offset_right = 200.0
-offset_bottom = 140.0
+offset_left = 10.0
+offset_top = -210.5
+offset_right = 210.0
+offset_bottom = 210.5
 grow_vertical = 2
 totem_manager = NodePath("../../TotemManager")
 
