@@ -59,7 +59,7 @@ func add_modifier(totem_index: int, modifier: TotemPieces.Modifier):
 
 func update_plot_price():
 	for i in range(0, plots.size()):
-		if(!plots[i][2].has_method("init")):
+		if(!plots[i][2] == Totem):
 			plots[i][2].set_price(price)
 
 func add_empty_plot(plot_index: int, plot_pos: Vector2i):
