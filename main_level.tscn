@@ -28,7 +28,7 @@
 [ext_resource type="Script" uid="uid://dahku7ck0x32r" path="res://ui/inventory/inventory.gd" id="21_xjl4t"]
 [ext_resource type="PackedScene" uid="uid://dkmry7mk0hi18" path="res://ui/inventory/inventory_slot.tscn" id="22_t3g51"]
 [ext_resource type="Texture2D" uid="uid://dg0x508rvhega" path="res://assets/resources/bone.png" id="24_5hsgd"]
-[ext_resource type="Script" path="res://ui/bones_tracker.gd" id="24_pcp4w"]
+[ext_resource type="Script" uid="uid://c18x3fabprn01" path="res://ui/bones_tracker.gd" id="24_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://bfj3upnhcrhkl" path="res://ui/totem_tracker/totem_tracker.tscn" id="28_s8c5p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcp4w"]
@@ -253,12 +253,13 @@ theme_override_constants/separation = 25
 [node name="PaddingMarginContainer" type="MarginContainer" parent="UI/TotemUI/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Shop" type="VBoxContainer" parent="UI/TotemUI" node_paths=PackedStringArray("inventory", "totem_interface")]
+[node name="Shop" type="VBoxContainer" parent="UI/TotemUI" node_paths=PackedStringArray("inventory", "totem_interface", "bones_tracker")]
 layout_mode = 2
 script = ExtResource("19_8m212")
 shop_item = ExtResource("20_8m212")
 inventory = NodePath("../Inventory")
 totem_interface = NodePath("../../../TotemManager")
+bones_tracker = NodePath("../../BonesTracker")
 
 [node name="Label" type="Label" parent="UI/TotemUI/Shop"]
 layout_mode = 2
