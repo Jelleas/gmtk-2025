@@ -84,6 +84,7 @@ func init(config: MonsterConfig):
 
 func take_damage(damage: int):
 	health -= damage
+	_flash()
 	if(health <= 0):
 		print("killed")
 		monster_killed.emit(self)
@@ -94,3 +95,8 @@ func escape():
 	monster_escape.emit(self)
 	queue_free()
 	
+func _flash():
+	var original = modulate
+	var tween = create_tween()
+	sprite.modulate = Color.RED
+	tween.tween_property(sprite, "modulate", original, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
