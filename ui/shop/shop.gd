@@ -86,10 +86,10 @@ func get_random_sample(items: Array, n: int) -> Array:
 	return random_items
 
 func create_item(modifier: TotemPieces.TotemPiece) -> ShopItem:
-	var shop_item = shop_item.instantiate()
-	shop_item.init(modifier)
-	add_child(shop_item)
+	var shop_item_ = shop_item.instantiate()
+	shop_item_.init(modifier)
+	add_child(shop_item_)
 	
-	shop_item.item_bought.connect(_on_item_bought)
+	shop_item_.item_bought.connect(_on_item_bought)
 	
-	return shop_item
+	return shop_item_

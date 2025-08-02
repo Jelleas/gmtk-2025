@@ -7,7 +7,8 @@ signal ItemDeleted(item: TotemPieces.TotemPiece)
 var totem_piece: TotemPieces.TotemPiece
 
 func _ready() -> void:
-	style_button()
+	style_delete_button()
+	style_background()
 	empty()
 	$Control/DeleteButton.button_up.connect(_on_delete_button_pressed)
 	$Control/DeleteButton.disabled = true
@@ -15,7 +16,10 @@ func _ready() -> void:
 func _on_delete_button_pressed():
 	hide_delete()
 	ItemDeleted.emit(totem_piece)
-	
+
+func refresh():
+	style_background()
+
 func show_delete() -> void:
 	$Control/DeleteButton.self_modulate.a = 1.0
 	$Control/DeleteButton.disabled = false
@@ -43,8 +47,23 @@ func fill(content_: TotemPieces.TotemPiece) -> void:
 	
 	tooltip_text = totem_piece.description
 	$Control/DeleteButton.tooltip_text = totem_piece.description
+	
+	style_background()
 
-func style_button() -> void:
+func style_background() -> void:
+	var rarity = null if totem_piece == null else totem_piece.rarity
+	
+	var panel = $MarginContainer/Panel
+	
+	var original_style = panel.get_theme_stylebox("panel") as StyleBoxFlat
+	var instance_style = original_style.duplicate() as StyleBoxFlat
+	
+	instance_style.set_border_width_all(3)
+	instance_style.border_color = ShopItem.RARITY_COLOR_MAP[rarity]
+	
+	panel.add_theme_stylebox_override("panel", instance_style)
+
+func style_delete_button() -> void:
 	var delete_button = $Control/DeleteButton
 	
 	delete_button.size = Vector2(35, 35)

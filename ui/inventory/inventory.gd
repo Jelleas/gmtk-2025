@@ -73,6 +73,9 @@ func _init_slots(n_slots: int) -> void:
 		
 	for slot in slots:
 		slot.empty()
+		
+	for slot in slots:
+		slot.refresh()
 
 func _create_slot() -> InventorySlot:
 	var inventory_slot_ = inventory_slot.instantiate()
