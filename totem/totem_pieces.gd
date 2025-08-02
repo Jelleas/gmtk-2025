@@ -15,7 +15,8 @@ enum ModifierType {
 	SPEED,
 	CRIT,
 	RANGE,
-	ENERGY_COST
+	ENERGY_COST,
+	DAMAGE
 }
 
 enum Rarity {
@@ -280,6 +281,46 @@ class EnergyCost3 extends Modifier:
 		totem_base.energy_cost *= 0.80
 		return totem_base
 
+class Damage1 extends Modifier:
+	func _init():
+		name = "Damage 1"
+		price = 100
+		description = "Increases damage by 10%"
+		type = ModifierType.DAMAGE
+		icon = Sprite2D.new()
+		rarity = Rarity.COMMON
+
+	func apply(totem_base):
+		totem_base.damage *= 1.10
+		return totem_base
+
+class Damage2 extends Modifier:
+	func _init():
+		name = "Damage 2"
+		price = 200
+		description = "Increases damage by 20%"
+		type = ModifierType.DAMAGE
+		icon = Sprite2D.new()
+		rarity = Rarity.COMMON
+
+	func apply(totem_base):
+		totem_base.damage *= 1.20
+		return totem_base
+
+class Damage3 extends Modifier:
+	func _init():
+		name = "Damage 3"
+		price = 300
+		description = "Increases damage by 30%"
+		type = ModifierType.DAMAGE
+		icon = Sprite2D.new()
+		rarity = Rarity.COMMON
+
+	func apply(totem_base):
+		totem_base.damage *= 1.30
+		return totem_base
+
+
 static var modifiers: Array[Modifier] = [
 	Speed1.new(),
 	Speed2.new(),
@@ -293,4 +334,7 @@ static var modifiers: Array[Modifier] = [
 	EnergyCost1.new(),
 	EnergyCost2.new(),
 	EnergyCost3.new(),
+	Damage1.new(),
+	Damage2.new(),
+	Damage3.new()
 ]
