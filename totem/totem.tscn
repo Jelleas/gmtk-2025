@@ -1,77 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://tmkdkgu7s5vv"]
+[gd_scene load_steps=6 format=3 uid="uid://tmkdkgu7s5vv"]
 
 [ext_resource type="Script" uid="uid://buyy73ip5sskn" path="res://totem/totem.gd" id="1_758mn"]
 [ext_resource type="PackedScene" uid="uid://luhkfgf4ylhy" path="res://totem/producer/producer.tscn" id="2_7f103"]
 [ext_resource type="PackedScene" uid="uid://d2gwq2j6nc8uc" path="res://totem/dart/dart.tscn" id="3_xljs4"]
 [ext_resource type="PackedScene" uid="uid://c18gatq2tlnuy" path="res://totem/frog_bomb/frog_bomb.tscn" id="4_xljs4"]
 [ext_resource type="Texture2D" uid="uid://2tgfturtref7" path="res://assets/totems/totem-base.png" id="5_7f103"]
-
-[sub_resource type="GDScript" id="GDScript_7f103"]
-script/source = "extends Node2D
-
-var totem: Totem
-var is_active = false
-var produces: Array[Res.Type]
-var consumes: Array[Res.Type]
-
-var damage: int
-var crit_chance: float
-var cooldown: float
-var total_energy: float
-var energy_cost: float
-var current_energy: float
-
-func init(parent_ref):
-	totem = parent_ref
-	produces = totem.base.produces
-	consumes = totem.base.consumes
-	
-	totem.timer.timeout.connect(totem_action)
-	
-	damage = totem.base.damage
-	crit_chance = totem.base.crit_chance
-	cooldown = totem.base.cooldown
-	total_energy = totem.base.total_energy
-	energy_cost = totem.base.energy_cost
-	
-	totem.damage = totem.base.damage
-	totem.crit_chance = totem.base.crit_chance
-	totem.cooldown = totem.base.cooldown
-	totem.total_energy = totem.base.total_energy
-	totem.energy_cost = totem.base.energy_cost
-	totem.produces = totem.base.produces
-	totem.consumes = totem.base.consumes
-	
-	is_active = true
-	totem.is_active = true
-
-func _process(delta: float) -> void:
-	if !is_active:
-		return
-	if(current_energy <= energy_cost):
-		refill_energy()
-
-func refill_energy():
-	if(totem.needs_met):
-		current_energy = total_energy
-		totem.inventory = []
-		totem.needs_met = false
-
-func totem_action():
-	if(current_energy >= energy_cost):
-		current_energy -= energy_cost
-
-func apply_modifier(modifier: TotemPieces.Modifier):
-	var mod_totem = modifier.apply(totem.base)
-
-	crit_chance = mod_totem.crit_chance
-	cooldown = mod_totem.cooldown
-	damage = mod_totem.damage
-	
-	totem.crit_chance = crit_chance
-	totem.cooldown = cooldown
-	totem.damage = damage
-"
 
 [node name="Totem" type="Node2D"]
 script = ExtResource("1_758mn")
@@ -82,9 +15,6 @@ frog_scene = ExtResource("4_xljs4")
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 autostart = true
-
-[node name="FrogBomb" type="Node2D" parent="."]
-script = SubResource("GDScript_7f103")
 
 [node name="BaseSprite" type="Sprite2D" parent="."]
 texture = ExtResource("5_7f103")

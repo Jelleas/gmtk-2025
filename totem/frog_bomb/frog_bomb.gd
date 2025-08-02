@@ -18,6 +18,7 @@ func init(parent_ref: Totem):
 
 	attack_area = $AttackArea
 	attack_area.global_position = local_pos
+	$AttackArea/CollisionShape2D.shape = $AttackArea/CollisionShape2D.shape.duplicate()
 	$AttackArea/CollisionShape2D.shape.radius = totem.base.range
 	attack_area.area_entered.connect(_on_attack_area_entered)
 	attack_area.area_exited.connect(_on_attack_area_exited)

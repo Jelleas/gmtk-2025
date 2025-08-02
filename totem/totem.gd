@@ -112,7 +112,9 @@ func set_base(new_base: TotemPieces.TotemBase):
 	if(base != null && new_base.type != TotemPieces.BaseType.EMPTY && base.type != TotemPieces.BaseType.EMPTY):
 		return false
 	base = new_base
-	
+
+	set_modified_base()
+		
 	var base_init
 	match base.type:
 		TotemPieces.BaseType.PRODUCER:
@@ -128,8 +130,6 @@ func set_base(new_base: TotemPieces.TotemBase):
 	base_scene = base_init
 	
 	add_child(base_scene)
-	
-	set_modified_base()
 	
 	startTimer()
 	

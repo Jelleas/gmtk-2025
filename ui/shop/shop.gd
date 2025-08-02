@@ -6,7 +6,7 @@ extends VBoxContainer
 @export var bones_tracker: BonesTracker
 
 const N_MODIFIER_SLOTS: int = 3
-const N_BASE_SLOTS: int = 1
+const N_BASE_SLOTS: int = 2
 const REROLL_COST: int = 10
 
 var items: Array[ShopItem] = []
