@@ -38,6 +38,7 @@ func _on_attack_area_exited(body: Node2D) -> void:
 			locked_target = target_list[0]
 
 func totem_action(base: TotemPieces.TotemBase) -> bool:
+	$AttackArea/CollisionShape2D.shape.radius = base.range
 	if(locked_target):
 		shoot(base, local_pos, locked_target)
 		return true
