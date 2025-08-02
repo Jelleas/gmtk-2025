@@ -16,7 +16,7 @@ enum ModifierType {
 	CRIT,
 	RANGE,
 	ENERGY_COST,
-	DAMAGE
+	POWER
 }
 
 enum Rarity {
@@ -31,7 +31,7 @@ enum Rarity {
 class TotemPiece extends Resource:
 	var name: String
 	var price: int
-	var icon: Sprite2D
+	var icon: Resource
 	var description: String
 	var rarity: Rarity
 
@@ -53,7 +53,7 @@ class Forest extends TotemBase:
 		name = "Forest"
 		price = 100
 		type = BaseType.PRODUCER
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#046620")
 		damage = 0
 		cooldown = 5.0
@@ -69,7 +69,7 @@ class Pond extends TotemBase:
 		name = "Pond"
 		price = 100
 		type = BaseType.PRODUCER
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#42c2f5")
 		damage = 0
 		cooldown = 10.0
@@ -85,7 +85,7 @@ class Dart extends TotemBase:
 		name = "Dart"
 		price = 100
 		type = BaseType.DART
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#A0522D")
 		damage = 10
 		cooldown = 1.0
@@ -101,7 +101,7 @@ class FrogBomb extends TotemBase:
 		name = "Frog Bomb"
 		price = 300
 		type = BaseType.FROGBOMB
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#ebdf0c")
 		damage = 50
 		cooldown = 3.0
@@ -129,7 +129,7 @@ class Speed1 extends Modifier:
 		price = 100
 		description = "Activate the totem 10% faster"
 		type = ModifierType.SPEED
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/speed-l.png")
 		rarity = Rarity.COMMON
 				
 	func apply(totem_base):
@@ -143,7 +143,7 @@ class Speed2 extends Modifier:
 		price = 200
 		description = "Activate the totem 20% faster"
 		type = ModifierType.SPEED
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/speed-l.png")
 		rarity = Rarity.RARE
 				
 	func apply(totem_base):
@@ -157,7 +157,7 @@ class Speed3 extends Modifier:
 		price = 300
 		description = "Activate the totem 30% faster"
 		type = ModifierType.SPEED
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/speed-l.png")
 		rarity = Rarity.EPIC
 				
 	func apply(totem_base):
@@ -170,7 +170,7 @@ class Crit1 extends Modifier:
 		price = 100
 		description = "Increase chance of critical strikes by 5%"
 		type = ModifierType.CRIT
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/crit-l.png")
 		rarity = Rarity.COMMON
 				
 	func apply(totem_base):
@@ -183,7 +183,7 @@ class Crit2 extends Modifier:
 		price = 200
 		description = "Increase chance of critical strikes by 10%"
 		type = ModifierType.CRIT
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/crit-l.png")
 		rarity = Rarity.RARE
 				
 	func apply(totem_base):
@@ -196,7 +196,7 @@ class Crit3 extends Modifier:
 		price = 300
 		description = "Increase chance of critical strikes by 20%"
 		type = ModifierType.CRIT
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/crit-l.png")
 		rarity = Rarity.EPIC
 
 	func apply(totem_base):
@@ -209,7 +209,7 @@ class Range1 extends Modifier:
 		price = 100
 		description = "Increase range by 10%"
 		type = ModifierType.RANGE
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.COMMON
 
 	func apply(totem_base):
@@ -222,7 +222,7 @@ class Range2 extends Modifier:
 		price = 200
 		description = "Increase range by 20%"
 		type = ModifierType.RANGE
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.RARE
 
 	func apply(totem_base):
@@ -235,7 +235,7 @@ class Range3 extends Modifier:
 		price = 300
 		description = "Increase range by 30%"
 		type = ModifierType.RANGE
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.EPIC
 
 	func apply(totem_base):
@@ -248,7 +248,7 @@ class EnergyCost1 extends Modifier:
 		price = 100
 		description = "Reduces energy consumption by 5%"
 		type = ModifierType.ENERGY_COST
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/energy-l.png")
 		rarity = Rarity.COMMON
 
 	func apply(totem_base):
@@ -261,7 +261,7 @@ class EnergyCost2 extends Modifier:
 		price = 200
 		description = "Reduces energy consumption by 10%"
 		type = ModifierType.ENERGY_COST
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/energy-l.png")
 		rarity = Rarity.RARE
 
 	func apply(totem_base):
@@ -274,46 +274,46 @@ class EnergyCost3 extends Modifier:
 		price = 300
 		description = "Reduces energy consumption by 20%"
 		type = ModifierType.ENERGY_COST
-		icon = Sprite2D.new()
+		icon = load("res://assets/totems/energy-l.png")
 		rarity = Rarity.EPIC
 
 	func apply(totem_base):
 		totem_base.energy_cost *= 0.80
 		return totem_base
 
-class Damage1 extends Modifier:
+class Power1 extends Modifier:
 	func _init():
-		name = "Damage 1"
+		name = "Power 1"
 		price = 100
-		description = "Increases damage by 10%"
-		type = ModifierType.DAMAGE
-		icon = Sprite2D.new()
+		description = "Increases power by 10%"
+		type = ModifierType.POWER
+		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.COMMON
 
 	func apply(totem_base):
 		totem_base.damage *= 1.10
 		return totem_base
 
-class Damage2 extends Modifier:
+class Power2 extends Modifier:
 	func _init():
-		name = "Damage 2"
+		name = "Power 2"
 		price = 200
-		description = "Increases damage by 20%"
-		type = ModifierType.DAMAGE
-		icon = Sprite2D.new()
+		description = "Increases power by 20%"
+		type = ModifierType.POWER
+		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.COMMON
 
 	func apply(totem_base):
 		totem_base.damage *= 1.20
 		return totem_base
 
-class Damage3 extends Modifier:
+class Power3 extends Modifier:
 	func _init():
-		name = "Damage 3"
+		name = "Power 3"
 		price = 300
-		description = "Increases damage by 30%"
-		type = ModifierType.DAMAGE
-		icon = Sprite2D.new()
+		description = "Increases power by 30%"
+		type = ModifierType.POWER
+		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.COMMON
 
 	func apply(totem_base):
@@ -334,7 +334,7 @@ static var modifiers: Array[Modifier] = [
 	EnergyCost1.new(),
 	EnergyCost2.new(),
 	EnergyCost3.new(),
-	Damage1.new(),
-	Damage2.new(),
-	Damage3.new()
+	Power1.new(),
+	Power2.new(),
+	Power3.new()
 ]
