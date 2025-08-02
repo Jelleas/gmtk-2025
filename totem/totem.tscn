@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://buyy73ip5sskn" path="res://totem/totem.gd" id="1_758mn"]
 [ext_resource type="Script" uid="uid://b78kd0ybgaab4" path="res://totem/producer.gd" id="2_1gino"]
 [ext_resource type="Script" uid="uid://ckfmgbqgrvf0c" path="res://totem/dart.gd" id="3_gpwgi"]
-[ext_resource type="Script" path="res://totem/frog_bomb.gd" id="4_irn1f"]
+[ext_resource type="Script" uid="uid://rh033edclfd5" path="res://totem/frog_bomb.gd" id="4_irn1f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_irn1f"]
 

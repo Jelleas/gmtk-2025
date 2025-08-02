@@ -87,7 +87,7 @@ class Dart extends TotemBase:
 		produces = []
 		total_energy = 100.0
 		energy_cost = 10.0
-		range = 60.0
+		range = 600.0
 
 static var base_types: Array[TotemBase] = [
 	Forest.new(), Pond.new(), Dart.new()
