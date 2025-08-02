@@ -27,3 +27,6 @@ shape = SubResource("CircleShape2D_irn1f")
 
 [node name="FrogBomb" type="Node2D" parent="."]
 script = ExtResource("4_irn1f")
+
+[connection signal="body_entered" from="Dart/AttackArea" to="Dart" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="Dart/AttackArea" to="Dart" method="_on_attack_area_body_exited"]
