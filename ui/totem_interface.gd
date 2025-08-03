@@ -7,23 +7,25 @@ class_name TotemInterface
 @export var tile_map: TileMapLayer
 @export var empty_plot: PackedScene
 @export var bones_tracker: BonesTracker
+@export var monster_path: MonsterPath
 
 signal TotemSelected(totem: Totem)
 signal TotemUnselected(totem: Totem)
 
 var plots: Array = []
 var price: int = 5
-
+var current_wave: int = 0
 
 func totem_pressed(plot_index: int):
 	var fill_plot = plots[plot_index]
 	var totem
 	if(!plots[plot_index][2] is Totem):
 		var empty_plot = plots[plot_index][2]
-		if !bones_tracker.spend(price):
+		var is_locked_producer = plot_index < 4 and current_wave < plot_index
+		if is_locked_producer or !bones_tracker.spend(price):
 			empty_plot.modulate = Color.RED
 			var tween = create_tween()
-			tween.tween_property(empty_plot, "modulate", Color.WHITE, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+			tween.tween_property(empty_plot, "modulate", Color(Color.WHITE, 0.5), 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 			return
 		empty_plot.destroy()
 		totem = create_totem(plot_index, fill_plot)
@@ -117,6 +119,7 @@ func _on_tile_clicked(cell_coords: Vector2i, tile_id: int) -> void:
 
 func _ready() -> void:
 	tile_map.tile_clicked.connect(_on_tile_clicked)
+	monster_path.wave_started.connect(_on_wave_started)
 	plots = [
 		[[51, 52], Vector2i(10, 21)],
 		[[47, 48], Vector2i(14, 21)],
@@ -143,3 +146,6 @@ func _ready() -> void:
 	for i in range(0, plots.size()):
 		var empty_plot = add_empty_plot(i, plots[i][1])
 		plots[i].append(empty_plot)
+		
+func _on_wave_started(wave_number: int, _n: float):
+	current_wave = wave_number

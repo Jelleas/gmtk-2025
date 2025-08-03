@@ -293,9 +293,10 @@ monster_manager = NodePath("../../MonsterPath")
 monster_manager = NodePath("../../MonsterPath")
 shop = NodePath("../TotemUI/Shop")
 
-[node name="TotemManager" parent="." node_paths=PackedStringArray("resource_manager", "tile_map", "bones_tracker") instance=ExtResource("8_eqmdw")]
+[node name="TotemManager" parent="." node_paths=PackedStringArray("resource_manager", "tile_map", "bones_tracker", "monster_path") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")
 tile_map = NodePath("../GroundLayer")
 bones_tracker = NodePath("../UI/BonesTracker")
+monster_path = NodePath("../MonsterPath")
 
 [connection signal="child_exiting_tree" from="MonsterPath" to="MonsterPath" method="_on_child_exiting_tree"]
