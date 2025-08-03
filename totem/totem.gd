@@ -180,11 +180,24 @@ func set_modified_base():
 	
 	modified_base = base_
 
-
 func name() -> String:
 	if base == null:
 		return "Empty"
 	return base.name
+	
+func get_shoots_image_path():
+	if base == null:
+		return
+	
+	var shoots
+	match base.type:
+		TotemPieces.BaseType.DART:
+			shoots = "res://assets/resources/dart.png"
+		TotemPieces.BaseType.FROGBOMB:
+			shoots = "res://assets/resources/frogbomb.png"
+		TotemPieces.BaseType.SWAMP:
+			shoots = "res://assets/resources/swamp.png"
+	return shoots
 	
 func get_total_energy() -> int:
 	if modified_base == null:
