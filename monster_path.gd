@@ -9,7 +9,7 @@ signal wave_started(wave_number: int, next_wave_in: float)
 @export var monster_scene: PackedScene
 @export var wave_seconds: float = 30
 @export var wave_rest_seconds: float = 10
-@export var initial_rest: float = 30
+@export var initial_rest: float = 0
 @export var monster_configs: Array[MonsterConfig]
 
 @onready var wave_timer: Timer = $WaveTimer

@@ -52,6 +52,6 @@ func drop(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
 	current_field.setup_shape(base.range / 10)	
 
 	var to = totem.tile_map_layer.to_local(target.global_position)
-	current_field.damage_spec = base.damage_spec
+	current_field.damage_spec = base.damage_spec.duplicate()
 	current_field.global_position = to
 	add_child(current_field)
