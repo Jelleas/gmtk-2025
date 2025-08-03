@@ -3,16 +3,16 @@ extends PathFollow2D
 class_name Res
 
 enum Type {
-	BERRY_JUICE,
+	WOOD,
+	FROG,
+	SHROOM,
 	BERRY,
+	BERRY_JUICE,
 	CRISPY_FROG,
 	DUST,
 	FROG_SKIN,
-	FROG,
 	MAGIC_DUST,
 	POTION,
-	SHROOM,
-	WOOD
 }
 
 static func image_path(_type: Res.Type) -> String:

@@ -19,6 +19,7 @@ const RARITY_COLOR_MAP = {
 func _ready() -> void:
 	style_button()
 	$Button.button_up.connect(_on_button_up)
+	$HBoxContainer/TextureRect.texture = BonesTracker.get_bones_image(23, 23)
 
 func init(item_: TotemPieces.TotemPiece) -> void:
 	item = item_
@@ -26,7 +27,7 @@ func init(item_: TotemPieces.TotemPiece) -> void:
 	tooltip_text = item.description
 	$Button.tooltip_text = item.description
 	$HBoxContainer/NameLabel.text = item.name
-	$HBoxContainer/PriceLabel.text = str(item.price) + '$'
+	$HBoxContainer/PriceLabel.text = str(item.price)
 	style_button()
 
 func enable() -> void:

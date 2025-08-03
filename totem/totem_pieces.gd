@@ -40,7 +40,7 @@ class TotemPiece extends Resource:
 class TotemBase extends TotemPiece:
 	var type: BaseType
 	var sprite_color: Color
-	var damage: int
+	var damage_spec: DamageSpec
 	var cooldown: float
 	var crit_chance: float
 	var range: float
@@ -58,7 +58,7 @@ class Forest extends TotemBase:
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/forest.png")
 		sprite_color = Color.html("#046620")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 5.0
 		crit_chance = 0
 		consumes = []
@@ -76,7 +76,7 @@ class Pond extends TotemBase:
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/pond.png")
 		sprite_color = Color.html("#42c2f5")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 10.0
 		crit_chance = 0
 		consumes = []
@@ -94,7 +94,7 @@ class MossValley extends TotemBase:
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/moss-valley.png")
 		sprite_color = Color.html("#D62828")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 10.0
 		crit_chance = 0
 		consumes = []
@@ -112,7 +112,7 @@ class Shrubbery extends TotemBase:
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/shrubbery.png")
 		sprite_color = Color.html("#C21807")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL,0, 0)
 		cooldown = 10.0
 		crit_chance = 0
 		consumes = []
@@ -130,7 +130,7 @@ class FrogBurner extends TotemBase:
 		type = BaseType.PRODUCER
 		icon = load("res://assets/totems/frog-burner.png")
 		sprite_color = Color.html("#FF6B00")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 10.0
 		crit_chance = 0
 		consumes = [Res.Type.FROG]
@@ -148,7 +148,7 @@ class FrogSkinner extends TotemBase:
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/frog-skinner.png")
 		sprite_color = Color.html("#4A9153")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 10.0
 		crit_chance = 0
 		consumes = [Res.Type.FROG]
@@ -166,7 +166,7 @@ class BerryJuicer extends TotemBase:
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/berry-juicer.png")
 		sprite_color = Color.html("#C21807")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 10.0
 		crit_chance = 0
 		consumes = [Res.Type.BERRY]
@@ -184,7 +184,7 @@ class ShroomMulcher extends TotemBase:
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/shroom-mulcher.png")
 		sprite_color = Color.html("#2E2E2E")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 10.0
 		crit_chance = 0
 		consumes = [Res.Type.SHROOM]
@@ -202,7 +202,7 @@ class PotionStation extends TotemBase:
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/potion-station.png")
 		sprite_color = Color.html("#2E2E2E")
-		damage = 0
+		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 10.0
 		crit_chance = 0
 		consumes = [Res.Type.MAGIC_DUST, Res.Type.BERRY_JUICE]
@@ -220,7 +220,7 @@ class Dart1 extends TotemBase:
 		type = BaseType.DART
 		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#A0522D")
-		damage = 10
+		damage_spec = DamageSpec.new().init(10, DamageSpec.Type.PHYSICAL, 0, 0)
 		cooldown = 1.0
 		crit_chance = 0.05
 		consumes = [Res.Type.WOOD]
@@ -238,7 +238,7 @@ class Dart2 extends TotemBase:
 		type = BaseType.DART
 		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#A0522D")
-		damage = 20
+		damage_spec = DamageSpec.new().init(20, DamageSpec.Type.VOODOO, 0, 1)
 		cooldown = 1.0
 		crit_chance = 0.05
 		consumes = [Res.Type.WOOD, Res.Type.FROG]
@@ -256,7 +256,7 @@ class FrogBomb extends TotemBase:
 		type = BaseType.FROGBOMB
 		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#ebdf0c")
-		damage = 50
+		damage_spec = DamageSpec.new().init(50, DamageSpec.Type.POISON, 0, 0)
 		cooldown = 3.0
 		crit_chance = 0.10
 		consumes = [Res.Type.FROG]
@@ -273,7 +273,7 @@ class Swamp extends TotemBase:
 		type = BaseType.SWAMP
 		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#70543E")
-		damage = 1
+		damage_spec = DamageSpec.new().init(1, DamageSpec.Type.PHYSICAL, 0.7, 0)
 		cooldown = 10
 		crit_chance = 0.10
 		consumes = [Res.Type.SHROOM]
@@ -483,7 +483,7 @@ class Power1 extends Modifier:
 		unlocks_at_wave = 0
 
 	func apply(totem_base):
-		totem_base.damage *= 1.10
+		totem_base.damage_spec.damage *= 1.10
 		return totem_base
 
 class Power2 extends Modifier:
@@ -497,7 +497,7 @@ class Power2 extends Modifier:
 		unlocks_at_wave = 5
 
 	func apply(totem_base):
-		totem_base.damage *= 1.20
+		totem_base.damage_spec.damage *= 1.20
 		return totem_base
 
 class Power3 extends Modifier:
@@ -511,7 +511,7 @@ class Power3 extends Modifier:
 		unlocks_at_wave = 8
 
 	func apply(totem_base):
-		totem_base.damage *= 1.30
+		totem_base.damage_spec.damage *= 1.30
 		return totem_base
 
 

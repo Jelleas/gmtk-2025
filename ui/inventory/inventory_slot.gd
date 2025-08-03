@@ -72,7 +72,7 @@ func style_delete_button() -> void:
 
 	# Create the StyleBoxes
 	var normal_style = StyleBoxFlat.new()
-	normal_style.bg_color = Color(0.8, 0, 0)
+	normal_style.bg_color = Color(0.7, 0, 0)
 	normal_style.set_corner_radius_all(5)
 	
 	var hover_style = StyleBoxFlat.new()

@@ -2,16 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cmdrjw32ca0oe" path="res://ui/wave_tracker/wave_tracker.gd" id="1_5agos"]
 [ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="2_i3hks"]
-[ext_resource type="Texture2D" uid="uid://d3qiwubftwlph" path="res://assets/Vector/Grey/bar_round_gloss_large.svg" id="3_8dslq"]
+[ext_resource type="Texture2D" uid="uid://d3qiwubftwlph" path="res://kenney_ui-pack-space-expansion/Vector/Grey/bar_round_gloss_large.svg" id="3_8dslq"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="4_pbbvd"]
 
-[node name="WaveTracker" type="VBoxContainer" node_paths=PackedStringArray("monster_manager")]
+[node name="WaveTracker" type="VBoxContainer"]
 offset_left = 592.0
 offset_top = 10.0
 offset_right = 688.0
 offset_bottom = 61.0
 script = ExtResource("1_5agos")
-monster_manager = NodePath("")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -19,9 +18,13 @@ text = "Wave 9"
 horizontal_alignment = 1
 
 [node name="WaveBar" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 step = 0.0
 value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_right = 20
 texture_under = ExtResource("2_i3hks")
 texture_progress = ExtResource("3_8dslq")
 script = ExtResource("4_pbbvd")

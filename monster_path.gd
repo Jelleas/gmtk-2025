@@ -28,6 +28,10 @@ func _ready() -> void:
 	initial_rest_timer.one_shot = true
 	initial_rest_timer.start(initial_rest)
 	
+	# wait till all ready, then send the initial wave
+	wave_started.emit.call_deferred(0, initial_rest)
+	
+	
 func _process(delta: float) -> void:
 	pass
 

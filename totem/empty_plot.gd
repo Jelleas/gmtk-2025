@@ -1,8 +1,12 @@
 extends Sprite2D
 
+func _ready():
+	set_price(5)
+
 func set_price(price: int):
-	$Price.text = str(price)
-	$Price.modulate.a = 0.5
+	$HBoxContainer/Price.text = str(price)
+	$HBoxContainer/Price.modulate.a = 0.5
+	$HBoxContainer/TextureRect.texture = BonesTracker.get_bones_image(69, 69)
 
 func set_color(color: Color):
 	color.a = 0.25

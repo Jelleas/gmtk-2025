@@ -3,9 +3,6 @@ extends TextureProgressBar
 var resource_path: Path2D
 var initialized = false
 
-func _ready() -> void:
-	add_to_group("resource_trackers")
-
 func init(resource_path_: Path2D) -> void:
 	resource_path = resource_path_
 	max_value = resource_path.SIZE
