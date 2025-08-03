@@ -115,6 +115,8 @@ monster_configs = Array[ExtResource("7_386tm")]([ExtResource("8_2px6s"), ExtReso
 
 [node name="SpawnTimer" type="Timer" parent="MonsterPath"]
 
+[node name="InitialRestTimer" type="Timer" parent="MonsterPath"]
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="ResourceTracker" type="VBoxContainer" parent="UI" node_paths=PackedStringArray("resource_path")]
