@@ -252,10 +252,27 @@ class FrogBomb extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 20.0
 		range = 600.0
+		
+class Swamp extends TotemBase:
+	func _init():
+		name = "Swamp"
+		price = 400
+		type = BaseType.SWAMP
+		icon = load("res://assets/totems/speed-l.png")
+		sprite_color = Color.html("#70543E")
+		damage = 5
+		cooldown = 10
+		crit_chance = 0.10
+		consumes = [Res.Type.SHROOM]
+		produces = []
+		total_energy = 100.0
+		energy_cost = 5.0
+		range = 600.0
 
 static var base_types: Array[TotemBase] = [
 	Dart1.new(),
 	Dart2.new(),
+	Swamp.new(),
 	FrogBomb.new(), 
 	FrogBurner.new(), 
 	FrogSkinner.new(), 
