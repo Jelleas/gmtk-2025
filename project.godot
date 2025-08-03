@@ -11,15 +11,23 @@ config_version=5
 [application]
 
 config/name="gmtk_2025"
-run/main_scene="uid://cbsdsj1tj2kky"
+run/main_scene="uid://w5fc7emoyi3n"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+menu_vars="*res://ui/menu_screens/menu_variables.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+
+[gui]
+
+theme/custom="uid://bxa05i61kwi31"
 
 [input]
 

@@ -21,6 +21,8 @@ func set_wave() -> void:
 	if tween != null:
 		tween.stop()
 	
+	menu_vars.wave_reached = wave
+	
 	$WaveBar.value = 0.0
 	$WaveBar.max_value = next_wave_in
 	$Label.text = "Wave " + str(wave)

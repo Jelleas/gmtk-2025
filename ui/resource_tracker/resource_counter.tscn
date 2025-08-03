@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://duqlv1slplp7q"]
 
-[ext_resource type="Script" uid="uid://ch56vgnhbb8nu" path="res://ui/resource_tracker/resource_counter.gd" id="1_mbipk"]
+[ext_resource type="Script" path="res://ui/resource_tracker/resource_counter.gd" id="1_mbipk"]
 [ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="2_ejr81"]
 
 [node name="ResourceCounter" type="HBoxContainer"]
