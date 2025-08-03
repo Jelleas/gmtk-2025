@@ -6,6 +6,7 @@ class_name TotemInterface
 @export var totem_scene: PackedScene
 @export var tile_map: TileMapLayer
 @export var empty_plot: PackedScene
+@export var bones_tracker: BonesTracker
 
 signal TotemSelected(totem: Totem)
 signal TotemUnselected(totem: Totem)
@@ -19,6 +20,11 @@ func totem_pressed(plot_index: int):
 	var totem
 	if(!plots[plot_index][2] is Totem):
 		var empty_plot = plots[plot_index][2]
+		if !bones_tracker.spend(price):
+			empty_plot.modulate = Color.RED
+			var tween = create_tween()
+			tween.tween_property(empty_plot, "modulate", Color.WHITE, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+			return
 		empty_plot.destroy()
 		totem = create_totem(plot_index, fill_plot)
 		plots[plot_index][2] = totem

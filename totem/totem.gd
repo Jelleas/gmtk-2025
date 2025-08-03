@@ -42,7 +42,6 @@ func init(resource_man: Path2D, start_index: int, end_index: int, tile_map: Tile
 	
 	sprite = $BaseSprite
 	
-	var tile_size = tile_map_layer.tile_set.tile_size
 	local_pos = tile_map_layer.map_to_local(plot_position)
 	global_pos = tile_map_layer.to_global(local_pos)
 	

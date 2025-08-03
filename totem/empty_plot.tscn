@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bboaxorms0tq"]
 
 [ext_resource type="Texture2D" uid="uid://2tgfturtref7" path="res://assets/totems/totem-base.png" id="1_hvspm"]
-[ext_resource type="Script" uid="uid://c0vhbmmm7n5e6" path="res://totem/empty_plot.gd" id="2_3ogmi"]
+[ext_resource type="Script" path="res://totem/empty_plot.gd" id="2_3ogmi"]
 
 [node name="Empty" type="Sprite2D"]
 texture = ExtResource("1_hvspm")
