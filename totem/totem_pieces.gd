@@ -67,6 +67,7 @@ class Forest extends TotemBase:
 		energy_cost = 0
 		range = 0.0
 		unlocks_at_wave = 0
+		rarity = Rarity.COMMON
 
 class Pond extends TotemBase:
 	func _init():
@@ -85,6 +86,7 @@ class Pond extends TotemBase:
 		energy_cost = 0
 		range = 0.0
 		unlocks_at_wave = 1
+		rarity = Rarity.COMMON
 
 class MossValley extends TotemBase:
 	func _init():
@@ -103,6 +105,7 @@ class MossValley extends TotemBase:
 		energy_cost = 0
 		range = 0.0
 		unlocks_at_wave = 3
+		rarity = Rarity.COMMON
 
 class Shrubbery extends TotemBase:
 	func _init():
@@ -121,13 +124,14 @@ class Shrubbery extends TotemBase:
 		energy_cost = 0
 		range = 0.0
 		unlocks_at_wave = 4
+		rarity = Rarity.COMMON
 
 class FrogBurner extends TotemBase:
 	func _init():
 		name = "Frog burner"
 		description = "Converts frogs into crispy frogs."
 		price = 100
-		type = BaseType.PRODUCER
+		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/converter-totem.png")
 		sprite_color = Color.html("#FF6B00")
 		damage_spec = DamageSpec.new().init(0, DamageSpec.Type.PHYSICAL, 0, 0)
@@ -139,6 +143,7 @@ class FrogBurner extends TotemBase:
 		energy_cost = 100
 		range = 0.0
 		unlocks_at_wave = 5
+		rarity = Rarity.RARE
 
 class FrogSkinner extends TotemBase:
 	func _init():
@@ -157,6 +162,7 @@ class FrogSkinner extends TotemBase:
 		energy_cost = 100
 		range = 0.0
 		unlocks_at_wave = 6
+		rarity = Rarity.RARE
 
 class BerryJuicer extends TotemBase:
 	func _init():
@@ -175,6 +181,7 @@ class BerryJuicer extends TotemBase:
 		energy_cost = 100
 		range = 0.0
 		unlocks_at_wave = 7
+		rarity = Rarity.RARE
 
 class ShroomMulcher extends TotemBase:
 	func _init():
@@ -193,6 +200,7 @@ class ShroomMulcher extends TotemBase:
 		energy_cost = 100
 		range = 0.0
 		unlocks_at_wave = 8
+		rarity = Rarity.RARE
 
 class PotionStation extends TotemBase:
 	func _init():
@@ -211,6 +219,7 @@ class PotionStation extends TotemBase:
 		energy_cost = 100
 		range = 0.0
 		unlocks_at_wave = 9
+		rarity = Rarity.RARE
 
 class Dart1 extends TotemBase:
 	func _init():
@@ -226,9 +235,10 @@ class Dart1 extends TotemBase:
 		consumes = [Res.Type.WOOD]
 		produces = []
 		total_energy = 100.0
-		energy_cost = 10.0
+		energy_cost = 20.0
 		range = 600.0
 		unlocks_at_wave = 0
+		rarity = Rarity.COMMON
 
 class Dart2 extends TotemBase:
 	func _init():
@@ -244,15 +254,16 @@ class Dart2 extends TotemBase:
 		consumes = [Res.Type.WOOD, Res.Type.FROG]
 		produces = []
 		total_energy = 100.0
-		energy_cost = 10.0
+		energy_cost = 20.0
 		range = 600.0
 		unlocks_at_wave = 5
+		rarity = Rarity.RARE
 		
 class FrogBomb extends TotemBase:
 	func _init():
 		name = "Frog Bomb"
 		description = "Drops a big frog on enemies."
-		price = 300
+		price = 150
 		type = BaseType.FROGBOMB
 		icon = load("res://assets/totems/attack-totem.png")
 		sprite_color = Color.html("#ebdf0c")
@@ -262,14 +273,15 @@ class FrogBomb extends TotemBase:
 		consumes = [Res.Type.FROG]
 		produces = []
 		total_energy = 100.0
-		energy_cost = 20.0
+		energy_cost = 50.0
 		range = 600.0
 		unlocks_at_wave = 1
+		rarity = Rarity.UNCOMMON
 		
 class Swamp extends TotemBase:
 	func _init():
 		name = "Swamp"
-		price = 400
+		price = 250
 		type = BaseType.SWAMP
 		icon = load("res://assets/totems/attack-totem.png")
 		sprite_color = Color.html("#70543E")
@@ -282,6 +294,7 @@ class Swamp extends TotemBase:
 		energy_cost = 5.0
 		range = 600.0
 		unlocks_at_wave = 3
+		rarity = Rarity.UNCOMMON
 
 static var base_types: Array[TotemBase] = [
 	Dart1.new(),

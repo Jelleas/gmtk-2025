@@ -9,7 +9,7 @@ signal wave_started(wave_number: int, next_wave_in: float)
 @export var monster_scene: PackedScene
 @export var wave_seconds: float = 30
 @export var wave_rest_seconds: float = 10
-@export var initial_rest: float = 1
+@export var initial_rest: float = 7
 @export var monster_configs: Array[MonsterConfig]
 
 @onready var wave_timer: Timer = $WaveTimer
@@ -62,7 +62,7 @@ func _spawn_new_monster():
 	
 func _start_new_wave():
 	current_wave += 1
-	current_max_cost = int(current_max_cost * 1.1 + 10)
+	current_max_cost = int(current_max_cost * 1.1 + 5)
 	
 	var picked_cost = 0
 	while picked_cost < current_max_cost: 
