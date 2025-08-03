@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfj3upnhcrhkl"]
 
 [ext_resource type="Script" uid="uid://0usigqqfy5mb" path="res://ui/totem_tracker/totem_tracker.gd" id="1_ccepk"]
-[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="2_dmyxo"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="2_dmyxo"]
 [ext_resource type="Texture2D" uid="uid://c33jp21i34fud" path="res://assets/totems/power-l.png" id="2_huc5e"]
 [ext_resource type="Texture2D" uid="uid://dyeavgbjrqewr" path="res://assets/Vector/Yellow/bar_round_gloss_large.svg" id="3_dmyxo"]
-[ext_resource type="Script" uid="uid://b8uafdpeav5gl" path="res://ui/totem_tracker/stats_grid.gd" id="4_8jy2a"]
+[ext_resource type="Script" path="res://ui/totem_tracker/stats_grid.gd" id="4_8jy2a"]
 [ext_resource type="PackedScene" uid="uid://dj26ivbhptj4n" path="res://ui/totem_tracker/resource_list.tscn" id="4_huc5e"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="4_wusnp"]
 

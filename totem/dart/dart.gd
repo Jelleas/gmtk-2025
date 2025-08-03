@@ -34,7 +34,7 @@ func _on_attack_area_exited(body: Node2D) -> void:
 
 func totem_action(base: TotemPieces.TotemBase) -> bool:
 	$AttackArea/CollisionShape2D.shape.radius = base.range
-	if(targets.size() >= 1):
+	if(targets.size() > 0):
 		shoot(base, local_pos, targets[0])
 		return true
 	return false
@@ -43,7 +43,13 @@ func shoot(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
 	var to = totem.tile_map_layer.to_local(target.global_position)
 	var projectile_scene = preload("res://totem/dart/dart_projectile.tscn")
 	var proj = projectile_scene.instantiate()
-	proj.damage = base.damage
+	
+	var damage_spec = DamageSpec.new()
+	damage_spec.damage = base.damage
+	damage_spec.speed_modifier = 1
+	damage_spec.type = DamageSpec.Type.PHYSICAL
+	
+	proj.damage_spec = damage_spec
 	proj.global_position = from
 	proj.direction = (to - from).normalized()
 
