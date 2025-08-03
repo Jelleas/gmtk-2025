@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://w5fc7emoyi3n"]
+
+[ext_resource type="Script" uid="uid://cjehifb5tcmbb" path="res://ui/menu_screens/main_menu.gd" id="1_yvl1n"]
+[ext_resource type="Texture2D" uid="uid://dagv6yyehpfes" path="res://assets/stacked-totems.png" id="2_k1xng"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_yvl1n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1282.0
+offset_bottom = 720.0
+color = Color(0.168627, 0.309804, 0.505882, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 2.0
+offset_top = 23.0
+offset_right = 551.0
+offset_bottom = 715.0
+texture = ExtResource("2_k1xng")
+
+[node name="StartGame" type="Button" parent="."]
+offset_left = 477.0
+offset_top = 586.0
+offset_right = 794.0
+offset_bottom = 657.0
+theme_override_font_sizes/font_size = 60
+text = "New Game"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 735.0
+offset_top = 31.0
+offset_right = 1284.0
+offset_bottom = 723.0
+texture = ExtResource("2_k1xng")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 297.0
+offset_top = 3.0
+offset_right = 985.0
+offset_bottom = 246.0
+theme_override_font_sizes/font_size = 100
+text = "Loopy
+Totems"
+horizontal_alignment = 1
+vertical_alignment = 1

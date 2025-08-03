@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://mxrrppp41dh2"]
+
+[ext_resource type="Script" uid="uid://fkwfinud41ml" path="res://ui/menu_screens/game_over.gd" id="1_uk3mu"]
+[ext_resource type="Texture2D" uid="uid://cx6o45l76no6n" path="res://assets/broken.png" id="2_llsyu"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_uk3mu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1282.0
+offset_bottom = 720.0
+color = Color(0.168627, 0.309804, 0.505882, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_llsyu")
+
+[node name="GameOver" type="Label" parent="."]
+offset_left = 368.0
+offset_top = 176.0
+offset_right = 905.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 384.0
+offset_top = 368.0
+offset_right = 896.0
+offset_bottom = 395.0
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenu" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 560.0
+offset_right = 896.0
+offset_bottom = 631.0
+theme_override_font_sizes/font_size = 50
+text = "Back To Main Menu
+"
