@@ -52,6 +52,7 @@ func set_totem():
 
 	set_consumes()
 	set_produces()
+	set_shoots()
 	
 	$HBoxContainer/MarginContainer3/StatsGrid.set_stats(totem)
 
@@ -72,14 +73,17 @@ func set_header():
 		rect.show()
 
 func set_consumes():
+	var list = $HBoxContainer/ConsumesResourceList
+	var label = $HBoxContainer/ConsumesLabel
+	
 	if totem.get_consumes().size() == 0:
-		$HBoxContainer/ConsumesResourceList.hide()
-		$HBoxContainer/ConsumesLabel.hide()
+		list.hide()
+		label.hide()
 	else:
 		var consumes_map = _create_resource_map(totem.get_consumes())
-		$HBoxContainer/ConsumesResourceList.show()
-		$HBoxContainer/ConsumesResourceList.set_resources(consumes_map)
-		$HBoxContainer/ConsumesLabel.show()
+		list.show()
+		list.set_resources(consumes_map)
+		label.show()
 	
 func set_produces():
 	if totem.get_produces().size() == 0:
@@ -91,6 +95,23 @@ func set_produces():
 		$HBoxContainer/ProducesResourceList.set_resources(produces_map)
 		$HBoxContainer/ProducesLabel.show()
 	
+func set_shoots():
+	if totem.get_shoots_image_path() == null:
+		$HBoxContainer/ShootsContainer.hide()
+		$HBoxContainer/ShootsLabel.hide()
+	else:
+		var rect = TextureRect.new()
+		rect.expand_mode = TextureRect.EXPAND_KEEP_SIZE
+		rect.stretch_mode = TextureRect.STRETCH_KEEP
+		var path = totem.get_shoots_image_path()
+		var image = load(path).get_image()
+		image.resize(32, 32, Image.INTERPOLATE_LANCZOS)
+		var resized_texture = ImageTexture.create_from_image(image)
+		
+		rect.texture = resized_texture
+		$HBoxContainer/ShootsContainer.add_child(rect)		
+		$HBoxContainer/ShootsContainer.show()
+		$HBoxContainer/ShootsLabel.show()
 	
 func _create_resource_map(resources: Array[Res.Type]) -> Dictionary[Res.Type, int]:
 	var resource_map: Dictionary[Res.Type, int] = {}

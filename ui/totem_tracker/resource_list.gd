@@ -13,7 +13,8 @@ func set_resources(resources_: Dictionary[Res.Type, int]):
 	for prod in resources:
 		var quant = resources[prod]
 		
-		var line = resource_line.instantiate()
-		
-		line.set_resource(prod, quant)
-		$GridContainer.add_child(line)
+		for i in range(quant):
+			var line = resource_line.instantiate()
+			
+			line.set_resource(prod, quant)
+			$GridContainer.add_child(line)

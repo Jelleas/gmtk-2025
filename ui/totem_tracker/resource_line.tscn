@@ -6,10 +6,6 @@
 [node name="ResourceLine" type="HBoxContainer"]
 script = ExtResource("1_vj77j")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-text = "3"
-
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("1_58k46")

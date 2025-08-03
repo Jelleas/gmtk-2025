@@ -58,6 +58,15 @@ autowrap_mode = 2
 [node name="ProducesResourceList" parent="HBoxContainer" instance=ExtResource("4_huc5e")]
 layout_mode = 2
 
+[node name="ShootsLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "  Shoots"
+
+[node name="ShootsContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 0
+
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -129,3 +138,6 @@ stretch_margin_right = 20
 texture_under = ExtResource("2_dmyxo")
 texture_progress = ExtResource("3_dmyxo")
 script = ExtResource("4_wusnp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2

@@ -9,5 +9,5 @@ theme_override_constants/margin_top = 0
 script = ExtResource("1_bm8an")
 resource_line = ExtResource("2_5phaf")
 
-[node name="GridContainer" type="VBoxContainer" parent="."]
+[node name="GridContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

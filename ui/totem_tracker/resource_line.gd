@@ -8,9 +8,6 @@ var quantity: int
 func set_resource(resource_: Res.Type, quantity_: int) -> void:
 	resource = resource_
 	quantity = quantity_
-	
-	$Label.text = str(quantity) + " " + Res.Type.keys()[resource].capitalize()
-
 	var path = Res.image_path(resource_)
 	var texture = load(path)
 #
