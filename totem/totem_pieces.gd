@@ -35,6 +35,7 @@ class TotemPiece extends Resource:
 	var icon: Resource
 	var description: String
 	var rarity: Rarity
+	var unlocks_at_wave: int
 
 class TotemBase extends TotemPiece:
 	var type: BaseType
@@ -65,6 +66,7 @@ class Forest extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 0
 		range = 0.0
+		unlocks_at_wave = 0
 
 class Pond extends TotemBase:
 	func _init():
@@ -82,6 +84,7 @@ class Pond extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 0
 		range = 0.0
+		unlocks_at_wave = 1
 
 class MossValley extends TotemBase:
 	func _init():
@@ -99,6 +102,7 @@ class MossValley extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 0
 		range = 0.0
+		unlocks_at_wave = 3
 
 class Shrubbery extends TotemBase:
 	func _init():
@@ -116,6 +120,7 @@ class Shrubbery extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 0
 		range = 0.0
+		unlocks_at_wave = 4
 
 class FrogBurner extends TotemBase:
 	func _init():
@@ -133,6 +138,7 @@ class FrogBurner extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 100
 		range = 0.0
+		unlocks_at_wave = 5
 
 class FrogSkinner extends TotemBase:
 	func _init():
@@ -150,6 +156,7 @@ class FrogSkinner extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 100
 		range = 0.0
+		unlocks_at_wave = 6
 
 class BerryJuicer extends TotemBase:
 	func _init():
@@ -167,6 +174,7 @@ class BerryJuicer extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 100
 		range = 0.0
+		unlocks_at_wave = 7
 
 class ShroomMulcher extends TotemBase:
 	func _init():
@@ -184,6 +192,7 @@ class ShroomMulcher extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 100
 		range = 0.0
+		unlocks_at_wave = 8
 
 class PotionStation extends TotemBase:
 	func _init():
@@ -201,6 +210,7 @@ class PotionStation extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 100
 		range = 0.0
+		unlocks_at_wave = 9
 
 class Dart1 extends TotemBase:
 	func _init():
@@ -218,6 +228,7 @@ class Dart1 extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 10.0
 		range = 600.0
+		unlocks_at_wave = 0
 
 class Dart2 extends TotemBase:
 	func _init():
@@ -235,6 +246,7 @@ class Dart2 extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 10.0
 		range = 600.0
+		unlocks_at_wave = 5
 		
 class FrogBomb extends TotemBase:
 	func _init():
@@ -252,6 +264,7 @@ class FrogBomb extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 20.0
 		range = 600.0
+		unlocks_at_wave = 1
 		
 class Swamp extends TotemBase:
 	func _init():
@@ -268,6 +281,7 @@ class Swamp extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 5.0
 		range = 600.0
+		unlocks_at_wave = 3
 
 static var base_types: Array[TotemBase] = [
 	Dart1.new(),
@@ -296,6 +310,7 @@ class Speed1 extends Modifier:
 		type = ModifierType.SPEED
 		icon = load("res://assets/totems/speed-l.png")
 		rarity = Rarity.COMMON
+		unlocks_at_wave = 0
 				
 	func apply(totem_base):
 		#totem_base.energy_cost *= 1 / 0.9
@@ -310,6 +325,7 @@ class Speed2 extends Modifier:
 		type = ModifierType.SPEED
 		icon = load("res://assets/totems/speed-l.png")
 		rarity = Rarity.RARE
+		unlocks_at_wave = 5
 				
 	func apply(totem_base):
 		#totem_base.energy_cost *= 1 / 0.8
@@ -324,6 +340,7 @@ class Speed3 extends Modifier:
 		type = ModifierType.SPEED
 		icon = load("res://assets/totems/speed-l.png")
 		rarity = Rarity.EPIC
+		unlocks_at_wave = 8
 				
 	func apply(totem_base):
 		totem_base.cooldown *= 0.7
@@ -337,6 +354,7 @@ class Crit1 extends Modifier:
 		type = ModifierType.CRIT
 		icon = load("res://assets/totems/crit-l.png")
 		rarity = Rarity.COMMON
+		unlocks_at_wave = 0
 				
 	func apply(totem_base):
 		totem_base.crit_chance += 0.05
@@ -350,6 +368,7 @@ class Crit2 extends Modifier:
 		type = ModifierType.CRIT
 		icon = load("res://assets/totems/crit-l.png")
 		rarity = Rarity.RARE
+		unlocks_at_wave = 5
 				
 	func apply(totem_base):
 		totem_base.crit_chance += 0.10
@@ -363,6 +382,7 @@ class Crit3 extends Modifier:
 		type = ModifierType.CRIT
 		icon = load("res://assets/totems/crit-l.png")
 		rarity = Rarity.EPIC
+		unlocks_at_wave = 8
 
 	func apply(totem_base):
 		totem_base.crit_chance += 0.20
@@ -376,6 +396,7 @@ class Range1 extends Modifier:
 		type = ModifierType.RANGE
 		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.COMMON
+		unlocks_at_wave = 0
 
 	func apply(totem_base):
 		totem_base.range *= 1.10
@@ -389,6 +410,7 @@ class Range2 extends Modifier:
 		type = ModifierType.RANGE
 		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.RARE
+		unlocks_at_wave = 5
 
 	func apply(totem_base):
 		totem_base.range *= 1.20
@@ -402,6 +424,7 @@ class Range3 extends Modifier:
 		type = ModifierType.RANGE
 		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.EPIC
+		unlocks_at_wave = 8
 
 	func apply(totem_base):
 		totem_base.range *= 1.30
@@ -415,6 +438,7 @@ class EnergyCost1 extends Modifier:
 		type = ModifierType.ENERGY_COST
 		icon = load("res://assets/totems/energy-l.png")
 		rarity = Rarity.COMMON
+		unlocks_at_wave = 0
 
 	func apply(totem_base):
 		totem_base.energy_cost *= 0.95
@@ -428,6 +452,7 @@ class EnergyCost2 extends Modifier:
 		type = ModifierType.ENERGY_COST
 		icon = load("res://assets/totems/energy-l.png")
 		rarity = Rarity.RARE
+		unlocks_at_wave = 5
 
 	func apply(totem_base):
 		totem_base.energy_cost *= 0.90
@@ -441,6 +466,7 @@ class EnergyCost3 extends Modifier:
 		type = ModifierType.ENERGY_COST
 		icon = load("res://assets/totems/energy-l.png")
 		rarity = Rarity.EPIC
+		unlocks_at_wave = 8
 
 	func apply(totem_base):
 		totem_base.energy_cost *= 0.80
@@ -454,6 +480,7 @@ class Power1 extends Modifier:
 		type = ModifierType.POWER
 		icon = load("res://assets/totems/power-l.png")
 		rarity = Rarity.COMMON
+		unlocks_at_wave = 0
 
 	func apply(totem_base):
 		totem_base.damage *= 1.10
@@ -466,7 +493,8 @@ class Power2 extends Modifier:
 		description = "Increases power by 20%"
 		type = ModifierType.POWER
 		icon = load("res://assets/totems/power-l.png")
-		rarity = Rarity.COMMON
+		rarity = Rarity.RARE
+		unlocks_at_wave = 5
 
 	func apply(totem_base):
 		totem_base.damage *= 1.20
@@ -479,7 +507,8 @@ class Power3 extends Modifier:
 		description = "Increases power by 30%"
 		type = ModifierType.POWER
 		icon = load("res://assets/totems/power-l.png")
-		rarity = Rarity.COMMON
+		rarity = Rarity.EPIC
+		unlocks_at_wave = 8
 
 	func apply(totem_base):
 		totem_base.damage *= 1.30

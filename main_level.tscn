@@ -255,13 +255,14 @@ theme_override_constants/separation = 25
 [node name="PaddingMarginContainer" type="MarginContainer" parent="UI/TotemUI/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Shop" type="VBoxContainer" parent="UI/TotemUI" node_paths=PackedStringArray("inventory", "totem_interface", "bones_tracker")]
+[node name="Shop" type="VBoxContainer" parent="UI/TotemUI" node_paths=PackedStringArray("inventory", "totem_interface", "bones_tracker", "monster_path")]
 layout_mode = 2
 script = ExtResource("19_8m212")
 shop_item = ExtResource("20_8m212")
 inventory = NodePath("../Inventory")
 totem_interface = NodePath("../../../TotemManager")
 bones_tracker = NodePath("../../BonesTracker")
+monster_path = NodePath("../../../MonsterPath")
 
 [node name="Label" type="Label" parent="UI/TotemUI/Shop"]
 layout_mode = 2
