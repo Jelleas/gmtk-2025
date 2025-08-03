@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("1_odxkn")
 name = "Blob"
-health = 300
+health = 150
 speed = 2
 escape_cost = 10
 cost = 10
-rank = 5
+rank = 6
 sprite = ExtResource("2_l5li2")
 scale = 1.5
 resistances = Array[int]([])

@@ -68,6 +68,8 @@ func _start_new_wave():
 	while picked_cost < current_max_cost: 
 		var available_cost = current_max_cost - picked_cost
 		var monster = _pick_random_monster(available_cost, current_wave)
+		if monster == null:
+			break
 		picked_cost += monster.cost
 		monsters_to_spawn.append(monster)
 	
@@ -79,9 +81,13 @@ func _start_game():
 	wave_timer.start(wave_seconds + wave_rest_seconds)
 	_start_new_wave()
 		
-func _pick_random_monster(max_cost: int, current_wave: int) -> MonsterConfig:
+func _pick_random_monster(max_cost: int, current_wave: int):
 	var available_monsters = monster_configs.filter(
 		func(config: MonsterConfig): return config.cost <= max_cost and config.rank <= current_wave
 	)
+	if available_monsters.size() == 0:
+		current_max_cost = 0
+		return
+	
 	var random_index = randi_range(0, available_monsters.size() - 1)
 	return available_monsters[random_index]
