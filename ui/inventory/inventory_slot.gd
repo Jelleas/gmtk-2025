@@ -67,6 +67,8 @@ func style_background() -> void:
 func style_delete_button() -> void:
 	var delete_button = $Control/DeleteButton
 	
+	delete_button.icon = get_image(load("res://assets/trash-can-icon-28675.png"))
+	
 	delete_button.size = Vector2(35, 35)
 	delete_button.position = Vector2(62, -25)
 
@@ -87,3 +89,8 @@ func style_delete_button() -> void:
 	delete_button.set("theme_override_styles/normal", normal_style)
 	delete_button.set("theme_override_styles/hover", hover_style)
 	delete_button.set("theme_override_styles/pressed", pressed_style)
+
+func get_image(resource: Resource) -> ImageTexture:
+	var image = resource.get_image()
+	image.resize(16, 16, Image.INTERPOLATE_LANCZOS)
+	return ImageTexture.create_from_image(image)
