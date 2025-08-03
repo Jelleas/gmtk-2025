@@ -16,6 +16,8 @@ var plots: Array = []
 var price: int = 5
 var current_wave: int = 0
 
+var selected_totem: Totem
+
 func totem_pressed(plot_index: int):
 	var fill_plot = plots[plot_index]
 	var totem
@@ -34,6 +36,12 @@ func totem_pressed(plot_index: int):
 		update_plot_price()
 	else:
 		totem = plots[plot_index][2]
+	
+	# unselect previous totem and select new
+	if selected_totem != null:
+		selected_totem.unselect()
+	selected_totem = totem
+	totem.select()
 	
 	TotemSelected.emit(totem)
 	

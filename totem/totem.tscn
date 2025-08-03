@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://tmkdkgu7s5vv"]
+[gd_scene load_steps=9 format=3 uid="uid://tmkdkgu7s5vv"]
 
 [ext_resource type="Script" uid="uid://buyy73ip5sskn" path="res://totem/totem.gd" id="1_758mn"]
 [ext_resource type="PackedScene" uid="uid://luhkfgf4ylhy" path="res://totem/producer/producer.tscn" id="2_7f103"]
@@ -7,6 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://2tgfturtref7" path="res://assets/totems/totem-base.png" id="5_7f103"]
 [ext_resource type="PackedScene" uid="uid://7wdxai2cragc" path="res://totem/swamp/swamp.tscn" id="5_xljs4"]
 [ext_resource type="PackedScene" uid="uid://d4hbyolxsvjpt" path="res://totem/recipe_container.tscn" id="7_tgvhx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgvhx"]
+bg_color = Color(0.890196, 0.85098, 0.780392, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.890196, 0.85098, 0.780392, 0.392157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Totem" type="Node2D"]
 script = ExtResource("1_758mn")
@@ -34,3 +46,10 @@ offset_right = -173.0
 offset_bottom = -49.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SelectedPanel" type="Panel" parent="BaseSprite"]
+offset_left = -172.0
+offset_top = -202.0
+offset_right = 178.0
+offset_bottom = 149.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tgvhx")
