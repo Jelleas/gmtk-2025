@@ -33,7 +33,7 @@ func create_count_map() -> Dictionary[Res.Type, int]:
 	var count = 0
 	for c in resource_path.contents:
 		if c != null:
-			if c in count_map:
+			if c.type in count_map:
 				count_map[c.type] += 1
 			else:
 				count_map[c.type] = 1

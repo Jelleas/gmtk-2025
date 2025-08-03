@@ -31,7 +31,6 @@ func _ready() -> void:
 	# wait till all ready, then send the initial wave
 	wave_started.emit.call_deferred(0, initial_rest)
 	
-	
 func _process(delta: float) -> void:
 	pass
 
