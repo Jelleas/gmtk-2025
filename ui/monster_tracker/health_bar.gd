@@ -14,7 +14,7 @@ func init(monster_path_: Path2D) -> void:
 	monster_path.monster_escape.connect(_on_monster_escape)
 
 func _on_monster_escape(monster: Monster):
-	value -= 100 #monster.config.escape_cost
+	value -= monster.config.escape_cost
 	
 	if(value < 1):
 		get_tree().change_scene_to_file("res://ui/menu_screens/game_over.tscn")
