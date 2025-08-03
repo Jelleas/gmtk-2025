@@ -105,10 +105,13 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dead: return
-	progress_ratio += delta / (LOOP_SECONDS / speed)
+	var progress_ratio_ = progress_ratio + delta / (LOOP_SECONDS / speed)
 	
-	if progress_ratio >= 1.0:
+	if progress_ratio_ >= 1.0:
 		escape()
+		progress_ratio_ -= 1
+	
+	progress_ratio = progress_ratio_
 
 func init(_config: MonsterConfig):
 	config = _config
@@ -134,7 +137,6 @@ func take_damage(damage: int):
 
 func escape():
 	monster_escape.emit(self)
-	queue_free()
 	
 func _flash():
 	var tween = create_tween()

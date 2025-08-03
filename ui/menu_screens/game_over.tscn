@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://mxrrppp41dh2"]
+[gd_scene load_steps=3 format=3 uid="uid://mxrrppp41dh2"]
 
 [ext_resource type="Script" uid="uid://fkwfinud41ml" path="res://ui/menu_screens/game_over.gd" id="1_uk3mu"]
+[ext_resource type="Texture2D" uid="uid://cx6o45l76no6n" path="res://assets/broken.png" id="2_llsyu"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_uk3mu")
@@ -13,6 +14,7 @@ color = Color(0.168627, 0.309804, 0.505882, 1)
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1280.0
 offset_bottom = 720.0
+texture = ExtResource("2_llsyu")
 
 [node name="GameOver" type="Label" parent="."]
 offset_left = 368.0

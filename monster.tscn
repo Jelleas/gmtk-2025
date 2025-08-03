@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://clt7pafdvryia"]
 
 [ext_resource type="Script" uid="uid://c75kjpflhiyel" path="res://monster.gd" id="1_mrqeg"]
-[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="2_ga5te"]
-[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://assets/Vector/Red/bar_round_gloss_large.svg" id="3_vr0w3"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="2_ga5te"]
+[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://kenney_ui-pack-space-expansion/Vector/Red/bar_round_gloss_large.svg" id="3_vr0w3"]
 [ext_resource type="AudioStream" uid="uid://dt02yepkpaxdt" path="res://assets/monsters/mixkit-footsteps-in-woods-loop-533.wav" id="4_vr0w3"]
 [ext_resource type="AudioStream" uid="uid://d18vtrrjj14op" path="res://assets/monsters/mixkit-creature-cry-of-hurt-2208.wav" id="5_6tndq"]
 
@@ -11,7 +11,6 @@ radius = 120.0
 
 [node name="Monster" type="PathFollow2D"]
 rotates = false
-loop = false
 script = ExtResource("1_mrqeg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

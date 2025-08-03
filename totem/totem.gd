@@ -57,6 +57,8 @@ func init(resource_man: Path2D, start_index: int, end_index: int, tile_map: Tile
 	timer.autostart = false
 	add_child(timer)
 	timer.timeout.connect(_on_timer_timeout)
+	
+	unselect()
 
 func startTimer():
 	var time_to_wait = modified_base.cooldown
@@ -179,6 +181,12 @@ func set_modified_base():
 		mod.apply(base_)
 	
 	modified_base = base_
+
+func select() -> void:
+	$BaseSprite/SelectedPanel.show()
+
+func unselect() -> void:
+	$BaseSprite/SelectedPanel.hide()
 
 func name() -> String:
 	if base == null:
