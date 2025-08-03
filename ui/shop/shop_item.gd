@@ -19,7 +19,7 @@ const RARITY_COLOR_MAP = {
 func _ready() -> void:
 	style_button()
 	$Button.button_up.connect(_on_button_up)
-	$HBoxContainer/TextureRect.texture = get_bones_image()
+	$HBoxContainer/TextureRect.texture = BonesTracker.get_bones_image(23, 23)
 
 func init(item_: TotemPieces.TotemPiece) -> void:
 	item = item_
@@ -87,9 +87,3 @@ func style_button():
 	button.set("theme_override_styles/hover", hover_style)
 	button.set("theme_override_styles/pressed", pressed_style)
 	button.set("theme_override_styles/disabled", disabled_style)
-
-func get_bones_image() -> ImageTexture:
-	var resource = load("res://assets/resources/bone.png")
-	var image = resource.get_image()
-	image.resize(23, 23, Image.INTERPOLATE_LANCZOS)
-	return ImageTexture.create_from_image(image)

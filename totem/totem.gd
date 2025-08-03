@@ -77,6 +77,9 @@ func refill_energy():
 		needs_met = false
 
 func _on_timer_timeout():
+	if base == null:
+		return
+	
 	if (current_energy >= modified_base.energy_cost):
 		if base_scene.totem_action(modified_base):
 			current_energy -= modified_base.energy_cost

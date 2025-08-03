@@ -196,7 +196,7 @@ text = "100"
 [node name="TextureRect" type="TextureRect" parent="UI/BonesTracker"]
 layout_mode = 2
 texture = ExtResource("24_5hsgd")
-expand_mode = 2
+stretch_mode = 2
 
 [node name="TotemUI" type="HBoxContainer" parent="UI"]
 anchors_preset = 6

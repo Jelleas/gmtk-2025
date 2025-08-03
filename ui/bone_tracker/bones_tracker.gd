@@ -1,4 +1,5 @@
 extends HBoxContainer
+
 class_name BonesTracker
 
 signal bones_updated()
@@ -9,6 +10,7 @@ var n_bones: int = 1000
 
 func _ready() -> void:
 	$CountLabel.text = str(n_bones)
+	$TextureRect.texture = get_bones_image()
 	monster_path.monster_killed.connect(_on_monster_killed)
 
 func _on_monster_killed(monster: Monster) -> void:
@@ -25,3 +27,9 @@ func spend(bone_amount: int) -> bool:
 	n_bones -= bone_amount
 	$CountLabel.text = str(n_bones)
 	return true
+
+static func get_bones_image(width: int = 40, height: int = 40) -> ImageTexture:
+	var resource = load("res://assets/resources/bone.png")
+	var image = resource.get_image()
+	image.resize(width, height, Image.INTERPOLATE_LANCZOS)
+	return ImageTexture.create_from_image(image)
