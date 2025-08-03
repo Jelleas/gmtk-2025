@@ -4,6 +4,9 @@ extends VBoxContainer
 @export var inventory: Inventory
 @export var totem_interface: TotemInterface
 @export var bones_tracker: BonesTracker
+@export var monster_path: MonsterPath
+
+signal totem_piece_unlocked(piece: TotemPieces.TotemPiece)
 
 const N_MODIFIER_SLOTS: int = 3
 const N_BASE_SLOTS: int = 2
@@ -12,6 +15,7 @@ const REROLL_COST: int = 10
 var items: Array[ShopItem] = []
 
 var totem: Totem
+var current_wave: int = 0
 
 func _ready() -> void:
 	reroll()
@@ -19,6 +23,7 @@ func _ready() -> void:
 	totem_interface.TotemSelected.connect(_on_totem_selected)
 	inventory.TotemPieceRemoved.connect(_on_totem_piece_removed)
 	bones_tracker.bones_updated.connect(sync)
+	monster_path.wave_started.connect(on_new_wave)
 	hide()
 
 func _on_totem_selected(totem_: Totem) -> void:
@@ -43,11 +48,12 @@ func reroll() -> void:
 		item.queue_free()
 
 	items = []
-	
-	for it in get_random_sample(TotemPieces.modifiers, N_MODIFIER_SLOTS):
+	var available_modifiers = TotemPieces.modifiers.filter(func (it): return it.unlocks_at_wave <= current_wave)
+	for it in get_random_sample(available_modifiers, N_MODIFIER_SLOTS):
 		items.append(create_item(it))
 		
-	for it in get_random_sample(TotemPieces.base_types, N_BASE_SLOTS):
+	var available_bases = TotemPieces.base_types.filter(func (it): return it.unlocks_at_wave <= current_wave)	
+	for it in get_random_sample(available_bases, N_BASE_SLOTS):
 		items.append(create_item(it))
 
 	pop_on_screen()
@@ -81,17 +87,17 @@ func sync() -> void:
 		
 	
 func get_random_sample(items: Array, n: int) -> Array:
-	var indices = []
-	while len(indices) < n:
-		var index = randi() % items.size()
-		if not indices.has(index):
-			indices.append(index)
-	
-	var random_items = []
-	for index in indices:
-		random_items.append(items[index])
-
-	return random_items
+	var items_copy = items.duplicate()
+	var chosen = []
+	for i in range(n):
+		if items_copy.is_empty(): # otherwise it complains about picking random from empty
+			break
+		var item = items_copy.pick_random()
+		if item == null:
+			break
+		items_copy.erase(item)
+		chosen.append(item)
+	return chosen
 
 func create_item(modifier: TotemPieces.TotemPiece) -> ShopItem:
 	var shop_item_ = shop_item.instantiate()
@@ -101,3 +107,14 @@ func create_item(modifier: TotemPieces.TotemPiece) -> ShopItem:
 	shop_item_.item_bought.connect(_on_item_bought)
 	
 	return shop_item_
+
+func on_new_wave(wave_number: int, next_wave_in: float):
+	current_wave = wave_number
+	for it in TotemPieces.base_types:
+		if it.unlocks_at_wave == wave_number:
+			totem_piece_unlocked.emit(it)
+			print("unlocked: ", it.name)
+	for it in TotemPieces.modifiers:
+		if it.unlocks_at_wave == wave_number:
+			totem_piece_unlocked.emit(it)
+			print("unlocked: ", it.name)

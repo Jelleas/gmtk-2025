@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ig8ajdvhhbd3" path="res://resource.tscn" id="4_xqiim"]
 [ext_resource type="Script" uid="uid://ckoluvmpkkf00" path="res://monster_path.gd" id="5_6pb3s"]
 [ext_resource type="PackedScene" uid="uid://clt7pafdvryia" path="res://monster.tscn" id="6_e3ldi"]
-[ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
+[ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://assets/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
 [ext_resource type="Script" uid="uid://n1no8gnftcbf" path="res://monster/monster_config.gd" id="7_386tm"]
 [ext_resource type="Resource" uid="uid://bw0r0pecha804" path="res://monster/blob.tres" id="8_2px6s"]
 [ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
@@ -19,8 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="13_xqiim"]
 [ext_resource type="Script" uid="uid://ch56vgnhbb8nu" path="res://ui/resource_tracker/frog_counter.gd" id="14_htena"]
 [ext_resource type="Script" uid="uid://bcit1i2pbruel" path="res://ui/monster_tracker/monster_tracker.gd" id="15_52es0"]
-[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="15_ah7fh"]
-[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://kenney_ui-pack-space-expansion/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="15_ah7fh"]
+[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://assets/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="17_x2wht"]
 [ext_resource type="Script" uid="uid://bx8mgqkfs0pv3" path="res://ui/monster_tracker/monster_counter.gd" id="19_08fmi"]
 [ext_resource type="Script" uid="uid://bvhc545o6qhs" path="res://ui/shop/shop.gd" id="19_8m212"]
@@ -257,13 +257,14 @@ theme_override_constants/separation = 25
 [node name="PaddingMarginContainer" type="MarginContainer" parent="UI/TotemUI/Inventory/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Shop" type="VBoxContainer" parent="UI/TotemUI" node_paths=PackedStringArray("inventory", "totem_interface", "bones_tracker")]
+[node name="Shop" type="VBoxContainer" parent="UI/TotemUI" node_paths=PackedStringArray("inventory", "totem_interface", "bones_tracker", "monster_path")]
 layout_mode = 2
 script = ExtResource("19_8m212")
 shop_item = ExtResource("20_8m212")
 inventory = NodePath("../Inventory")
 totem_interface = NodePath("../../../TotemManager")
 bones_tracker = NodePath("../../BonesTracker")
+monster_path = NodePath("../../../MonsterPath")
 
 [node name="Label" type="Label" parent="UI/TotemUI/Shop"]
 layout_mode = 2
