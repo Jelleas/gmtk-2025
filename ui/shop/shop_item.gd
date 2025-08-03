@@ -44,7 +44,10 @@ func disable() -> void:
 	$Button.disabled = true
 
 func apply_inflation(inflation: float) -> void:
-	current_price = int(item.price * inflation)
+	if item.is_base_type:
+		current_price = item.price
+	else:
+		current_price = int(item.price * inflation)
 	$HBoxContainer/PriceLabel.text = str(current_price)
 
 func _on_button_up() -> void:
