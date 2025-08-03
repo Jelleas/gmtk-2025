@@ -273,12 +273,12 @@ static var base_types: Array[TotemBase] = [
 	Dart1.new(),
 	Dart2.new(),
 	Swamp.new(),
-	#FrogBomb.new(), 
-	#FrogBurner.new(), 
-	#FrogSkinner.new(), 
-	#ShroomMulcher.new(), 
-	#BerryJuicer.new(), 
-	#PotionStation.new()
+	FrogBomb.new(), 
+	FrogBurner.new(), 
+	FrogSkinner.new(), 
+	ShroomMulcher.new(), 
+	BerryJuicer.new(), 
+	PotionStation.new()
 ]
 
 class Modifier extends TotemPiece:

@@ -39,6 +39,7 @@ func _ready() -> void:
 	monster_body.add_to_group("monster")
 	health_bar.max_value = config.health
 	health_bar.value = config.health
+	sprite.z_index = 1
 
 func get_hit(incoming_hit: DamageSpec):
 	speed += config.speed * incoming_hit.speed_modifier
