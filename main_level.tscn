@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=39 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
@@ -284,9 +284,9 @@ grow_vertical = 2
 totem_manager = NodePath("../../TotemManager")
 
 [node name="WaveTracker" parent="UI" node_paths=PackedStringArray("monster_manager") instance=ExtResource("30_pcp4w")]
-offset_top = 3.0
+offset_top = 6.0
 offset_right = 742.0
-offset_bottom = 60.0
+offset_bottom = 63.0
 monster_manager = NodePath("../../MonsterPath")
 
 [node name="WaveToast" parent="UI" node_paths=PackedStringArray("monster_manager", "shop") instance=ExtResource("31_himki")]
