@@ -6,8 +6,8 @@ signal monster_escape(monster: Monster)
 signal monster_killed(monster: Monster)
 
 @export var monster_scene: PackedScene
-@export var wave_seconds: float = 10
-@export var wave_rest_seconds: float = 5
+@export var wave_seconds: float = 30
+@export var wave_rest_seconds: float = 10
 @export var monster_configs: Array[MonsterConfig]
 
 @onready var wave_timer: Timer = $WaveTimer
@@ -55,7 +55,7 @@ func _spawn_new_monster():
 	
 func _start_new_wave():
 	current_wave += 1
-	current_rank += 5
+	current_rank += 3
 	var max_monster_rank = current_rank / 3
 	var picked_rank = 0
 	while picked_rank < current_rank: 

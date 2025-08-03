@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://tmkdkgu7s5vv"]
+[gd_scene load_steps=7 format=3 uid="uid://tmkdkgu7s5vv"]
 
 [ext_resource type="Script" uid="uid://buyy73ip5sskn" path="res://totem/totem.gd" id="1_758mn"]
 [ext_resource type="PackedScene" uid="uid://luhkfgf4ylhy" path="res://totem/producer/producer.tscn" id="2_7f103"]

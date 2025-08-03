@@ -19,9 +19,9 @@ func _process(delta: float) -> void:
 		if contents[i] != null:
 			contents[i].progress_ratio = get_resource_progress_ratio(i)
 
-func deposit(resource: Res.Type, start: int, end: int) -> bool:
+func deposit(resource: Res.Type, start: int, end: int, source_global_pos: Vector2) -> bool:
 	for i in range(start, end + 1):
-		if create_resource(resource, i):
+		if create_resource(resource, i, source_global_pos):
 			return true
 	return false
 	
@@ -38,18 +38,20 @@ func get_resource(resource: Res.Type, index: int) -> Res:
 		return res
 	return null
 	
-func create_resource(resource_enum: Res.Type, index: int) -> bool:
+func create_resource(resource_enum: Res.Type, index: int, source_global_pos: Vector2) -> bool:
 	var actual_index = translate_index(index)
 	
 	if contents[actual_index] != null:
 		return false
 
-	var resource = resource_scene.instantiate()
+	var resource: Res = resource_scene.instantiate()
 	add_child(resource)
 	
 	# init resource script
 	resource.init(resource_enum, get_resource_progress_ratio(actual_index))
-	
+	var destination_pos: Vector2 = resource.global_position
+	resource.global_position = source_global_pos
+	create_tween().tween_property(resource, "global_position", destination_pos, 0.1).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 	# add to inventory
 	contents[actual_index] = resource
 	

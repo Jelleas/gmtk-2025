@@ -105,7 +105,7 @@ func retrieve():
 
 func deposit():
 	while created_resources.size() > 0:
-		var res = resource_manager.deposit(created_resources[0], start, end);
+		var res = resource_manager.deposit(created_resources[0], start, end, global_pos);
 		if (res):
 			created_resources.pop_front()
 		else:
