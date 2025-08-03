@@ -22,7 +22,7 @@ func totem_pressed(plot_index: int):
 	if(!plots[plot_index][2] is Totem):
 		var empty_plot = plots[plot_index][2]
 		var is_locked_producer = plot_index < 4 and current_wave < plot_index
-		if !bones_tracker.spend(price) or is_locked_producer:
+		if is_locked_producer or !bones_tracker.spend(price):
 			empty_plot.modulate = Color.RED
 			var tween = create_tween()
 			tween.tween_property(empty_plot, "modulate", Color(Color.WHITE, 0.5), 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
