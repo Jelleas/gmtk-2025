@@ -394,7 +394,7 @@ class Range1 extends Modifier:
 		price = 100
 		description = "Increase range by 10%"
 		type = ModifierType.RANGE
-		icon = load("res://assets/totems/power-l.png")
+		icon = load("res://assets/totems/range-l.png")
 		rarity = Rarity.COMMON
 		unlocks_at_wave = 0
 
@@ -408,7 +408,7 @@ class Range2 extends Modifier:
 		price = 200
 		description = "Increase range by 20%"
 		type = ModifierType.RANGE
-		icon = load("res://assets/totems/power-l.png")
+		icon = load("res://assets/totems/range-l.png")
 		rarity = Rarity.RARE
 		unlocks_at_wave = 5
 
@@ -422,7 +422,7 @@ class Range3 extends Modifier:
 		price = 300
 		description = "Increase range by 30%"
 		type = ModifierType.RANGE
-		icon = load("res://assets/totems/power-l.png")
+		icon = load("res://assets/totems/range-l.png")
 		rarity = Rarity.EPIC
 		unlocks_at_wave = 8
 
