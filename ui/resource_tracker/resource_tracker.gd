@@ -12,8 +12,30 @@ func _ready() -> void:
 	for res in Res.Type.values():
 		add_counter(res)
 
+func _process(_delta: float) -> void:
+	update_counts()
+
 func add_counter(res: Res.Type) -> void:
 	var counter = resource_counter_scene.instantiate()
-	counter.init(resource_path, res)
+	counter.init(res)
 	$GridContainer.add_child(counter)
 	counters.append(counter)
+
+func update_counts():
+	var count_map = create_count_map()
+	for counter in counters:
+		if counter.resource in count_map:
+			counter.update_count(count_map[counter.resource])
+
+func create_count_map() -> Dictionary[Res.Type, int]:
+	var count_map: Dictionary[Res.Type, int] = {}
+	
+	var count = 0
+	for c in resource_path.contents:
+		if c != null:
+			if c in count_map:
+				count_map[c.type] += 1
+			else:
+				count_map[c.type] = 1
+	
+	return count_map
