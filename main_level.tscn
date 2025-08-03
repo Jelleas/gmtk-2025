@@ -284,7 +284,8 @@ offset_bottom = 210.5
 grow_vertical = 2
 totem_manager = NodePath("../../TotemManager")
 
-[node name="WaveTracker" parent="UI" instance=ExtResource("30_pcp4w")]
+[node name="WaveTracker" parent="UI" node_paths=PackedStringArray("monster_manager") instance=ExtResource("30_pcp4w")]
+monster_manager = NodePath("../../MonsterPath")
 
 [node name="TotemManager" parent="." node_paths=PackedStringArray("resource_manager", "tile_map", "bones_tracker") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")

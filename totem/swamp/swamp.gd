@@ -51,7 +51,12 @@ func drop(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
 	current_field = projectile_scene.instantiate()
 	current_field.setup_shape(base.range / 10)	
 	
-	var to = totem.tile_map_layer.to_local(target.global_position)
+	var damage_spec = DamageSpec.new()
+	damage_spec.damage = base.damage
+	damage_spec.speed_modifier = -0.90
+	damage_spec.type = DamageSpec.Type.NATURE
 	
+	var to = totem.tile_map_layer.to_local(target.global_position)
+	current_field.damage_spec = damage_spec
 	current_field.global_position = to
 	add_child(current_field)
