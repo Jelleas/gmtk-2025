@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwlvirevqltfd"]
+[gd_scene load_steps=3 format=3 uid="uid://cwlvirevqltfd"]
 
-[ext_resource type="Texture2D" uid="uid://dfj26ibwe2waf" path="res://tile_0035.png" id="1_3cg3w"]
 [ext_resource type="Script" uid="uid://btipwxdgwc1ej" path="res://ui/wave_toast/wave_toast.gd" id="1_ddlxf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcp4w"]
@@ -27,9 +26,9 @@ script = ExtResource("1_ddlxf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 5
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -38,15 +37,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Wave 1 started"
+horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_3cg3w")
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "unlocked in shop"
