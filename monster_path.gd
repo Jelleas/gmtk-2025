@@ -9,7 +9,7 @@ signal wave_started(wave_number: int, next_wave_in: float)
 @export var monster_scene: PackedScene
 @export var wave_seconds: float = 30
 @export var wave_rest_seconds: float = 10
-@export var initial_rest: float = 30
+@export var initial_rest: float = 7
 @export var monster_configs: Array[MonsterConfig]
 
 @onready var wave_timer: Timer = $WaveTimer
@@ -19,7 +19,7 @@ signal wave_started(wave_number: int, next_wave_in: float)
 var monsters: Array[Monster]
 var monsters_to_spawn: Array[MonsterConfig]
 var current_wave: int = 0
-var current_rank: int = 0
+var current_max_cost: int = 20
 
 func _ready() -> void:
 	wave_timer.timeout.connect(_start_new_wave)
@@ -30,7 +30,6 @@ func _ready() -> void:
 	
 	# wait till all ready, then send the initial wave
 	wave_started.emit.call_deferred(0, initial_rest)
-	
 	
 func _process(delta: float) -> void:
 	pass
@@ -63,13 +62,13 @@ func _spawn_new_monster():
 	
 func _start_new_wave():
 	current_wave += 1
-	current_rank += 3
-	var max_monster_rank = current_rank / 3
-	var picked_rank = 0
-	while picked_rank < current_rank: 
-		var available_rank = current_rank - picked_rank
-		var monster = _pick_random_monster(mini(available_rank, max_monster_rank))
-		picked_rank += monster.rank
+	current_max_cost = int(current_max_cost * 1.1 + 5)
+	
+	var picked_cost = 0
+	while picked_cost < current_max_cost: 
+		var available_cost = current_max_cost - picked_cost
+		var monster = _pick_random_monster(available_cost, current_wave)
+		picked_cost += monster.cost
 		monsters_to_spawn.append(monster)
 	
 	spawn_timer.start(wave_seconds / (monsters_to_spawn.size() - 1))
@@ -80,7 +79,9 @@ func _start_game():
 	wave_timer.start(wave_seconds + wave_rest_seconds)
 	_start_new_wave()
 		
-func _pick_random_monster(max_rank: int) -> MonsterConfig:
-	var available_monsters = monster_configs.filter(func(config: MonsterConfig): return config.rank <= max_rank)
+func _pick_random_monster(max_cost: int, current_wave: int) -> MonsterConfig:
+	var available_monsters = monster_configs.filter(
+		func(config: MonsterConfig): return config.cost <= max_cost and config.rank <= current_wave
+	)
 	var random_index = randi_range(0, available_monsters.size() - 1)
 	return available_monsters[random_index]

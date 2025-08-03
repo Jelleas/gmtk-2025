@@ -5,6 +5,7 @@ class_name MonsterConfig
 @export var health: int
 @export var speed: int
 @export var escape_cost: int
+@export var cost: int
 @export var rank: int
 @export var sprite: SpriteFrames
 @export var scale: float

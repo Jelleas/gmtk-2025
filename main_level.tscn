@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=41 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
 [ext_resource type="PackedScene" uid="uid://bmc2jmy6ojjcv" path="res://ui/totemInterface.tscn" id="8_eqmdw"]
 [ext_resource type="Resource" uid="uid://cyjdqf7uo68o3" path="res://monster/strong_blob.tres" id="9_2px6s"]
+[ext_resource type="Resource" uid="uid://cf3nlurtbxjfy" path="res://monster/mini_blob.tres" id="12_himki"]
+[ext_resource type="Resource" uid="uid://cfiax5d5d1wnn" path="res://monster/giga_blob.tres" id="13_5hfqd"]
 [ext_resource type="Script" uid="uid://xjggkl7wtjqu" path="res://ui/resource_tracker/resource_bar.gd" id="13_6pb3s"]
 [ext_resource type="Script" uid="uid://bcit1i2pbruel" path="res://ui/monster_tracker/monster_tracker.gd" id="15_52es0"]
 [ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="15_ah7fh"]
@@ -27,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dg0x508rvhega" path="res://assets/resources/bone.png" id="24_5hsgd"]
 [ext_resource type="Script" uid="uid://c18x3fabprn01" path="res://ui/bone_tracker/bones_tracker.gd" id="24_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://bfj3upnhcrhkl" path="res://ui/totem_tracker/totem_tracker.tscn" id="28_s8c5p"]
+[ext_resource type="Script" uid="uid://cf53yjhk7bkeq" path="res://ui/music_toggle.gd" id="29_pcp4w"]
 [ext_resource type="AudioStream" uid="uid://bk3gho0knoblo" path="res://assets/cheeky.wav" id="30_5hsgd"]
 [ext_resource type="Texture2D" uid="uid://caplj1qf85pgl" path="res://assets/resources/lock.png" id="30_himki"]
 [ext_resource type="PackedScene" uid="uid://cbf6jvrnsixuv" path="res://ui/wave_tracker/wave_tracker.tscn" id="30_pcp4w"]
@@ -127,7 +130,7 @@ position = Vector2(-641, -437)
 curve = SubResource("Curve2D_5ymk8")
 script = ExtResource("5_6pb3s")
 monster_scene = ExtResource("6_e3ldi")
-monster_configs = Array[ExtResource("7_386tm")]([ExtResource("8_2px6s"), ExtResource("9_2px6s")])
+monster_configs = Array[ExtResource("7_386tm")]([ExtResource("8_2px6s"), ExtResource("9_2px6s"), ExtResource("12_himki"), ExtResource("13_5hfqd")])
 
 [node name="WaveTimer" type="Timer" parent="MonsterPath"]
 
@@ -289,6 +292,17 @@ monster_manager = NodePath("../../MonsterPath")
 [node name="WaveToast" parent="UI" node_paths=PackedStringArray("monster_manager", "shop") instance=ExtResource("31_himki")]
 monster_manager = NodePath("../../MonsterPath")
 shop = NodePath("../TotemUI/Shop")
+
+[node name="MusicToggle" type="CheckButton" parent="UI" node_paths=PackedStringArray("audio_player")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_bottom = 24.0
+grow_horizontal = 0
+text = "Music"
+script = ExtResource("29_pcp4w")
+audio_player = NodePath("../../AudioStreamPlayer")
 
 [node name="TotemManager" parent="." node_paths=PackedStringArray("resource_manager", "tile_map", "bones_tracker", "monster_path") instance=ExtResource("8_eqmdw")]
 resource_manager = NodePath("../ResourcePath")

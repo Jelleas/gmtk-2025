@@ -8,6 +8,7 @@ signal TotemChanged(totem: Totem)
 @export var dart_scene: PackedScene
 @export var frog_scene: PackedScene
 @export var swamp_scene: PackedScene
+@export var no_base_sprite: Texture2D
 
 var start: int
 var end: int
@@ -161,8 +162,10 @@ func add_modifier(modifier: TotemPieces.Modifier):
 	TotemChanged.emit(self)
 	
 func remove_base():
+	base_scene.queue_free()
 	base = null
 	modified_base = null
+	$BaseSprite.texture = no_base_sprite
 	TotemChanged.emit(self)
 	
 func remove_modifier(modifier_type):

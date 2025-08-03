@@ -19,6 +19,8 @@ var items: Array[ShopItem] = []
 var totem: Totem
 var current_wave: int = 0
 
+var inflation: float = 1
+
 func _ready() -> void:
 	reroll()
 	$RerollButton.button_up.connect(_on_reroll_button_button_up)
@@ -40,10 +42,16 @@ func _on_reroll_button_button_up() -> void:
 	if !bones_tracker.spend(REROLL_COST): return
 	reroll()
 
-func _on_item_bought(item) -> void: # TODO type hint
-	if bones_tracker.spend(item.price):
+func _on_item_bought(item, price: int) -> void: # TODO type hint
+	if bones_tracker.spend(price):
 		inventory.add(item)
 		reroll()
+
+func apply_inflation() -> void:
+	inflation = 1.2**totem.modifiers.size()
+	
+	for item in items:
+		item.apply_inflation(inflation)
 
 func reroll() -> void:
 	for item in items:
@@ -75,10 +83,12 @@ func sync() -> void:
 	if totem == null:
 		return
 	
+	apply_inflation()
+	
 	for it in items:
 		var is_base_piece = it.item.is_base_type
 		var has_base = totem.base != null
-		var cannot_buy = !bones_tracker.has(it.item.price)
+		var cannot_buy = !bones_tracker.has(it.current_price)
 		var incompatible_base = has_base and is_base_piece
 		var incompatible_modifier = not has_base and not is_base_piece
 		

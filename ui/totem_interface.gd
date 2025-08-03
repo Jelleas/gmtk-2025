@@ -168,6 +168,9 @@ func _ready() -> void:
 	for i in range(0, plots.size()):
 		var empty_plot = add_empty_plot(i, plots[i][1])
 		plots[i].append(empty_plot)
+	
+	# get forest for free
+	create_totem(0, plots[0])
 		
 func _on_wave_started(wave_number: int, _n: float):
 	if wave_number > 0 and wave_number < 4: lock_sprites[wave_number].queue_free()
