@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=38 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
