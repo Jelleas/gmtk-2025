@@ -13,8 +13,6 @@ func init(parent_ref):
 	
 	global_pos = totem.global_pos
 	local_pos = totem.local_pos
-	
-	totem.sprite.modulate = totem.base.sprite_color
 
 	attack_area = $AttackArea
 	attack_area.global_position = local_pos
@@ -39,9 +37,7 @@ func _on_attack_area_exited(body: Node2D) -> void:
 			locked_target = target_list[0]
 
 func totem_action(base: TotemPieces.TotemBase) -> bool:
-	print("BEFORE ACTION ", $AttackArea/CollisionShape2D.shape.radius, " ", $AttackArea/CollisionShape2D.shape)
 	$AttackArea/CollisionShape2D.shape.radius = base.range
-	print("AFTER ACTION ", $AttackArea/CollisionShape2D.shape.radius, " ",  $AttackArea/CollisionShape2D.shape)
 	if(locked_target):
 		shoot(base, local_pos, locked_target)
 		return true

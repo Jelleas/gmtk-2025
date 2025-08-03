@@ -55,7 +55,7 @@ class Forest extends TotemBase:
 		description = "A dense, ancient forest teeming with towering trees and wildlife. Rich in timber, it's a vital source of wood."
 		price = 100
 		type = BaseType.PRODUCER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/forest.png")
 		sprite_color = Color.html("#046620")
 		damage = 0
 		cooldown = 5.0
@@ -72,7 +72,7 @@ class Pond extends TotemBase:
 		description = "A quiet, shallow pond nestled among reeds and lilies. Its calm waters are home to a thriving population of frogs."
 		price = 100
 		type = BaseType.PRODUCER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/pond.png")
 		sprite_color = Color.html("#42c2f5")
 		damage = 0
 		cooldown = 10.0
@@ -89,7 +89,7 @@ class MossValley extends TotemBase:
 		description = "A damp, misty valley carpeted in thick, emerald moss. Soft underfoot and rich in mushrooms."
 		price = 100
 		type = BaseType.PRODUCER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/moss-valley.png")
 		sprite_color = Color.html("#D62828")
 		damage = 0
 		cooldown = 10.0
@@ -106,7 +106,7 @@ class Shrubbery extends TotemBase:
 		description = "A modest yet well-kept patch of ornamental bushes containing berries. The Knights who say “Ni!” would be most pleased."
 		price = 100
 		type = BaseType.PRODUCER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/shrubbery.png")
 		sprite_color = Color.html("#C21807")
 		damage = 0
 		cooldown = 10.0
@@ -123,7 +123,7 @@ class FrogBurner extends TotemBase:
 		description = "Converts frogs into crispy frogs."
 		price = 100
 		type = BaseType.PRODUCER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/frog-burner.png")
 		sprite_color = Color.html("#FF6B00")
 		damage = 0
 		cooldown = 10.0
@@ -140,7 +140,7 @@ class FrogSkinner extends TotemBase:
 		description = "Converts frogs into frog skin."
 		price = 100
 		type = BaseType.CONVERTER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/frog-skinner.png")
 		sprite_color = Color.html("#4A9153")
 		damage = 0
 		cooldown = 10.0
@@ -157,7 +157,7 @@ class BerryJuicer extends TotemBase:
 		description = "We do not need the berries, just the juice exile."
 		price = 100
 		type = BaseType.CONVERTER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/berry-juicer.png")
 		sprite_color = Color.html("#C21807")
 		damage = 0
 		cooldown = 10.0
@@ -174,7 +174,7 @@ class ShroomMulcher extends TotemBase:
 		description = "Mulches shrooms to dust, magic dust."
 		price = 100
 		type = BaseType.CONVERTER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/shroom-mulcher.png")
 		sprite_color = Color.html("#2E2E2E")
 		damage = 0
 		cooldown = 10.0
@@ -191,7 +191,7 @@ class PotionStation extends TotemBase:
 		description = "Brews potions out of magic dust and berry juice."
 		price = 100
 		type = BaseType.CONVERTER
-		icon = load("res://assets/totems/speed-l.png")
+		icon = load("res://assets/totems/potion-station.png")
 		sprite_color = Color.html("#2E2E2E")
 		damage = 0
 		cooldown = 10.0

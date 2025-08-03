@@ -13,8 +13,6 @@ func init(parent_ref: Totem):
 	
 	global_pos = totem.global_pos
 	local_pos = totem.local_pos
-	
-	totem.sprite.modulate = totem.base.sprite_color
 
 	attack_area = $AttackArea
 	attack_area.global_position = local_pos

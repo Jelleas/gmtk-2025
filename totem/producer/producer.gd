@@ -10,8 +10,6 @@ func init(parent_ref):
 
 	global_pos = totem.global_pos
 	local_pos = totem.local_pos
-	
-	totem.sprite.modulate = totem.base.sprite_color
 
 func totem_action(base: TotemPieces.TotemBase) -> bool:
 	for resource in base.produces:

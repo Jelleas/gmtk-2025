@@ -130,7 +130,8 @@ func set_base(new_base: TotemPieces.TotemBase):
 
 	base_init.init(self)
 	base_scene = base_init
-	
+	sprite.modulate = Color.WHITE
+	sprite.texture = base.icon
 	add_child(base_scene)
 	
 	startTimer()

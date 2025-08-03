@@ -36,7 +36,7 @@ func totem_pressed(plot_index: int):
 	TotemSelected.emit(totem)
 	
 func create_totem(totem_index: int, fill_plot) -> Totem:
-	var totem_scene = totem_scene.instantiate()
+	var totem_scene: Totem = totem_scene.instantiate()
 	add_child(totem_scene)
 	totem_scene.init(resource_manager, fill_plot[0][0], fill_plot[0][1], tile_map, fill_plot[1])
 	plots[totem_index][2] = totem_scene
@@ -46,7 +46,7 @@ func create_totem(totem_index: int, fill_plot) -> Totem:
 	
 	return totem_scene
 
-func set_producer(totem_index: int, totem_scene) -> void:
+func set_producer(totem_index: int, totem_scene: Totem) -> void:
 	match totem_index:
 		0:
 			totem_scene.set_base(TotemPieces.Forest.new())
@@ -78,16 +78,17 @@ func add_empty_plot(plot_index: int, plot_pos: Vector2i):
 
 	match plot_index:
 		0:
-			sprite.set_color(TotemPieces.Forest.new().sprite_color)
+			sprite.texture = TotemPieces.Forest.new().icon
 		1:
-			sprite.set_color(TotemPieces.Pond.new().sprite_color)
+			sprite.texture = TotemPieces.Pond.new().icon
 		2:
-			sprite.set_color(TotemPieces.MossValley.new().sprite_color)
+			sprite.texture = TotemPieces.MossValley.new().icon
 		3:
-			sprite.set_color(TotemPieces.Shrubbery.new().sprite_color)
+			sprite.texture = TotemPieces.Shrubbery.new().icon
 		_: 
 			sprite.set_color(Color.html("#ffffff"))
 	
+	sprite.modulate = Color(Color.WHITE, 0.5)
 	sprite.global_position = local_pos
 	sprite.set_price(price)
 	add_child(sprite)
