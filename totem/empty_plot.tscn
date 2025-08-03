@@ -7,16 +7,19 @@
 texture = ExtResource("1_hvspm")
 script = ExtResource("2_3ogmi")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PriceContainer" type="HBoxContainer" parent="."]
+offset_left = -101.0
+offset_top = -133.0
+offset_right = -61.0
+offset_bottom = -64.0
+theme_override_constants/separation = 10
 
-[node name="Price" type="Label" parent="HBoxContainer"]
+[node name="Price" type="Label" parent="PriceContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="PriceContainer"]
 layout_mode = 2
 stretch_mode = 2

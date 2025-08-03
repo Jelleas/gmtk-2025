@@ -8,7 +8,9 @@ signal monster_killed(monster: Monster)
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var monster_body: Area2D = $MonsterBody
 @onready var health_bar: TextureProgressBar = $TextureProgressBar
-
+@onready var footstep_player = $FootstepPlayer
+@onready var voice_player = $MonsterVoice
+var camera: Camera2D
 const LOOP_SECONDS = 100
 
 var escape_cost: int
@@ -42,6 +44,9 @@ func _ready() -> void:
 	health_bar.value = config.health
 	sprite.z_index = 1
 	start_damage_cycle()
+	sprite.frame_changed.connect(_on_frame_changed)
+	camera = get_viewport().get_camera_2d()
+
 
 func get_hit(incoming_hit: DamageSpec):
 	speed += config.speed * incoming_hit.speed_modifier
@@ -117,6 +122,7 @@ func take_damage(damage: int):
 	health -= damage
 	health_bar.value = health
 	_flash()
+	_play_hit_sound()
 	if(health <= 0):
 		is_dead = true
 		monster_killed.emit(self)
@@ -134,3 +140,21 @@ func _flash():
 	var tween = create_tween()
 	sprite.modulate = Color.RED
 	tween.tween_property(sprite, "modulate", original_modulate, 0.2).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+func _play_hit_sound():
+	var camera = get_viewport().get_camera_2d()
+	var camera_pos = camera.global_position
+	var max_distance = 500.0
+	var distance = global_position.distance_to(camera_pos)
+	var volume = clamp(1.0 - (distance / max_distance), 0.0, 1.0)
+	voice_player.volume_db = linear_to_db(volume)
+	voice_player.play()
+
+func _on_frame_changed():
+	var camera_pos = camera.global_position
+	var max_distance = 500.0
+	var distance = global_position.distance_to(camera_pos)
+	var volume = clamp(1.0 - (distance / max_distance), 0.0, 1.0)
+	footstep_player.volume_db = linear_to_db(volume)
+	if sprite.frame % 4 == 0:
+		footstep_player.play()
