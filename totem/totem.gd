@@ -23,6 +23,7 @@ var actions: Array = []
 var inventory: Array[Res.Type] = []
 var created_resources:Array = []
 var modifiers: Array = []
+var modifier_sprites: Array[Sprite2D] = []
 
 var base:TotemPieces.TotemBase
 var modified_base: TotemPieces.TotemBase
@@ -143,6 +144,11 @@ func set_base(new_base: TotemPieces.TotemBase):
 
 func add_modifier(modifier: TotemPieces.Modifier):
 	modifiers.append(modifier)
+	var modifier_sprite = Sprite2D.new()
+	modifier_sprite.texture = modifier.icon
+	sprite.add_child(modifier_sprite)
+	modifier_sprite.position = Vector2(0, (modifiers.size()) * -80)
+	modifier_sprites.append(modifier_sprite)
 	set_modified_base()
 	TotemChanged.emit(self)
 	
@@ -154,7 +160,8 @@ func remove_base():
 func remove_modifier(modifier_type):
 	var i = modifiers.find(modifier_type)
 	modifiers.remove_at(i)
-	
+	var modifier_sprite = modifier_sprites.pop_back()
+	modifier_sprite.queue_free()
 	set_modified_base()
 	
 	TotemChanged.emit(self)
