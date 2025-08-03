@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tmkdkgu7s5vv"]
+[gd_scene load_steps=8 format=3 uid="uid://tmkdkgu7s5vv"]
 
 [ext_resource type="Script" uid="uid://buyy73ip5sskn" path="res://totem/totem.gd" id="1_758mn"]
 [ext_resource type="PackedScene" uid="uid://luhkfgf4ylhy" path="res://totem/producer/producer.tscn" id="2_7f103"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c18gatq2tlnuy" path="res://totem/frog_bomb/frog_bomb.tscn" id="4_xljs4"]
 [ext_resource type="Texture2D" uid="uid://2tgfturtref7" path="res://assets/totems/totem-base.png" id="5_7f103"]
 [ext_resource type="PackedScene" uid="uid://7wdxai2cragc" path="res://totem/swamp/swamp.tscn" id="5_xljs4"]
+[ext_resource type="PackedScene" uid="uid://d4hbyolxsvjpt" path="res://totem/recipe_container.tscn" id="7_tgvhx"]
 
 [node name="Totem" type="Node2D"]
 script = ExtResource("1_758mn")
@@ -20,3 +21,16 @@ autostart = true
 
 [node name="BaseSprite" type="Sprite2D" parent="."]
 texture = ExtResource("5_7f103")
+
+[node name="RecipeContainer" parent="BaseSprite" instance=ExtResource("7_tgvhx")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -202.0
+offset_right = -228.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 2

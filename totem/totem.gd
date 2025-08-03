@@ -49,6 +49,9 @@ func init(resource_man: Path2D, start_index: int, end_index: int, tile_map: Tile
 	
 	sprite.global_position = global_pos
 	
+	# start recipe tracking
+	$BaseSprite/RecipeContainer.init(self)
+	
 	timer = Timer.new()
 	timer.one_shot = true
 	timer.autostart = false
