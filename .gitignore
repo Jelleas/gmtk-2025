@@ -10,3 +10,5 @@ kenney_ui-pack-space-expansion
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/.gitignore
+/export_presets.cfg
+/build/gmtk_2025.pck

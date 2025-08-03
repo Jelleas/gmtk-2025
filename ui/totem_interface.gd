@@ -8,6 +8,7 @@ class_name TotemInterface
 @export var empty_plot: PackedScene
 @export var bones_tracker: BonesTracker
 @export var monster_path: MonsterPath
+@export var lock_image: Texture2D
 
 signal TotemSelected(totem: Totem)
 signal TotemUnselected(totem: Totem)
@@ -17,6 +18,8 @@ var price: int = 5
 var current_wave: int = 0
 
 var selected_totem: Totem
+
+var lock_sprites: Array[Sprite2D] = [null, null, null, null]
 
 func totem_pressed(plot_index: int):
 	var fill_plot = plots[plot_index]
@@ -91,10 +94,13 @@ func add_empty_plot(plot_index: int, plot_pos: Vector2i):
 			sprite.texture = TotemPieces.Forest.new().icon
 		1:
 			sprite.texture = TotemPieces.Pond.new().icon
+			_add_lock(plot_index, sprite)
 		2:
 			sprite.texture = TotemPieces.MossValley.new().icon
+			_add_lock(plot_index, sprite)
 		3:
 			sprite.texture = TotemPieces.Shrubbery.new().icon
+			_add_lock(plot_index, sprite)
 		_: 
 			sprite.set_color(Color.html("#ffffff"))
 	
@@ -104,6 +110,14 @@ func add_empty_plot(plot_index: int, plot_pos: Vector2i):
 	add_child(sprite)
 	
 	return sprite
+
+func _add_lock(index: int, sprite: Sprite2D):
+	print("add lock")
+	var lock_sprite = Sprite2D.new()
+	lock_sprites[index] = lock_sprite
+	lock_sprite.texture = lock_image
+	sprite.add_child(lock_sprite)
+	lock_sprite.position = Vector2.ZERO
 
 var adjacent_offsets: Array[Vector2i] = [
 	Vector2i(0, 0),
@@ -159,4 +173,5 @@ func _ready() -> void:
 	create_totem(0, plots[0])
 		
 func _on_wave_started(wave_number: int, _n: float):
+	if wave_number > 0 and wave_number < 4: lock_sprites[wave_number].queue_free()
 	current_wave = wave_number
