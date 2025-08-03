@@ -85,7 +85,7 @@ class Pond extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 0
 		range = 0.0
-		unlocks_at_wave = 1
+		unlocks_at_wave = 2
 		rarity = Rarity.COMMON
 
 class MossValley extends TotemBase:
@@ -275,7 +275,7 @@ class FrogBomb extends TotemBase:
 		total_energy = 100.0
 		energy_cost = 50.0
 		range = 600.0
-		unlocks_at_wave = 1
+		unlocks_at_wave = 2
 		rarity = Rarity.UNCOMMON
 
 class FrogBomb2 extends TotemBase:
