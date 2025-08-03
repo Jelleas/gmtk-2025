@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_2b1s2")
 name = "Blob"
-health = 200
+health = 20
 speed = 6
 escape_cost = 15
 rank = 4
