@@ -154,6 +154,9 @@ func _ready() -> void:
 	for i in range(0, plots.size()):
 		var empty_plot = add_empty_plot(i, plots[i][1])
 		plots[i].append(empty_plot)
+	
+	# get forest for free
+	create_totem(0, plots[0])
 		
 func _on_wave_started(wave_number: int, _n: float):
 	current_wave = wave_number
