@@ -251,7 +251,7 @@ class Dart2 extends TotemBase:
 		damage_spec = DamageSpec.new().init(20, DamageSpec.Type.VOODOO, 0, 1)
 		cooldown = 1.0
 		crit_chance = 0.05
-		consumes = [Res.Type.WOOD, Res.Type.FROG]
+		consumes = [Res.Type.WOOD, Res.Type.FROG_SKIN]
 		produces = []
 		total_energy = 100.0
 		energy_cost = 20.0
@@ -268,7 +268,7 @@ class FrogBomb extends TotemBase:
 		icon = load("res://assets/totems/attack-totem.png")
 		sprite_color = Color.html("#ebdf0c")
 		damage_spec = DamageSpec.new().init(50, DamageSpec.Type.POISON, 0, 0)
-		cooldown = 3.0
+		cooldown = 5.0
 		crit_chance = 0.10
 		consumes = [Res.Type.FROG]
 		produces = []
@@ -277,23 +277,62 @@ class FrogBomb extends TotemBase:
 		range = 600.0
 		unlocks_at_wave = 1
 		rarity = Rarity.UNCOMMON
-		
+
+class FrogBomb2 extends TotemBase:
+	func _init():
+		name = "Frog Napalm"
+		description = "Drops a big frog on enemies that deals Fire damage."
+		price = 150
+		type = BaseType.FROGBOMB
+		icon = load("res://assets/totems/attack-totem.png")
+		sprite_color = Color.html("#ebdf0c")
+		damage_spec = DamageSpec.new().init(75, DamageSpec.Type.FIRE, 0, 1)
+		cooldown = 5.0
+		crit_chance = 0.10
+		consumes = [Res.Type.FROG, Res.Type.CRISPY_FROG]
+		produces = []
+		total_energy = 100.0
+		energy_cost = 50.0
+		range = 800.0
+		unlocks_at_wave = 6
+		rarity = Rarity.UNCOMMON
+
 class Swamp extends TotemBase:
 	func _init():
 		name = "Swamp"
+		description = "Drops a swamp area that slows enemies."
 		price = 250
 		type = BaseType.SWAMP
 		icon = load("res://assets/totems/attack-totem.png")
 		sprite_color = Color.html("#70543E")
 		damage_spec = DamageSpec.new().init(1, DamageSpec.Type.PHYSICAL, 0.7, 0)
 		cooldown = 10
-		crit_chance = 0.10
+		crit_chance = 0.0
 		consumes = [Res.Type.SHROOM]
 		produces = []
 		total_energy = 100.0
-		energy_cost = 5.0
+		energy_cost = 50.0
 		range = 600.0
 		unlocks_at_wave = 3
+		rarity = Rarity.UNCOMMON
+		
+class Swamp2 extends TotemBase:
+	func _init():
+		name = "Deep Swamp"
+		description = "Drops a swamp area that massively slows enemies."
+		price = 250
+		type = BaseType.SWAMP
+		icon = load("res://assets/totems/attack-totem.png")
+		sprite_color = Color.html("#70543E")
+		damage_spec = DamageSpec.new().init(5, DamageSpec.Type.PHYSICAL, 0.3, 0)
+		cooldown = 10
+		crit_chance = 0.0
+		consumes = [Res.Type.MAGIC_DUST]
+		produces = []
+		total_energy = 100.0
+		energy_cost = 50.0
+		range = 800.0
+		unlocks_at_wave = 7
 		rarity = Rarity.UNCOMMON
 
 static var base_types: Array[TotemBase] = [
