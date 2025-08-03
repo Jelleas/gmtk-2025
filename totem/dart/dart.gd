@@ -43,7 +43,9 @@ func shoot(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
 	var to = totem.tile_map_layer.to_local(target.global_position)
 	var projectile_scene = preload("res://totem/dart/dart_projectile.tscn")
 	var proj = projectile_scene.instantiate()
-	
+	var copy_damage_spec = base.damage_spec.duplicate()
+	if(randf() < base.crit_chance):
+		copy_damage_spec.damage *= 2
 	proj.damage_spec = base.damage_spec.duplicate()
 	proj.global_position = from
 	proj.direction = (to - from).normalized()

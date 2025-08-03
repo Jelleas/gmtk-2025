@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbf6jvrnsixuv"]
 
 [ext_resource type="Script" uid="uid://cmdrjw32ca0oe" path="res://ui/wave_tracker/wave_tracker.gd" id="1_5agos"]
-[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="2_i3hks"]
-[ext_resource type="Texture2D" uid="uid://d3qiwubftwlph" path="res://kenney_ui-pack-space-expansion/Vector/Grey/bar_round_gloss_large.svg" id="3_8dslq"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="2_i3hks"]
+[ext_resource type="Texture2D" uid="uid://d3qiwubftwlph" path="res://assets/Vector/Grey/bar_round_gloss_large.svg" id="3_8dslq"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="4_pbbvd"]
 
 [node name="WaveTracker" type="VBoxContainer"]
