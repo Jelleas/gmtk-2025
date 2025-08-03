@@ -208,7 +208,7 @@ func get_crit() -> float:
 func get_damage() -> float:
 	if modified_base == null:
 		return 0
-	return modified_base.damage
+	return modified_base.damage_spec.damage
 
 func get_cooldown() -> float:
 	if modified_base == null:

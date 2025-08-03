@@ -20,6 +20,7 @@ var current_direction: Direction
 var original_modulate: Color
 var config: MonsterConfig
 var is_dead: bool = false
+var dots: Array[DotSpec] = []
 
 enum Direction {
 	UP, DOWN, LEFT, RIGHT
@@ -40,10 +41,30 @@ func _ready() -> void:
 	health_bar.max_value = config.health
 	health_bar.value = config.health
 	sprite.z_index = 1
+	start_damage_cycle()
 
 func get_hit(incoming_hit: DamageSpec):
 	speed += config.speed * incoming_hit.speed_modifier
 	take_damage(incoming_hit.damage)
+	if(incoming_hit.dot_spec):
+		dots.append(DotSpec.new().init(incoming_hit.damage, incoming_hit.type, incoming_hit.dot_spec.stacks_applied))
+
+func start_damage_cycle():
+	while true:
+		await get_tree().create_timer(1.0).timeout
+		if(health > 0):
+			dot_tick()
+
+func dot_tick():
+	for dot in dots:
+		take_damage(dot.damage_per_stack * dot.stacks_applied)
+		
+		if dot.stacks_fade:
+			dot.stacks_applied -= 1
+
+	for i in range(dots.size() - 1, -1, -1):
+		if dots[i].stacks_applied == 0:
+			dots.remove_at(i)
 
 func _process(delta: float) -> void:
 	if is_dead: return
