@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=38 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dg0x508rvhega" path="res://assets/resources/bone.png" id="24_5hsgd"]
 [ext_resource type="Script" uid="uid://c18x3fabprn01" path="res://ui/bone_tracker/bones_tracker.gd" id="24_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://bfj3upnhcrhkl" path="res://ui/totem_tracker/totem_tracker.tscn" id="28_s8c5p"]
+[ext_resource type="AudioStream" uid="uid://bk3gho0knoblo" path="res://assets/cheeky.wav" id="30_5hsgd"]
 [ext_resource type="PackedScene" uid="uid://cbf6jvrnsixuv" path="res://ui/wave_tracker/wave_tracker.tscn" id="30_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://cwlvirevqltfd" path="res://ui/wave_toast/wave_toast.tscn" id="31_himki"]
 
@@ -302,5 +303,9 @@ rotation = -1.5728
 amount = 40
 texture = SubResource("GradientTexture2D_5hsgd")
 process_material = SubResource("ParticleProcessMaterial_pcp4w")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_5hsgd")
+autoplay = true
 
 [connection signal="child_exiting_tree" from="MonsterPath" to="MonsterPath" method="_on_child_exiting_tree"]

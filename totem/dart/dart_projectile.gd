@@ -20,4 +20,5 @@ func _on_projectile_hit(body: Area2D):
 		queue_free()
 
 func _physics_process(delta):
+	$Sprite2D.rotation = direction.angle() + deg_to_rad(90)
 	position += direction * speed * delta
