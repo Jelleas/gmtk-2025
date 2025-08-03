@@ -69,8 +69,8 @@ func style_delete_button() -> void:
 	
 	delete_button.icon = get_image(load("res://assets/trash-can-icon-28675.png"))
 	
-	delete_button.size = Vector2(35, 35)
-	delete_button.position = Vector2(62, -25)
+	delete_button.size = Vector2(24, 24)
+	delete_button.position = Vector2(72, -10)
 
 	# Create the StyleBoxes
 	var normal_style = StyleBoxFlat.new()
@@ -92,5 +92,5 @@ func style_delete_button() -> void:
 
 func get_image(resource: Resource) -> ImageTexture:
 	var image = resource.get_image()
-	image.resize(16, 16, Image.INTERPOLATE_LANCZOS)
+	image.resize(24, 24, Image.INTERPOLATE_LANCZOS)
 	return ImageTexture.create_from_image(image)
