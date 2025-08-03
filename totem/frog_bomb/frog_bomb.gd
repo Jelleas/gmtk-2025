@@ -5,7 +5,7 @@ var totem: Totem
 var global_pos: Vector2
 var local_pos: Vector2
 
-var locked_target: Area2D
+var targets: Array[Area2D] = []
 var attack_area: Area2D
 
 func init(parent_ref: Totem):
@@ -26,20 +26,16 @@ func init(parent_ref: Totem):
 	attack_area.monitorable = false	
 
 func _on_attack_area_entered(body: Node2D) -> void:
-	if(!locked_target && body.is_in_group("monster")):
-		locked_target = body
+	if(body.is_in_group("monster")):
+		targets.append(body)
 
 func _on_attack_area_exited(body: Node2D) -> void:
-	if locked_target == body:
-		locked_target = null
-		var target_list = attack_area.get_overlapping_bodies()
-		if(target_list.size() > 0 && target_list[0].is_in_group("monster")):
-			locked_target = target_list[0]
+	targets.erase(body)
 
 func totem_action(base: TotemPieces.TotemBase) -> bool:
 	$AttackArea/CollisionShape2D.shape.radius = base.range
-	if locked_target:
-		drop(base, local_pos, locked_target)
+	if targets.size() > 0:
+		drop(base, local_pos, targets[0])
 		return true
 	return false
 		

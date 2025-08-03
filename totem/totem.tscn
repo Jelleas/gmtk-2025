@@ -5,12 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://d2gwq2j6nc8uc" path="res://totem/dart/dart.tscn" id="3_xljs4"]
 [ext_resource type="PackedScene" uid="uid://c18gatq2tlnuy" path="res://totem/frog_bomb/frog_bomb.tscn" id="4_xljs4"]
 [ext_resource type="Texture2D" uid="uid://2tgfturtref7" path="res://assets/totems/totem-base.png" id="5_7f103"]
+[ext_resource type="PackedScene" uid="uid://7wdxai2cragc" path="res://totem/swamp/swamp.tscn" id="5_xljs4"]
 
 [node name="Totem" type="Node2D"]
 script = ExtResource("1_758mn")
 producer_scene = ExtResource("2_7f103")
 dart_scene = ExtResource("3_xljs4")
 frog_scene = ExtResource("4_xljs4")
+swamp_scene = ExtResource("5_xljs4")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

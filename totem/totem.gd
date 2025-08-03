@@ -7,6 +7,7 @@ signal TotemChanged(totem: Totem)
 @export var producer_scene: PackedScene
 @export var dart_scene: PackedScene
 @export var frog_scene: PackedScene
+@export var swamp_scene: PackedScene
 
 var start: int
 var end: int
@@ -127,6 +128,8 @@ func set_base(new_base: TotemPieces.TotemBase):
 			base_init = dart_scene.instantiate()
 		TotemPieces.BaseType.FROGBOMB:
 			base_init = frog_scene.instantiate()
+		TotemPieces.BaseType.SWAMP:
+			base_init = swamp_scene.instantiate()
 
 	base_init.init(self)
 	base_scene = base_init

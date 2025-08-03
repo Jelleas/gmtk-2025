@@ -8,7 +8,9 @@ var local_pos: Vector2
 var targets: Array[Area2D] = []
 var attack_area: Area2D
 
-func init(parent_ref):
+var current_field: Node2D = null
+
+func init(parent_ref: Totem):
 	totem = parent_ref
 	
 	global_pos = totem.global_pos
@@ -18,15 +20,15 @@ func init(parent_ref):
 
 	attack_area = $AttackArea
 	attack_area.global_position = local_pos
-	$AttackArea/CollisionShape2D.shape = $AttackArea/CollisionShape2D.shape.duplicate()
 	$AttackArea/CollisionShape2D.shape.radius = totem.base.range
+
 	attack_area.area_entered.connect(_on_attack_area_entered)
 	attack_area.area_exited.connect(_on_attack_area_exited)
 	attack_area.collision_mask = 1
 	attack_area.set_physics_process(true)
 	attack_area.monitoring = true
-	attack_area.monitorable = false
-	
+	attack_area.monitorable = false	
+
 func _on_attack_area_entered(body: Node2D) -> void:
 	if(body.is_in_group("monster")):
 		targets.append(body)
@@ -36,17 +38,20 @@ func _on_attack_area_exited(body: Node2D) -> void:
 
 func totem_action(base: TotemPieces.TotemBase) -> bool:
 	$AttackArea/CollisionShape2D.shape.radius = base.range
-	if(targets.size() > 1):
-		shoot(base, local_pos, targets[0])
+	if current_field:
+		current_field.destroy()
+	if targets.size():
+		drop(base, local_pos, targets[0])
 		return true
 	return false
-		
-func shoot(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
-	var to = totem.tile_map_layer.to_local(target.global_position)
-	var projectile_scene = preload("res://totem/dart/dart_projectile.tscn")
-	var proj = projectile_scene.instantiate()
-	proj.damage = base.damage
-	proj.global_position = from
-	proj.direction = (to - from).normalized()
 
-	add_child(proj)
+func drop(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
+	var projectile_scene = preload("res://totem/swamp/field.tscn")
+
+	current_field = projectile_scene.instantiate()
+	current_field.setup_shape(base.range / 10)	
+	
+	var to = totem.tile_map_layer.to_local(target.global_position)
+	
+	current_field.global_position = to
+	add_child(current_field)

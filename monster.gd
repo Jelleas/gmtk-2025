@@ -44,7 +44,6 @@ func _ready() -> void:
 func get_hit(proj: Area2D):
 	if(proj.is_in_group("projectile") && proj.target == monster_body || proj.target == null):
 		take_damage(proj.damage)
-		proj.queue_free()
 
 func _process(delta: float) -> void:
 	if is_dead: return
