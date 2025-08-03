@@ -44,6 +44,6 @@ func drop(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
 	var projectile_scene = preload("res://totem/frog_bomb/bomb.tscn")
 	var proj = projectile_scene.instantiate()
 	
-	proj.damage_spec = base.damage_spec
+	proj.damage_spec = base.damage_spec.duplicate()
 	proj.global_position = to
 	add_child(proj)
