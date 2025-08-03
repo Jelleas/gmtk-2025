@@ -2,9 +2,11 @@ extends VBoxContainer
 
 class_name ShopItem
 
-signal item_bought(modifier: TotemPieces.TotemPiece)
+signal item_bought(modifier: TotemPieces.TotemPiece, price: float)
 
 var item: TotemPieces.TotemPiece
+
+var current_price: int
 
 const RARITY_COLOR_MAP = {
 	null: Color(0, 0, 0, 0),
@@ -23,11 +25,12 @@ func _ready() -> void:
 
 func init(item_: TotemPieces.TotemPiece) -> void:
 	item = item_
+	current_price = item.price
 	$Button.icon = item.icon
 	tooltip_text = item.description
 	$Button.tooltip_text = item.description
 	$HBoxContainer/NameLabel.text = item.name
-	$HBoxContainer/PriceLabel.text = str(item.price)
+	$HBoxContainer/PriceLabel.text = str(current_price)
 	style_button()
 
 func enable() -> void:
@@ -40,9 +43,13 @@ func disable() -> void:
 	$HBoxContainer/PriceLabel.self_modulate.a = 0.5
 	$Button.disabled = true
 
+func apply_inflation(inflation: float) -> void:
+	current_price = int(item.price * inflation)
+	$HBoxContainer/PriceLabel.text = str(current_price)
+
 func _on_button_up() -> void:
 	if item != null:
-		item_bought.emit(item)
+		item_bought.emit(item, current_price)
 
 func _make_custom_tooltip(for_text):
 	var label = Label.new()

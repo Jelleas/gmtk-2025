@@ -19,7 +19,7 @@ signal wave_started(wave_number: int, next_wave_in: float)
 var monsters: Array[Monster]
 var monsters_to_spawn: Array[MonsterConfig]
 var current_wave: int = 0
-var current_max_cost: int = 10
+var current_max_cost: int = 20
 
 func _ready() -> void:
 	wave_timer.timeout.connect(_start_new_wave)

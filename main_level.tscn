@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=41 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
 [ext_resource type="PackedScene" uid="uid://bmc2jmy6ojjcv" path="res://ui/totemInterface.tscn" id="8_eqmdw"]
 [ext_resource type="Resource" uid="uid://cyjdqf7uo68o3" path="res://monster/strong_blob.tres" id="9_2px6s"]
+[ext_resource type="Resource" uid="uid://cf3nlurtbxjfy" path="res://monster/mini_blob.tres" id="12_himki"]
+[ext_resource type="Resource" uid="uid://cfiax5d5d1wnn" path="res://monster/giga_blob.tres" id="13_5hfqd"]
 [ext_resource type="Script" uid="uid://xjggkl7wtjqu" path="res://ui/resource_tracker/resource_bar.gd" id="13_6pb3s"]
 [ext_resource type="Script" uid="uid://bcit1i2pbruel" path="res://ui/monster_tracker/monster_tracker.gd" id="15_52es0"]
 [ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="15_ah7fh"]
@@ -127,7 +129,7 @@ position = Vector2(-641, -437)
 curve = SubResource("Curve2D_5ymk8")
 script = ExtResource("5_6pb3s")
 monster_scene = ExtResource("6_e3ldi")
-monster_configs = Array[ExtResource("7_386tm")]([ExtResource("8_2px6s"), ExtResource("9_2px6s")])
+monster_configs = Array[ExtResource("7_386tm")]([ExtResource("8_2px6s"), ExtResource("9_2px6s"), ExtResource("12_himki"), ExtResource("13_5hfqd")])
 
 [node name="WaveTimer" type="Timer" parent="MonsterPath"]
 
