@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=35 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ig8ajdvhhbd3" path="res://resource.tscn" id="4_xqiim"]
 [ext_resource type="Script" uid="uid://ckoluvmpkkf00" path="res://monster_path.gd" id="5_6pb3s"]
 [ext_resource type="PackedScene" uid="uid://clt7pafdvryia" path="res://monster.tscn" id="6_e3ldi"]
-[ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://kenney_ui-pack-space-expansion/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
+[ext_resource type="Texture2D" uid="uid://bepreqkwfug08" path="res://assets/Vector/Blue/bar_round_gloss_large.svg" id="6_eqmdw"]
 [ext_resource type="Script" uid="uid://n1no8gnftcbf" path="res://monster/monster_config.gd" id="7_386tm"]
 [ext_resource type="Resource" uid="uid://bw0r0pecha804" path="res://monster/blob.tres" id="8_2px6s"]
 [ext_resource type="Script" uid="uid://ddeoiro7qkje2" path="res://ui/resource_tracker/resource_tracker.gd" id="8_do8ha"]
@@ -16,8 +16,8 @@
 [ext_resource type="Resource" uid="uid://cyjdqf7uo68o3" path="res://monster/strong_blob.tres" id="9_2px6s"]
 [ext_resource type="Script" uid="uid://xjggkl7wtjqu" path="res://ui/resource_tracker/resource_bar.gd" id="13_6pb3s"]
 [ext_resource type="Script" uid="uid://bcit1i2pbruel" path="res://ui/monster_tracker/monster_tracker.gd" id="15_52es0"]
-[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://kenney_ui-pack-space-expansion/Vector/Extra/bar_shadow_round_large.svg" id="15_ah7fh"]
-[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://kenney_ui-pack-space-expansion/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
+[ext_resource type="Texture2D" uid="uid://d3byg07av648o" path="res://assets/Vector/bar_shadow_round_large.svg" id="15_ah7fh"]
+[ext_resource type="Texture2D" uid="uid://rp25y0uy05fv" path="res://assets/Vector/Red/bar_round_gloss_large.svg" id="16_x2wht"]
 [ext_resource type="Script" uid="uid://cixtlw5yw2iu" path="res://ui/monster_tracker/health_bar.gd" id="17_x2wht"]
 [ext_resource type="Script" uid="uid://bx8mgqkfs0pv3" path="res://ui/monster_tracker/monster_counter.gd" id="19_08fmi"]
 [ext_resource type="Script" uid="uid://bvhc545o6qhs" path="res://ui/shop/shop.gd" id="19_8m212"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dg0x508rvhega" path="res://assets/resources/bone.png" id="24_5hsgd"]
 [ext_resource type="Script" uid="uid://c18x3fabprn01" path="res://ui/bone_tracker/bones_tracker.gd" id="24_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://bfj3upnhcrhkl" path="res://ui/totem_tracker/totem_tracker.tscn" id="28_s8c5p"]
+[ext_resource type="AudioStream" uid="uid://bk3gho0knoblo" path="res://assets/cheeky.wav" id="30_5hsgd"]
 [ext_resource type="PackedScene" uid="uid://cbf6jvrnsixuv" path="res://ui/wave_tracker/wave_tracker.tscn" id="30_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://cwlvirevqltfd" path="res://ui/wave_toast/wave_toast.tscn" id="31_himki"]
 
@@ -276,5 +277,9 @@ resource_manager = NodePath("../ResourcePath")
 tile_map = NodePath("../GroundLayer")
 bones_tracker = NodePath("../UI/BonesTracker")
 monster_path = NodePath("../MonsterPath")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_5hsgd")
+autoplay = true
 
 [connection signal="child_exiting_tree" from="MonsterPath" to="MonsterPath" method="_on_child_exiting_tree"]
