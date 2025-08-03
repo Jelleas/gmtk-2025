@@ -26,7 +26,6 @@ producer_scene = ExtResource("2_7f103")
 dart_scene = ExtResource("3_xljs4")
 frog_scene = ExtResource("4_xljs4")
 swamp_scene = ExtResource("5_xljs4")
-no_base_sprite = ExtResource("5_7f103")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
