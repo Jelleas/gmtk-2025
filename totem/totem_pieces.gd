@@ -365,7 +365,6 @@ class Speed1 extends Modifier:
 		unlocks_at_wave = 0
 				
 	func apply(totem_base):
-		#totem_base.energy_cost *= 1 / 0.9
 		totem_base.cooldown *= 0.9
 		return totem_base
 
@@ -380,7 +379,6 @@ class Speed2 extends Modifier:
 		unlocks_at_wave = 5
 				
 	func apply(totem_base):
-		#totem_base.energy_cost *= 1 / 0.8
 		totem_base.cooldown *= 0.8
 		return totem_base
 

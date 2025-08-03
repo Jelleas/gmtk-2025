@@ -21,6 +21,9 @@ func refresh():
 	style_background()
 
 func show_delete() -> void:
+	if totem_piece.type == TotemPieces.BaseType.PRODUCER:
+		return
+	
 	$Control/DeleteButton.self_modulate.a = 1.0
 	$Control/DeleteButton.disabled = false
 

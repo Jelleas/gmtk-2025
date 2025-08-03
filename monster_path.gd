@@ -86,7 +86,6 @@ func _pick_random_monster(max_cost: int, current_wave: int):
 		func(config: MonsterConfig): return config.cost <= max_cost and config.rank <= current_wave
 	)
 	if available_monsters.size() == 0:
-		current_max_cost = 0
 		return
 	
 	var random_index = randi_range(0, available_monsters.size() - 1)
