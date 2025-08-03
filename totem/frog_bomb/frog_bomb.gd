@@ -41,9 +41,14 @@ func totem_action(base: TotemPieces.TotemBase) -> bool:
 		
 func drop(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
 	var to = totem.tile_map_layer.to_local(target.global_position)
-	var projectile_scene = preload("res://totem/frog_bomb/projectile.tscn")
+	var projectile_scene = preload("res://totem/frog_bomb/bomb.tscn")
 	var proj = projectile_scene.instantiate()
-	proj.target = target
-	proj.damage = base.damage
+	
+	var damage_spec = DamageSpec.new()
+	damage_spec.damage = base.damage
+	damage_spec.speed_modifier = 1
+	damage_spec.type = DamageSpec.Type.PHYSICAL
+	
+	proj.damage_spec = damage_spec
 	proj.global_position = to
 	add_child(proj)

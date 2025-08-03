@@ -12,7 +12,7 @@ signal monster_killed(monster: Monster)
 const LOOP_SECONDS = 100
 
 var escape_cost: int
-var speed: int
+var speed: float
 var health: int
 var frames: SpriteFrames
 var previous_position: Vector2
@@ -36,14 +36,13 @@ func _ready() -> void:
 	monster_body.collision_mask = 2
 	monster_body.monitoring = true
 	monster_body.monitorable = true
-	monster_body.area_entered.connect(get_hit)
 	monster_body.add_to_group("monster")
 	health_bar.max_value = config.health
-	health_bar.value = config.health 
+	health_bar.value = config.health
 
-func get_hit(proj: Area2D):
-	if(proj.is_in_group("projectile") && proj.target == monster_body || proj.target == null):
-		take_damage(proj.damage)
+func get_hit(incoming_hit: DamageSpec):
+	speed += config.speed * incoming_hit.speed_modifier
+	take_damage(incoming_hit.damage)
 
 func _process(delta: float) -> void:
 	if is_dead: return

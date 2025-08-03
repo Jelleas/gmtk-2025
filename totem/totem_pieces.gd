@@ -260,7 +260,7 @@ class Swamp extends TotemBase:
 		type = BaseType.SWAMP
 		icon = load("res://assets/totems/speed-l.png")
 		sprite_color = Color.html("#70543E")
-		damage = 5
+		damage = 1
 		cooldown = 10
 		crit_chance = 0.10
 		consumes = [Res.Type.SHROOM]
@@ -273,12 +273,12 @@ static var base_types: Array[TotemBase] = [
 	Dart1.new(),
 	Dart2.new(),
 	Swamp.new(),
-	FrogBomb.new(), 
-	FrogBurner.new(), 
-	FrogSkinner.new(), 
-	ShroomMulcher.new(), 
-	BerryJuicer.new(), 
-	PotionStation.new()
+	#FrogBomb.new(), 
+	#FrogBurner.new(), 
+	#FrogSkinner.new(), 
+	#ShroomMulcher.new(), 
+	#BerryJuicer.new(), 
+	#PotionStation.new()
 ]
 
 class Modifier extends TotemPiece:

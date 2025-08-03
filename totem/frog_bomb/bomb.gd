@@ -9,8 +9,7 @@ var vertical_velocity := 0.0
 var z_height := 0.0
 var radius := 200
 
-var target: Area2D = null
-var damage: int
+var damage_spec: DamageSpec
 
 func _ready():
 	vertical_velocity = initial_vertical_speed
@@ -21,12 +20,13 @@ func _ready():
 	collision_layer = 1
 	collision_mask = 1
 	add_to_group("projectile")
-	self.area_entered.connect(_on_projectile_hit)
-	
 
-func _on_projectile_hit(body: Area2D):
-	if(body.is_in_group("monster")):
-		queue_free()
+func hit_area():
+	var in_area = get_overlapping_areas()
+	for area in in_area:
+		if area.is_in_group("monster"):
+			var monster = area.get_parent() as Monster
+			monster.get_hit(damage_spec)
 
 func _physics_process(delta):
 	# Apply gravity
@@ -40,4 +40,6 @@ func _physics_process(delta):
 	if z_height > 0:
 		sprite.position.y = 0
 		$CollisionShape2D.disabled = false
+		await get_tree().physics_frame
+		hit_area()
 		queue_free()  # or play impact animation
