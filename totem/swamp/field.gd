@@ -19,14 +19,16 @@ func _ready():
 func on_swamp_entered(body: Area2D):
 	if(body.is_in_group("monster")):
 		var monster = body.get_parent() as Monster
-		monster.get_hit(damage_spec)
+		var copy_spec = damage_spec.duplicate()
+		copy_spec.speed_modifier = -damage_spec.speed_modifier
+		monster.get_hit(copy_spec)
 		in_swamp.append(monster)
 
 func on_swamp_exited(body: Area2D):
 	if(body.is_in_group("monster")):
 		var monster = body.get_parent() as Monster
 		var copy_spec = damage_spec.duplicate()
-		copy_spec.speed_modifier = - damage_spec.speed_modifier
+		copy_spec.speed_modifier = damage_spec.speed_modifier
 		monster.get_hit(copy_spec)
 		in_swamp.erase(monster)
 

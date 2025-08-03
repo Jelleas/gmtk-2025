@@ -88,5 +88,14 @@ func _pick_random_monster(max_cost: int, current_wave: int):
 	if available_monsters.size() == 0:
 		return
 	
-	var random_index = randi_range(0, available_monsters.size() - 1)
-	return available_monsters[random_index]
+	var sum_monster_cost = 0
+	for available_monster in available_monsters:
+		sum_monster_cost += available_monster.cost
+	
+	var monster_picker_array = []
+	for available_monster in available_monsters:
+		for i in range(int(sum_monster_cost / available_monster.cost)):
+			monster_picker_array.append(available_monster)
+	
+	var random_index = randi_range(0, monster_picker_array.size() - 1)
+	return monster_picker_array[random_index]

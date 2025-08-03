@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_2b1s2")
 name = "Blob"
-health = 60
+health = 40
 speed = 6
-escape_cost = 15
+escape_cost = 5
 cost = 8
 rank = 3
 sprite = ExtResource("2_2b1s2")

@@ -122,11 +122,16 @@ func create_item(modifier: TotemPieces.TotemPiece) -> ShopItem:
 
 func on_new_wave(wave_number: int, next_wave_in: float):
 	current_wave = wave_number
+	var unlocked = false
+	
 	for it in TotemPieces.base_types:
 		if it.unlocks_at_wave == wave_number:
 			totem_piece_unlocked.emit(it)
-			print("unlocked: ", it.name)
+			unlocked = true
 	for it in TotemPieces.modifiers:
 		if it.unlocks_at_wave == wave_number:
 			totem_piece_unlocked.emit(it)
-			print("unlocked: ", it.name)
+			unlocked = true
+	
+	if unlocked:
+		reroll()
