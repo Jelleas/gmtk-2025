@@ -24,15 +24,25 @@ func _on_totem_changed(totem_: Totem):
 	set_produces()
 	
 func set_consumes():
+	var container = $HBoxContainer/ConsumesContainer
+	
+	for child in container.get_children():
+		child.free()
+	
 	set_resources_in_container(
 		totem.get_consumes(),
-		$HBoxContainer/ConsumesContainer
+		container
 	)
 
 func set_produces():
+	var container = $HBoxContainer/ProducesContainer
+		
+	for child in container.get_children():
+		child.free()
+	
 	set_resources_in_container(
 		totem.get_produces(),
-		$HBoxContainer/ProducesContainer
+		container
 	)
 		
 func set_resources_in_container(resources: Array[Res.Type], container: Container) -> void:
