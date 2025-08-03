@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+class_name Shop
+
 @export var shop_item: PackedScene
 @export var inventory: Inventory
 @export var totem_interface: TotemInterface
