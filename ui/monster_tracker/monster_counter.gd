@@ -15,4 +15,8 @@ func init(monster_path_: Path2D) -> void:
 
 func _on_monster_escape(monster: Monster):
 	escaped_monsters_count += 1
-	text = str(escaped_monsters_count) + " escaped"
+	if escaped_monsters_count == 1:
+		text = str(escaped_monsters_count) + " monster loop"
+	else:
+		text = str(escaped_monsters_count) + " monster loops"
+	

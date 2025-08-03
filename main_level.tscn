@@ -189,7 +189,7 @@ script = ExtResource("17_x2wht")
 
 [node name="MonsterCounter" type="Label" parent="UI/MonsterTracker"]
 layout_mode = 2
-text = "0 escaped"
+text = "0 monster loops"
 horizontal_alignment = 1
 script = ExtResource("19_08fmi")
 
