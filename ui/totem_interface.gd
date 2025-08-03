@@ -32,7 +32,7 @@ func totem_pressed(plot_index: int):
 		empty_plot.destroy()
 		totem = create_totem(plot_index, fill_plot)
 		plots[plot_index][2] = totem
-		price *= 2
+		price = min(price * 2, 300)
 		update_plot_price()
 	else:
 		totem = plots[plot_index][2]
