@@ -206,7 +206,7 @@ class PotionStation extends TotemBase:
 	func _init():
 		name = "Potion Station"
 		description = "Brews potions out of magic dust and berry juice."
-		price = 100
+		price = 500
 		type = BaseType.CONVERTER
 		icon = load("res://assets/totems/converter-totem.png")
 		sprite_color = Color.html("#2E2E2E")
@@ -295,7 +295,7 @@ class FrogBomb2 extends TotemBase:
 		energy_cost = 50.0
 		range = 800.0
 		unlocks_at_wave = 6
-		rarity = Rarity.UNCOMMON
+		rarity = Rarity.GAMING
 
 class Swamp extends TotemBase:
 	func _init():
@@ -333,7 +333,7 @@ class Swamp2 extends TotemBase:
 		energy_cost = 50.0
 		range = 800.0
 		unlocks_at_wave = 7
-		rarity = Rarity.UNCOMMON
+		rarity = Rarity.LEGENDARY
 
 static var base_types: Array[TotemBase] = [
 	Dart1.new(),
