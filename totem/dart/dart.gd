@@ -44,12 +44,7 @@ func shoot(base: TotemPieces.TotemBase, from: Vector2, target: Area2D):
 	var projectile_scene = preload("res://totem/dart/dart_projectile.tscn")
 	var proj = projectile_scene.instantiate()
 	
-	var damage_spec = DamageSpec.new()
-	damage_spec.damage = base.damage
-	damage_spec.speed_modifier = 1
-	damage_spec.type = DamageSpec.Type.PHYSICAL
-	
-	proj.damage_spec = damage_spec
+	proj.damage_spec = base.damage_spec.duplicate()
 	proj.global_position = from
 	proj.direction = (to - from).normalized()
 
