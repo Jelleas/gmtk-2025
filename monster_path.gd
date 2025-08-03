@@ -62,7 +62,7 @@ func _spawn_new_monster():
 	
 func _start_new_wave():
 	current_wave += 1
-	current_max_cost += 10
+	current_max_cost = int(current_max_cost * 1.1 + 10)
 	
 	var picked_cost = 0
 	while picked_cost < current_max_cost: 
