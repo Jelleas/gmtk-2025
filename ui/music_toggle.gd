@@ -4,6 +4,7 @@ extends CheckButton
 
 func _ready() -> void:
 	button_pressed = true
+	self.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 	self.button_up.connect(_on_button_up)
 	
 func _on_button_up() -> void:
