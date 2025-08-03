@@ -47,7 +47,7 @@ func apply_inflation(inflation: float) -> void:
 	if item.is_base_type:
 		current_price = item.price
 	else:
-		current_price = int(item.price * inflation)
+		current_price = int(item.price * inflation) / 10 * 10
 	$HBoxContainer/PriceLabel.text = str(current_price)
 
 func _on_button_up() -> void:

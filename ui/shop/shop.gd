@@ -48,7 +48,7 @@ func _on_item_bought(item, price: int) -> void: # TODO type hint
 		reroll()
 
 func apply_inflation() -> void:
-	inflation = 1.1**totem.modifiers.size()
+	inflation = 1.2**totem.modifiers.size()
 	
 	for item in items:
 		item.apply_inflation(inflation)
