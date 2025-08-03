@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cbsdsj1tj2kky"]
+[gd_scene load_steps=37 format=4 uid="uid://cbsdsj1tj2kky"]
 
 [ext_resource type="Texture2D" uid="uid://d14ulgd3t4j76" path="res://assets/tileset1-squashed.png" id="1_s8c5p"]
 [ext_resource type="Script" uid="uid://ctq4xyqvawsvm" path="res://resource_path.gd" id="2_05as6"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://c18x3fabprn01" path="res://ui/bone_tracker/bones_tracker.gd" id="24_pcp4w"]
 [ext_resource type="PackedScene" uid="uid://bfj3upnhcrhkl" path="res://ui/totem_tracker/totem_tracker.tscn" id="28_s8c5p"]
 [ext_resource type="PackedScene" uid="uid://cbf6jvrnsixuv" path="res://ui/wave_tracker/wave_tracker.tscn" id="30_pcp4w"]
+[ext_resource type="PackedScene" uid="uid://cwlvirevqltfd" path="res://ui/wave_toast/wave_toast.tscn" id="31_himki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcp4w"]
 texture = ExtResource("1_s8c5p")
@@ -285,6 +286,9 @@ grow_vertical = 2
 totem_manager = NodePath("../../TotemManager")
 
 [node name="WaveTracker" parent="UI" node_paths=PackedStringArray("monster_manager") instance=ExtResource("30_pcp4w")]
+monster_manager = NodePath("../../MonsterPath")
+
+[node name="WaveToast" parent="UI" node_paths=PackedStringArray("monster_manager") instance=ExtResource("31_himki")]
 monster_manager = NodePath("../../MonsterPath")
 
 [node name="TotemManager" parent="." node_paths=PackedStringArray("resource_manager", "tile_map", "bones_tracker") instance=ExtResource("8_eqmdw")]
