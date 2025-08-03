@@ -49,12 +49,10 @@ func reroll() -> void:
 
 	items = []
 	var available_modifiers = TotemPieces.modifiers.filter(func (it): return it.unlocks_at_wave <= current_wave)
-	print("modifiers: ", available_modifiers)
 	for it in get_random_sample(available_modifiers, N_MODIFIER_SLOTS):
 		items.append(create_item(it))
 		
 	var available_bases = TotemPieces.base_types.filter(func (it): return it.unlocks_at_wave <= current_wave)	
-	print("bases: ", available_bases)
 	for it in get_random_sample(available_bases, N_BASE_SLOTS):
 		items.append(create_item(it))
 
